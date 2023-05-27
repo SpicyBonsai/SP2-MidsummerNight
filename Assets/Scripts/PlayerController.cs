@@ -52,7 +52,7 @@ public class PlayerController : MonoBehaviour
             {
                 _ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-                if (Physics.Raycast(_ray, out _raycastHit))
+                if (Physics.Raycast(_ray, out _raycastHit, Mathf.Infinity, GroundMask))
                 {
                     Vector3 _pointerPos = new Vector3(_raycastHit.point.x, 0 + Pointer.GetComponent<SphereCollider>().radius, _raycastHit.point.z); //for pointer to be always at y = 0
                     Pointer.transform.position = _pointerPos;
