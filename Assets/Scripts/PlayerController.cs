@@ -35,9 +35,9 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         #region Gravity
-        _isGrounded = Physics.CheckSphere(GroundCheck.position, GroundDistance, GroundMask);
+        /*_isGrounded = Physics.CheckSphere(GroundCheck.position, GroundDistance, GroundMask);
         if (_isGrounded && _velocity.y < 0)
-            _velocity.y = -2f;
+            _velocity.y = -2f;*/
         #endregion
 
         #region WASD/Joystick
@@ -80,13 +80,6 @@ public class PlayerController : MonoBehaviour
                             _characterController.Move(_movementDirection.normalized * Time.deltaTime * Speed);
 
                         }*/
-        }
-        #endregion
-
-        #region Gravity
-        if (!PointAndClick)
-        {
-            //s
         }
         #endregion
 
