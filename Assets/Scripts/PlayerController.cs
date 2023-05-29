@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
     public LayerMask GroundMask;
     public Transform GroundCheck;
     public GameObject Pointer;
-    public static GroundSnap PointerGroundSet;
+    //public static GroundSnap PointerGroundSet;
 
     //private Variables
     float _gravity = -9.81f;
@@ -61,7 +61,7 @@ public class PlayerController : MonoBehaviour
             {
                 _ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-                if (Physics.Raycast(_ray, out _raycastHit, Mathf.Infinity, GroundMask))
+                if (Physics.Raycast(_ray, out _raycastHit))
                 {
                     //Vector3 _pointerPos = new Vector3(_raycastHit.point.x, 0 + Pointer.GetComponent<SphereCollider>().radius, _raycastHit.point.z); //for pointer to be always at y = 0
                     //Pointer.GetComponent<GroundSnap>().SetPostiion(_pointerPos);
