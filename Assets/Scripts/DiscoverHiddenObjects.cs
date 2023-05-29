@@ -36,7 +36,7 @@ public class DiscoverHiddenObjects : MonoBehaviour
 
                 if (passedPortal && hit.transform.tag == "HiddenObject")
                 {
-                    hit.transform.gameObject.GetComponent<MeshRenderer>().enabled = true; //check if collider is on in the world
+                    hit.transform.gameObject.GetComponent<MeshRenderer>().enabled = true;
                 }else if(!passedPortal && hit.transform.tag == "HiddenObject")
                 {
                     hit.transform.gameObject.GetComponent<MeshRenderer>().enabled = false;
