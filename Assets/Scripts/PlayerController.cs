@@ -47,13 +47,14 @@ public class PlayerController : MonoBehaviour
         Vector3 _move = transform.right * _x + transform.forward * _z;
         if (!PointAndClick)
         {
+            _navMeshAgent.ResetPath();
             _navMeshAgent.Move(Speed * Time.deltaTime * _move);
             _velocity.y += _gravity * Time.deltaTime;
             //_characterController.Move(_velocity * Time.deltaTime);
             _navMeshAgent.Move(_velocity * Time.deltaTime);
         }
         #endregion
-        //_navMeshAgent.SetDestination(Pointer.transform.position);
+
         #region Point&Click
         else
         {
@@ -64,15 +65,15 @@ public class PlayerController : MonoBehaviour
                 if (Physics.Raycast(_ray, out _raycastHit))
                 {
                     //Vector3 _pointerPos = new Vector3(_raycastHit.point.x, 0 + Pointer.GetComponent<SphereCollider>().radius, _raycastHit.point.z); //for pointer to be always at y = 0
-                    //Pointer.GetComponent<GroundSnap>().SetPostiion(_pointerPos);
-                    //PointerGroundSet.SetPostiion(_pointerPos);
+                    //Pointer.GetComponent<GroundSnap>().SetPostiion(_pointerPos); //PointerGroundSet.SetPostiion(_pointerPos);
 
                     Vector3 _pointerPos = _raycastHit.point; 
                     Pointer.transform.position = _pointerPos;
                     _navMeshAgent.SetDestination(Pointer.transform.position);
                 }
             }
-            
+
+            #region Point&Click without NavMesh
             /* without NavMesh
                         if (transform.position != _raycastHit.point)
                         {
@@ -80,6 +81,7 @@ public class PlayerController : MonoBehaviour
                             _characterController.Move(_movementDirection.normalized * Time.deltaTime * Speed);
 
                         }*/
+            #endregion
         }
         #endregion
 
