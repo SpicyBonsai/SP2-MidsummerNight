@@ -6,6 +6,7 @@ TagManager:
   tags:
   - HiddenObject
   - Portal
+  - UI_Element
   layers:
   - Default
   - TransparentFX
