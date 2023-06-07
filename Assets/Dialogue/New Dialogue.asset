@@ -13,9 +13,62 @@ MonoBehaviour:
   m_Name: New Dialogue
   m_EditorClassIdentifier: 
   nodes:
-  - uniqueID: 
+  - uniqueID: 334
     text: Oh Hi mark!
-    children: []
-  - uniqueID: 
+    children:
+    - 23
+    - 65
+    rect:
+      serializedVersion: 2
+      x: 4.6667023
+      y: 194.6667
+      width: 200
+      height: 150
+  - uniqueID: 44
     text: Goodbye
     children: []
+    rect:
+      serializedVersion: 2
+      x: 679.66656
+      y: 209.66661
+      width: 200
+      height: 150
+  - uniqueID: 523
+    text: Hello
+    children:
+    - 67
+    rect:
+      serializedVersion: 2
+      x: 681.66656
+      y: 403.66663
+      width: 200
+      height: 150
+  - uniqueID: 65
+    text: He;lllooooo
+    children:
+    - 523
+    - 44
+    rect:
+      serializedVersion: 2
+      x: 327.66653
+      y: 300.66663
+      width: 200
+      height: 150
+  - uniqueID: 23
+    text: Fuck off
+    children: []
+    rect:
+      serializedVersion: 2
+      x: 323.6665
+      y: 95.66663
+      width: 200
+      height: 150
+  - uniqueID: 67
+    text: Fuck offpl
+    children: []
+    rect:
+      serializedVersion: 2
+      x: 988.6665
+      y: 534.6666
+      width: 200
+      height: 150
