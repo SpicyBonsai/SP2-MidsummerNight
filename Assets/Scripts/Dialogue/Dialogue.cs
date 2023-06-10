@@ -18,7 +18,10 @@ namespace Lyr.Dialogue
         {
             if(nodes.Count == 0)
             {
-              nodes.Add(new DialogueNode());
+                DialogueNode rootNode = new DialogueNode();
+                rootNode.uniqueID = Guid.NewGuid().ToString();
+            
+                nodes.Add(rootNode);
             }
         }
 #endif
@@ -49,6 +52,38 @@ namespace Lyr.Dialogue
                 {
                     yield return nodeLookup[childID];
                 }
+            }
+        }
+
+        public void CreateNode(DialogueNode parent)
+        {
+            DialogueNode newNode = new DialogueNode();
+            newNode.uniqueID = Guid.NewGuid().ToString();
+            
+            // int childrenLength = parent.children.Length; 
+            // parent.children = new string[childrenLength + 1];
+            // parent.children[childrenLength] = newNode.uniqueID;  
+            parent.children.Add(newNode.uniqueID);
+            
+            nodes.Add(newNode);
+            newNode.rect.x = parent.rect.xMax + parent.rect.width/10;
+            newNode.rect.y = parent.rect.y;
+
+            OnValidate();
+        }
+
+        public void RemoveNode(DialogueNode nodeToDelete)
+        {
+            nodes.Remove(nodeToDelete);
+            OnValidate();
+            CleanDanglingChildren(nodeToDelete);
+        }
+
+        private void CleanDanglingChildren(DialogueNode nodeToDelete)
+        {
+            foreach (DialogueNode node in GetAllNodes())
+            {
+                node.children.Remove(nodeToDelete.uniqueID);
             }
         }
     }

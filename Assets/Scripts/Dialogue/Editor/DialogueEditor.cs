@@ -8,9 +8,19 @@ namespace Lyr.Dialogue.Editor
     public class DialogueEditor : EditorWindow
     {
         Dialogue selectedDialogue;
-        GUIStyle nodeStyle;
-        DialogueNode draggingNode = null;
-        public Vector2 draggingOffset;
+        [NonSerialized] GUIStyle nodeStyle;
+        [NonSerialized] DialogueNode draggingNode = null;
+        [NonSerialized] public Vector2 draggingOffset;
+        [NonSerialized] DialogueNode creatingNode = null;
+        [NonSerialized] DialogueNode nodeToRemove = null;
+        [NonSerialized] DialogueNode linkingParentNode = null;
+        Vector2 scrollPosition;
+        [NonSerialized] bool draggingCanvas = false;
+        [NonSerialized] Vector2 draggingCanvasOffset;
+        const float canvasSize = 4000f;
+        const float backgroundSize = 50f;
+
+
 
         [MenuItem("Window/Dialogue Editor")]
         public static void ShowEditorWindow()
@@ -62,6 +72,14 @@ namespace Lyr.Dialogue.Editor
             else
             {
                 ProcessEvents();
+             
+                scrollPosition = EditorGUILayout.BeginScrollView(scrollPosition);
+
+                Rect canvas = GUILayoutUtility.GetRect(canvasSize, canvasSize);
+                Texture2D backgroundTex = Resources.Load("background") as Texture2D;
+                Rect texCoords = new Rect(0, 0, canvasSize/backgroundSize, canvasSize/backgroundSize);
+                GUI.DrawTextureWithTexCoords(canvas, backgroundTex, texCoords);
+                
                 foreach(DialogueNode node in selectedDialogue.GetAllNodes())
                 {
                     DrawConnections(node);
@@ -70,18 +88,38 @@ namespace Lyr.Dialogue.Editor
                 {
                     DrawNodes(node);
                 }
+
+                EditorGUILayout.EndScrollView();
+
+                if(creatingNode != null)
+                {
+                    Undo.RecordObject(selectedDialogue, "Added new node");
+                    selectedDialogue.CreateNode(creatingNode);
+                    creatingNode = null;
+                }
+
+                if(nodeToRemove != null)
+                {
+                    Undo.RecordObject(selectedDialogue, "Removed Node");
+                    selectedDialogue.RemoveNode(nodeToRemove);
+                    nodeToRemove = null;
+                }
             } 
         }
-
 
         private void ProcessEvents()
         {
             if(Event.current.type == EventType.MouseDown && draggingNode == null)
             {
-                draggingNode = GetNodeAtPoint(Event.current.mousePosition);
+                draggingNode = GetNodeAtPoint(Event.current.mousePosition + scrollPosition);
                 if(draggingNode != null)
                 {
                     draggingOffset = new Vector2 (draggingNode.rect.x, draggingNode.rect.y) - Event.current.mousePosition;
+                }
+                else
+                {
+                    draggingCanvas = true;
+                    draggingCanvasOffset = Event.current.mousePosition + scrollPosition;
                 }
             }
             else if (Event.current.type == EventType.MouseDrag && draggingNode != null)
@@ -90,25 +128,40 @@ namespace Lyr.Dialogue.Editor
                 draggingNode.rect.position = Event.current.mousePosition + draggingOffset;
                 GUI.changed = true;
             }
+            else if (Event.current.type == EventType.MouseDrag && draggingCanvas)
+            {
+                scrollPosition = draggingCanvasOffset - Event.current.mousePosition;
+                GUI.changed = true;
+            }
             else if (Event.current.type == EventType.MouseUp && draggingNode != null)
             {
                 draggingNode = null;
             }
+            else if (Event.current.type == EventType.MouseUp && draggingCanvas)
+            {
+                draggingCanvas = false;
+            }
 
         }
 
-
-
-
         private void DrawNodes(DialogueNode node)
-        {
+        {   
+            foreach(DialogueNode otherNode in selectedDialogue.GetAllNodes())
+            {
+                if(otherNode.uniqueID != node.uniqueID && 
+                Mathf.Abs(otherNode.rect.x - node.rect.x) < 20 && 
+                Mathf.Abs(otherNode.rect.y - node.rect.y) < 20)
+                {
+                    node.rect.x += 20;
+                    node.rect.y += 20;
+                }
+            }
+
             GUILayout.BeginArea(new Rect(node.rect.x, node.rect.y, node.rect.width, node.rect.height), nodeStyle);
 
             //start tracking changes made to the following variables
             EditorGUI.BeginChangeCheck();
 
-            EditorGUILayout.LabelField("Node:", EditorStyles.whiteLabel);
-            string newID = EditorGUILayout.TextField(node.uniqueID);
             string newText = EditorGUILayout.TextField(node.text);
 
 
@@ -116,18 +169,65 @@ namespace Lyr.Dialogue.Editor
             if (EditorGUI.EndChangeCheck())
             {
                 Undo.RecordObject(selectedDialogue, "Update Dialogue Text");
-                node.uniqueID = newID;
                 node.text = newText;
             }
 
 
-            EditorGUILayout.LabelField("Children:");
-            foreach (DialogueNode childNode in selectedDialogue.GetAllChildren(node))
+            GUILayout.BeginHorizontal();
+            if (GUILayout.Button("Remove"))
             {
-                EditorGUILayout.LabelField(childNode.text);
+                nodeToRemove = node;
             }
 
+            DrawLinkButtons(node);
+
+            if (GUILayout.Button("Add"))
+            {
+                creatingNode = node;
+            }
+            GUILayout.EndHorizontal();
+            // foreach (DialogueNode childNode in selectedDialogue.GetAllChildren(node))
+            // {
+            //     //EditorGUILayout.LabelField(childNode.text);
+            // }
+
             GUILayout.EndArea();
+        }
+
+        private void DrawLinkButtons(DialogueNode node)
+        {
+            if (linkingParentNode == null)
+            {
+                if (GUILayout.Button("Link"))
+                {
+                    linkingParentNode = node;
+                }
+            }
+            else if (linkingParentNode == node)
+            {
+                if (GUILayout.Button("Cancel"))
+                {
+                    linkingParentNode = null;
+                }
+            }
+            else if (linkingParentNode.children.Contains(node.uniqueID))
+            {
+                if (GUILayout.Button("Unlink"))
+                {
+                    Undo.RecordObject(selectedDialogue, "Removed child relationship to node");
+                    linkingParentNode.children.Remove(node.uniqueID);
+                    linkingParentNode = null;
+                }
+            }
+            else
+            {
+                if (GUILayout.Button("Child"))
+                {
+                    Undo.RecordObject(selectedDialogue, "Added child relationship to node");
+                    linkingParentNode.children.Add(node.uniqueID);
+                    linkingParentNode = null;
+                }
+            }
         }
 
         private void DrawConnections(DialogueNode node)
