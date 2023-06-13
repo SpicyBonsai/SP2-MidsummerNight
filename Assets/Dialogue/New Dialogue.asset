@@ -13,62 +13,144 @@ MonoBehaviour:
   m_Name: New Dialogue
   m_EditorClassIdentifier: 
   nodes:
-  - uniqueID: 334
-    text: Oh Hi mark!
+  - uniqueID: 8a0e8aa9-ea8f-48b2-bd92-36af383ca7d4
+    text: huerth me
     children:
-    - 23
-    - 65
+    - 4ee23ad2-5604-4696-8dcb-2110cbe5eef3
+    - c6688fa5-6c14-401d-905b-fbe9584494f1
+    - 220c72e0-7059-4c60-9bfa-f65e4043d77c
+    - e6cbf3fd-e371-471b-8035-cfa613015d44
     rect:
       serializedVersion: 2
-      x: 4.6667023
-      y: 194.6667
+      x: 678.6665
+      y: 638.6666
       width: 200
-      height: 150
-  - uniqueID: 44
-    text: Goodbye
+      height: 100
+  - uniqueID: 4ee23ad2-5604-4696-8dcb-2110cbe5eef3
+    text: don't huerth me
+    children:
+    - 1f513ab9-334f-4e69-b8e7-6fa5dd7f825f
+    rect:
+      serializedVersion: 2
+      x: 1033.6665
+      y: 498.66663
+      width: 200
+      height: 100
+  - uniqueID: 1f513ab9-334f-4e69-b8e7-6fa5dd7f825f
+    text: aaaaaaaaaaaaaa
+    children:
+    - a26eb060-2147-4ce3-a4b2-bb5e8503216d
+    rect:
+      serializedVersion: 2
+      x: 1289.6665
+      y: 498.66663
+      width: 200
+      height: 100
+  - uniqueID: a26eb060-2147-4ce3-a4b2-bb5e8503216d
+    text: 
+    children:
+    - d2e5a5b4-82fe-4f40-9777-805e94c586e7
+    rect:
+      serializedVersion: 2
+      x: 1540.6665
+      y: 498.66663
+      width: 200
+      height: 100
+  - uniqueID: d2e5a5b4-82fe-4f40-9777-805e94c586e7
+    text: 
     children: []
     rect:
       serializedVersion: 2
-      x: 679.66656
-      y: 209.66661
+      x: 1813.6665
+      y: 604.6666
       width: 200
-      height: 150
-  - uniqueID: 523
-    text: Hello
+      height: 100
+  - uniqueID: 7d96835f-4be9-445b-8e55-484bf8fd99c7
+    text: what is love
     children:
-    - 67
+    - dfe82686-2a9a-4585-aa95-42bcb4a90499
+    - 7b270e53-1a64-4bff-80ec-39dc75096c4b
     rect:
       serializedVersion: 2
-      x: 681.66656
-      y: 403.66663
+      x: 62.666504
+      y: 652.6666
       width: 200
-      height: 150
-  - uniqueID: 65
-    text: He;lllooooo
+      height: 100
+  - uniqueID: dfe82686-2a9a-4585-aa95-42bcb4a90499
+    text: baby don't
     children:
-    - 523
-    - 44
+    - 8a0e8aa9-ea8f-48b2-bd92-36af383ca7d4
     rect:
       serializedVersion: 2
-      x: 327.66653
-      y: 300.66663
+      x: 361.6665
+      y: 760.6666
       width: 200
-      height: 150
-  - uniqueID: 23
-    text: Fuck off
+      height: 100
+  - uniqueID: 7b270e53-1a64-4bff-80ec-39dc75096c4b
+    text: baby don't
+    children:
+    - 8a0e8aa9-ea8f-48b2-bd92-36af383ca7d4
+    rect:
+      serializedVersion: 2
+      x: 366.6665
+      y: 540.6666
+      width: 200
+      height: 100
+  - uniqueID: c6688fa5-6c14-401d-905b-fbe9584494f1
+    text: 
     children: []
     rect:
       serializedVersion: 2
-      x: 323.6665
-      y: 95.66663
+      x: 1030.6665
+      y: 638.6666
       width: 200
-      height: 150
-  - uniqueID: 67
-    text: Fuck offpl
+      height: 100
+  - uniqueID: 220c72e0-7059-4c60-9bfa-f65e4043d77c
+    text: 
+    children:
+    - e853fe2b-2f2f-463d-af75-e61faf995949
+    rect:
+      serializedVersion: 2
+      x: 1089.6665
+      y: 789.6666
+      width: 200
+      height: 100
+  - uniqueID: e6cbf3fd-e371-471b-8035-cfa613015d44
+    text: 
+    children:
+    - a3d2a93a-02b1-42b9-b159-ed31a864d752
+    rect:
+      serializedVersion: 2
+      x: 1086.6665
+      y: 984.6666
+      width: 200
+      height: 100
+  - uniqueID: a3d2a93a-02b1-42b9-b159-ed31a864d752
+    text: 
+    children:
+    - 5743e723-ff00-4140-91c3-729a7dcd6a64
+    rect:
+      serializedVersion: 2
+      x: 1385.6665
+      y: 1107.6666
+      width: 200
+      height: 100
+  - uniqueID: e853fe2b-2f2f-463d-af75-e61faf995949
+    text: 
+    children:
+    - 5743e723-ff00-4140-91c3-729a7dcd6a64
+    rect:
+      serializedVersion: 2
+      x: 1340.6665
+      y: 789.6666
+      width: 200
+      height: 100
+  - uniqueID: 5743e723-ff00-4140-91c3-729a7dcd6a64
+    text: what u lookin at
     children: []
     rect:
       serializedVersion: 2
-      x: 988.6665
-      y: 534.6666
+      x: 1722.6665
+      y: 935.6666
       width: 200
-      height: 150
+      height: 100

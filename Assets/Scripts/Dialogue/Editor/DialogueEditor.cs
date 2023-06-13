@@ -109,30 +109,47 @@ namespace Lyr.Dialogue.Editor
 
         private void ProcessEvents()
         {
-            if(Event.current.type == EventType.MouseDown && draggingNode == null)
+            if (Event.current.type == EventType.MouseDown && draggingNode == null)
             {
-                draggingNode = GetNodeAtPoint(Event.current.mousePosition + scrollPosition);
-                if(draggingNode != null)
+                //Event.current.button 0 == Left Click
+                //Event.current.button 1 == Right Click
+                //Event.current.button 2 == Middle Click
+
+                if (Event.current.button == 0)
                 {
-                    draggingOffset = new Vector2 (draggingNode.rect.x, draggingNode.rect.y) - Event.current.mousePosition;
-                }
-                else
+                    draggingNode = GetNodeAtPoint(Event.current.mousePosition + scrollPosition);
+                    if(draggingNode != null)
+                    {
+                        draggingOffset = new Vector2 (draggingNode.rect.x, draggingNode.rect.y) - Event.current.mousePosition;
+                    }
+                    else
+                    {
+                        draggingCanvas = true;
+                        draggingCanvasOffset = Event.current.mousePosition + scrollPosition;
+                    }
+                } 
+                //if using middle click only drag canvas
+                else if (Event.current.button == 2)
                 {
                     draggingCanvas = true;
                     draggingCanvasOffset = Event.current.mousePosition + scrollPosition;
                 }
             }
+            //move node
             else if (Event.current.type == EventType.MouseDrag && draggingNode != null)
             {
                 Undo.RecordObject(selectedDialogue, "Move node around");
                 draggingNode.rect.position = Event.current.mousePosition + draggingOffset;
                 GUI.changed = true;
             }
+            //move canvas
             else if (Event.current.type == EventType.MouseDrag && draggingCanvas)
             {
                 scrollPosition = draggingCanvasOffset - Event.current.mousePosition;
                 GUI.changed = true;
             }
+
+            //end dragging 
             else if (Event.current.type == EventType.MouseUp && draggingNode != null)
             {
                 draggingNode = null;
@@ -176,14 +193,20 @@ namespace Lyr.Dialogue.Editor
             GUILayout.BeginHorizontal();
             if (GUILayout.Button("Remove"))
             {
-                nodeToRemove = node;
+                if (Event.current.button == 0)
+                {
+                    nodeToRemove = node;
+                }
             }
 
             DrawLinkButtons(node);
 
             if (GUILayout.Button("Add"))
             {
-                creatingNode = node;
+                if (Event.current.button == 0)
+                {
+                    creatingNode = node;
+                }
             }
             GUILayout.EndHorizontal();
             // foreach (DialogueNode childNode in selectedDialogue.GetAllChildren(node))
@@ -200,32 +223,44 @@ namespace Lyr.Dialogue.Editor
             {
                 if (GUILayout.Button("Link"))
                 {
-                    linkingParentNode = node;
+                    if (Event.current.button == 0)
+                    {
+                        linkingParentNode = node;
+                    }
                 }
             }
             else if (linkingParentNode == node)
             {
                 if (GUILayout.Button("Cancel"))
                 {
-                    linkingParentNode = null;
+                    if (Event.current.button == 0)
+                    {
+                        linkingParentNode = null;
+                    }
                 }
             }
             else if (linkingParentNode.children.Contains(node.uniqueID))
             {
                 if (GUILayout.Button("Unlink"))
                 {
-                    Undo.RecordObject(selectedDialogue, "Removed child relationship to node");
-                    linkingParentNode.children.Remove(node.uniqueID);
-                    linkingParentNode = null;
+                    if (Event.current.button == 0)
+                    {
+                        Undo.RecordObject(selectedDialogue, "Removed child relationship to node");
+                        linkingParentNode.children.Remove(node.uniqueID);
+                        linkingParentNode = null;
+                    }
                 }
             }
             else
             {
                 if (GUILayout.Button("Child"))
                 {
+                    if (Event.current.button == 0)
+                    {
                     Undo.RecordObject(selectedDialogue, "Added child relationship to node");
                     linkingParentNode.children.Add(node.uniqueID);
                     linkingParentNode = null;
+                    }
                 }
             }
         }
