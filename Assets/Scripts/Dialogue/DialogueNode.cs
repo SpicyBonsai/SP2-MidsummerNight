@@ -1,16 +1,72 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEditor;
 
 namespace Lyr.Dialogue
 {
-    [System.Serializable]
-    public class DialogueNode
+    public class DialogueNode : ScriptableObject
     {
-        public string uniqueID;
-        public string text;
-        public List<string> children = new List<string>();
-        public Rect rect = new Rect(0, 0, 200, 100);
+        [SerializeField] 
+        private string text;
+        [SerializeField] 
+        private List<string> children = new List<string>();
+        [SerializeField] 
+        private Rect rect = new Rect(0, 0, 500, 100);
+        
+        [Range(0f, 1000f)]
+        public float textAreaHeightOffset = 0f;
+
+        public Rect GetRect()
+        {
+            return rect;
+        }
+
+        public void SetRectHeight(float height)
+        {
+            rect.height = height;
+        }
+
+        public void SetPosition(Vector2 newPosition)
+        {
+            Undo.RecordObject(this, "Move node around");
+            rect.position = newPosition;
+            EditorUtility.SetDirty(this);
+        }
+
+        public string GetText()
+        {
+            return text;
+        }
+
+        public void SetText(string newText)
+        {
+            if(newText != text)
+            {
+                Undo.RecordObject(this, "Update Dialogue Text");
+                text = newText;
+                EditorUtility.SetDirty(this);
+            }
+        }
+
+        public List<string> GetChildren()
+        {
+            return children;
+        }
+
+        public void AddChild(string childID)
+        {
+            Undo.RecordObject(this, "Add Dialogue Link");
+            children.Add(childID);
+            EditorUtility.SetDirty(this);
+        }
+
+        public void RemoveChild(string childID)
+        {
+            Undo.RecordObject(this, "Remove Dialogue Link");
+            children.Remove(childID);
+            EditorUtility.SetDirty(this);
+        }
 
     }
 }

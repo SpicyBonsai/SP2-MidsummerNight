@@ -9,6 +9,7 @@ namespace Lyr.Dialogue.Editor
     {
         Dialogue selectedDialogue;
         [NonSerialized] GUIStyle nodeStyle;
+        [NonSerialized] GUIStyle textAreaStyle;
         [NonSerialized] DialogueNode draggingNode = null;
         [NonSerialized] public Vector2 draggingOffset;
         [NonSerialized] DialogueNode creatingNode = null;
@@ -17,7 +18,7 @@ namespace Lyr.Dialogue.Editor
         Vector2 scrollPosition;
         [NonSerialized] bool draggingCanvas = false;
         [NonSerialized] Vector2 draggingCanvasOffset;
-        const float canvasSize = 4000f;
+        const float canvasSize = 10000f;
         const float backgroundSize = 50f;
 
 
@@ -93,14 +94,13 @@ namespace Lyr.Dialogue.Editor
 
                 if(creatingNode != null)
                 {
-                    Undo.RecordObject(selectedDialogue, "Added new node");
                     selectedDialogue.CreateNode(creatingNode);
                     creatingNode = null;
                 }
 
                 if(nodeToRemove != null)
                 {
-                    Undo.RecordObject(selectedDialogue, "Removed Node");
+                    Undo.RecordObject(selectedDialogue, "remove");
                     selectedDialogue.RemoveNode(nodeToRemove);
                     nodeToRemove = null;
                 }
@@ -120,10 +120,12 @@ namespace Lyr.Dialogue.Editor
                     draggingNode = GetNodeAtPoint(Event.current.mousePosition + scrollPosition);
                     if(draggingNode != null)
                     {
-                        draggingOffset = new Vector2 (draggingNode.rect.x, draggingNode.rect.y) - Event.current.mousePosition;
+                        draggingOffset = new Vector2 (draggingNode.GetRect().x, draggingNode.GetRect().y) - Event.current.mousePosition;
+                        Selection.activeObject = draggingNode;
                     }
                     else
                     {
+                        Selection.activeObject = selectedDialogue;
                         draggingCanvas = true;
                         draggingCanvasOffset = Event.current.mousePosition + scrollPosition;
                     }
@@ -138,8 +140,8 @@ namespace Lyr.Dialogue.Editor
             //move node
             else if (Event.current.type == EventType.MouseDrag && draggingNode != null)
             {
-                Undo.RecordObject(selectedDialogue, "Move node around");
-                draggingNode.rect.position = Event.current.mousePosition + draggingOffset;
+                
+                draggingNode.SetPosition(Event.current.mousePosition + draggingOffset);
                 GUI.changed = true;
             }
             //move canvas
@@ -165,29 +167,26 @@ namespace Lyr.Dialogue.Editor
         {   
             foreach(DialogueNode otherNode in selectedDialogue.GetAllNodes())
             {
-                if(otherNode.uniqueID != node.uniqueID && 
-                Mathf.Abs(otherNode.rect.x - node.rect.x) < 20 && 
-                Mathf.Abs(otherNode.rect.y - node.rect.y) < 20)
+                //if nodes overlap, offset their position a bit
+                if(otherNode.name != node.name && 
+                Mathf.Abs(otherNode.GetRect().x - node.GetRect().x) < 20 && 
+                Mathf.Abs(otherNode.GetRect().y - node.GetRect().y) < 20)
                 {
-                    node.rect.x += 20;
-                    node.rect.y += 20;
+                    node.SetPosition(new Vector2(node.GetRect().x + 20, node.GetRect().y + 20f));
                 }
             }
 
-            GUILayout.BeginArea(new Rect(node.rect.x, node.rect.y, node.rect.width, node.rect.height), nodeStyle);
-
-            //start tracking changes made to the following variables
-            EditorGUI.BeginChangeCheck();
-
-            string newText = EditorGUILayout.TextField(node.text);
-
-
-            //if anything changed then record the original item values, assign new ones and mark the SO as dirty so unity would save the file 
-            if (EditorGUI.EndChangeCheck())
-            {
-                Undo.RecordObject(selectedDialogue, "Update Dialogue Text");
-                node.text = newText;
-            }
+            float textAreaHeight = nodeStyle.CalcHeight(new GUIContent(node.GetText()), node.GetRect().width);
+            textAreaStyle = new GUIStyle(EditorStyles.textField);
+            textAreaStyle.wordWrap = true;
+            // GUILayout.BeginArea(new Rect(node.GetRect().x, node.GetRect().y, node.GetRect().width, node.GetRect().height), nodeStyle);
+            GUILayout.BeginArea(new Rect(node.GetRect().x, node.GetRect().y, node.GetRect().width, textAreaHeight + node.textAreaHeightOffset + 40f), nodeStyle);
+            
+            //set text using the text field from the scriptable object as an input
+            //if it's the same, it doesn't record an undo event 
+            
+            //node.SetText(EditorGUILayout.TextField(node.GetText()));
+            node.SetText(EditorGUILayout.TextArea(node.GetText(), textAreaStyle, GUILayout.ExpandHeight(true)));
 
 
             GUILayout.BeginHorizontal();
@@ -239,14 +238,13 @@ namespace Lyr.Dialogue.Editor
                     }
                 }
             }
-            else if (linkingParentNode.children.Contains(node.uniqueID))
+            else if (linkingParentNode.GetChildren().Contains(node.name))
             {
                 if (GUILayout.Button("Unlink"))
                 {
                     if (Event.current.button == 0)
                     {
-                        Undo.RecordObject(selectedDialogue, "Removed child relationship to node");
-                        linkingParentNode.children.Remove(node.uniqueID);
+                        linkingParentNode.RemoveChild(node.name);
                         linkingParentNode = null;
                     }
                 }
@@ -257,8 +255,7 @@ namespace Lyr.Dialogue.Editor
                 {
                     if (Event.current.button == 0)
                     {
-                    Undo.RecordObject(selectedDialogue, "Added child relationship to node");
-                    linkingParentNode.children.Add(node.uniqueID);
+                    linkingParentNode.AddChild(node.name);
                     linkingParentNode = null;
                     }
                 }
@@ -269,8 +266,8 @@ namespace Lyr.Dialogue.Editor
         {
             foreach(DialogueNode childNode in selectedDialogue.GetAllChildren(node))
             {
-                Vector3 startPosition = new Vector2(node.rect.xMax, node.rect.center.y);
-                Vector3 endPosition = new Vector2(childNode.rect.xMin, childNode.rect.center.y);
+                Vector3 startPosition = new Vector2(node.GetRect().xMax, node.GetRect().center.y);
+                Vector3 endPosition = new Vector2(childNode.GetRect().xMin, childNode.GetRect().center.y);
                 Vector3 offsetDraw = endPosition - startPosition;
                 offsetDraw.y = 0;
                 offsetDraw *= 0.8f;
@@ -285,7 +282,7 @@ namespace Lyr.Dialogue.Editor
             DialogueNode foundNode = null;
             foreach(DialogueNode node in selectedDialogue.GetAllNodes())
             {
-                if(node.rect.Contains(point))
+                if(node.GetRect().Contains(point))
                 {
                     foundNode = node;
 

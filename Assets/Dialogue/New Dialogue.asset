@@ -1,5 +1,120 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-9089830476967943441
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3aefdf2842a95a946a43b387888c70b3, type: 3}
+  m_Name: a7a61f9e-6f45-4c82-af1d-aa611cd084b9
+  m_EditorClassIdentifier: 
+  text: 
+  children:
+  - 74164673-5e6a-403f-950a-69ca2a1ba1f8
+  - 13e05128-de80-4ab2-8a9d-d1be60392ebc
+  - 72cca83b-9349-4261-b0cb-4442b3d5f0c8
+  rect:
+    serializedVersion: 2
+    x: 629
+    y: 622
+    width: 500
+    height: 100
+  textAreaHeightOffset: 0
+--- !u!114 &-8511248449341750519
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3aefdf2842a95a946a43b387888c70b3, type: 3}
+  m_Name: b3346143-1cb2-429c-8205-46393c58becf
+  m_EditorClassIdentifier: 
+  text: 
+  children: []
+  rect:
+    serializedVersion: 2
+    x: 959
+    y: 380
+    width: 800
+    height: 100
+  textAreaHeightOffset: 0
+--- !u!114 &-6765201338748766972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3aefdf2842a95a946a43b387888c70b3, type: 3}
+  m_Name: 295457ec-ee89-49f6-aeef-2cff507a76d1
+  m_EditorClassIdentifier: 
+  text: 
+  children:
+  - adf8e581-8d90-4134-ac31-5ed702e33cba
+  rect:
+    serializedVersion: 2
+    x: 79
+    y: 380
+    width: 800
+    height: 100
+  textAreaHeightOffset: 0
+--- !u!114 &-2493240994386149736
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3aefdf2842a95a946a43b387888c70b3, type: 3}
+  m_Name: 74164673-5e6a-403f-950a-69ca2a1ba1f8
+  m_EditorClassIdentifier: 
+  text: 'What the fuck What the fuck What the fuck What the fuck What the fuck What
+    the fuck What the fuck What the fuck What the fuck What the fuck What the fuck
+    What the fuck What the fuck What the fuck What the fuck What the fuck What the
+    fuck What the fuck What the fuck What the fuck What the fuck What the fuck What
+    the fuck What the fuck What the fuck What the fuck What the fuck What the fuck
+    What the fuck '
+  children:
+  - 40bf057b-698c-4257-9097-5efe6bccf169
+  rect:
+    serializedVersion: 2
+    x: 1236
+    y: 400
+    width: 500
+    height: 100
+  textAreaHeightOffset: 163
+--- !u!114 &-1063606430229181796
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3aefdf2842a95a946a43b387888c70b3, type: 3}
+  m_Name: 40bf057b-698c-4257-9097-5efe6bccf169
+  m_EditorClassIdentifier: 
+  text: 
+  children: []
+  rect:
+    serializedVersion: 2
+    x: 1796
+    y: 616
+    width: 500
+    height: 100
+  textAreaHeightOffset: 0
 --- !u!114 &11400000
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13,144 +128,123 @@ MonoBehaviour:
   m_Name: New Dialogue
   m_EditorClassIdentifier: 
   nodes:
-  - uniqueID: 8a0e8aa9-ea8f-48b2-bd92-36af383ca7d4
-    text: huerth me
-    children:
-    - 4ee23ad2-5604-4696-8dcb-2110cbe5eef3
-    - c6688fa5-6c14-401d-905b-fbe9584494f1
-    - 220c72e0-7059-4c60-9bfa-f65e4043d77c
-    - e6cbf3fd-e371-471b-8035-cfa613015d44
-    rect:
-      serializedVersion: 2
-      x: 678.6665
-      y: 638.6666
-      width: 200
-      height: 100
-  - uniqueID: 4ee23ad2-5604-4696-8dcb-2110cbe5eef3
-    text: don't huerth me
-    children:
-    - 1f513ab9-334f-4e69-b8e7-6fa5dd7f825f
-    rect:
-      serializedVersion: 2
-      x: 1033.6665
-      y: 498.66663
-      width: 200
-      height: 100
-  - uniqueID: 1f513ab9-334f-4e69-b8e7-6fa5dd7f825f
-    text: aaaaaaaaaaaaaa
-    children:
-    - a26eb060-2147-4ce3-a4b2-bb5e8503216d
-    rect:
-      serializedVersion: 2
-      x: 1289.6665
-      y: 498.66663
-      width: 200
-      height: 100
-  - uniqueID: a26eb060-2147-4ce3-a4b2-bb5e8503216d
-    text: 
-    children:
-    - d2e5a5b4-82fe-4f40-9777-805e94c586e7
-    rect:
-      serializedVersion: 2
-      x: 1540.6665
-      y: 498.66663
-      width: 200
-      height: 100
-  - uniqueID: d2e5a5b4-82fe-4f40-9777-805e94c586e7
-    text: 
-    children: []
-    rect:
-      serializedVersion: 2
-      x: 1813.6665
-      y: 604.6666
-      width: 200
-      height: 100
-  - uniqueID: 7d96835f-4be9-445b-8e55-484bf8fd99c7
-    text: what is love
-    children:
-    - dfe82686-2a9a-4585-aa95-42bcb4a90499
-    - 7b270e53-1a64-4bff-80ec-39dc75096c4b
-    rect:
-      serializedVersion: 2
-      x: 62.666504
-      y: 652.6666
-      width: 200
-      height: 100
-  - uniqueID: dfe82686-2a9a-4585-aa95-42bcb4a90499
-    text: baby don't
-    children:
-    - 8a0e8aa9-ea8f-48b2-bd92-36af383ca7d4
-    rect:
-      serializedVersion: 2
-      x: 361.6665
-      y: 760.6666
-      width: 200
-      height: 100
-  - uniqueID: 7b270e53-1a64-4bff-80ec-39dc75096c4b
-    text: baby don't
-    children:
-    - 8a0e8aa9-ea8f-48b2-bd92-36af383ca7d4
-    rect:
-      serializedVersion: 2
-      x: 366.6665
-      y: 540.6666
-      width: 200
-      height: 100
-  - uniqueID: c6688fa5-6c14-401d-905b-fbe9584494f1
-    text: 
-    children: []
-    rect:
-      serializedVersion: 2
-      x: 1030.6665
-      y: 638.6666
-      width: 200
-      height: 100
-  - uniqueID: 220c72e0-7059-4c60-9bfa-f65e4043d77c
-    text: 
-    children:
-    - e853fe2b-2f2f-463d-af75-e61faf995949
-    rect:
-      serializedVersion: 2
-      x: 1089.6665
-      y: 789.6666
-      width: 200
-      height: 100
-  - uniqueID: e6cbf3fd-e371-471b-8035-cfa613015d44
-    text: 
-    children:
-    - a3d2a93a-02b1-42b9-b159-ed31a864d752
-    rect:
-      serializedVersion: 2
-      x: 1086.6665
-      y: 984.6666
-      width: 200
-      height: 100
-  - uniqueID: a3d2a93a-02b1-42b9-b159-ed31a864d752
-    text: 
-    children:
-    - 5743e723-ff00-4140-91c3-729a7dcd6a64
-    rect:
-      serializedVersion: 2
-      x: 1385.6665
-      y: 1107.6666
-      width: 200
-      height: 100
-  - uniqueID: e853fe2b-2f2f-463d-af75-e61faf995949
-    text: 
-    children:
-    - 5743e723-ff00-4140-91c3-729a7dcd6a64
-    rect:
-      serializedVersion: 2
-      x: 1340.6665
-      y: 789.6666
-      width: 200
-      height: 100
-  - uniqueID: 5743e723-ff00-4140-91c3-729a7dcd6a64
-    text: what u lookin at
-    children: []
-    rect:
-      serializedVersion: 2
-      x: 1722.6665
-      y: 935.6666
-      width: 200
-      height: 100
+  - {fileID: 7263534464928311593}
+  - {fileID: -9089830476967943441}
+  - {fileID: -2493240994386149736}
+  - {fileID: 2789462428285623108}
+  - {fileID: -1063606430229181796}
+  - {fileID: 6464250022791981196}
+  - {fileID: 3809784841652687546}
+--- !u!114 &2789462428285623108
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3aefdf2842a95a946a43b387888c70b3, type: 3}
+  m_Name: 13e05128-de80-4ab2-8a9d-d1be60392ebc
+  m_EditorClassIdentifier: 
+  text: 
+  children:
+  - 40bf057b-698c-4257-9097-5efe6bccf169
+  - d1cc29a2-3e4a-497f-9c0d-1a307e30aaf2
+  rect:
+    serializedVersion: 2
+    x: 1237
+    y: 681
+    width: 500
+    height: 100
+  textAreaHeightOffset: 0
+--- !u!114 &3415387224032953932
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3aefdf2842a95a946a43b387888c70b3, type: 3}
+  m_Name: bd8c5ea8-5e14-4d1b-a7d6-a2a7258e1536
+  m_EditorClassIdentifier: 
+  text: 'What the fuck What the fuck What the fuck What the fuck What the fuck What
+    the fuck What the fuck What the fuck What the fuck What the fuck What the fuck
+    What the fuck What the fuck What the fuck What the fuck What the fuck What the
+    fuck What the fuck What the fuck What the fuck What the fuck What the fuck What
+    the fuck '
+  children: []
+  rect:
+    serializedVersion: 2
+    x: 1200
+    y: 517
+    width: 500
+    height: 100
+  textAreaHeightOffset: 102
+--- !u!114 &3809784841652687546
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3aefdf2842a95a946a43b387888c70b3, type: 3}
+  m_Name: 72cca83b-9349-4261-b0cb-4442b3d5f0c8
+  m_EditorClassIdentifier: 
+  text: 
+  children:
+  - d1cc29a2-3e4a-497f-9c0d-1a307e30aaf2
+  rect:
+    serializedVersion: 2
+    x: 1237
+    y: 777
+    width: 500
+    height: 100
+  textAreaHeightOffset: 0
+--- !u!114 &6464250022791981196
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3aefdf2842a95a946a43b387888c70b3, type: 3}
+  m_Name: d1cc29a2-3e4a-497f-9c0d-1a307e30aaf2
+  m_EditorClassIdentifier: 
+  text: 
+  children: []
+  rect:
+    serializedVersion: 2
+    x: 1793
+    y: 729
+    width: 500
+    height: 100
+  textAreaHeightOffset: 0
+--- !u!114 &7263534464928311593
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3aefdf2842a95a946a43b387888c70b3, type: 3}
+  m_Name: adf8e581-8d90-4134-ac31-5ed702e33cba
+  m_EditorClassIdentifier: 
+  text: 
+  children:
+  - a7a61f9e-6f45-4c82-af1d-aa611cd084b9
+  rect:
+    serializedVersion: 2
+    x: 50
+    y: 626
+    width: 500
+    height: 100
+  textAreaHeightOffset: 0
