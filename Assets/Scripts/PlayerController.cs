@@ -92,6 +92,6 @@ public class PlayerController : MonoBehaviour
 
     private void OnGUI()
     {
-        GUI.Label(new Rect(10, 10, 100, 50), _guiText);
+        GUI.Label(new Rect(10, 10, 50, 20), _guiText);
     }
 }

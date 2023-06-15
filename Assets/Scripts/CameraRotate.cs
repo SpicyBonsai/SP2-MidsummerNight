@@ -43,7 +43,7 @@ public class CameraRotate : MonoBehaviour
 
         Cam.m_Lens.FieldOfView += _lenseDistanceMultiplier * Sensitivity * Time.deltaTime;
         Cam.m_Lens.FieldOfView = Mathf.Clamp(Cam.m_Lens.FieldOfView, MinCamScale, MaxCamScale);
-        print(Cam.m_Lens.FieldOfView);
+        //print(Cam.m_Lens.FieldOfView);
         #endregion
     }
 }

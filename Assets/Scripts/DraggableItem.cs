@@ -9,6 +9,7 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     [HideInInspector]
     public Transform ParentAfterDrag;
     public GameObject ObjToInstantiate;
+    public Camera Cam;
 
     [Tooltip("Name of part on world Object")]
     public string ItemName;
@@ -33,9 +34,9 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     {
         //print(" dragging");
         #region Uncomment for 3D canvas space screen
-        /*        Vector3 _screenPoint = Input.mousePosition;
+                Vector3 _screenPoint = Input.mousePosition;
                 _screenPoint.z = 60f;//distance of the plane from the camera
-                transform.position = Cam.ScreenToWorldPoint(_screenPoint);*/
+                transform.position = Cam.ScreenToWorldPoint(_screenPoint);
         #endregion
         transform.position = Input.mousePosition;
 
@@ -61,16 +62,16 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         print(_hoveringUI);
         if (_hoveringUI)
             return;
-        else if(!_hoveringUI && MouseHover.HoveredObj.name == ItemName)
+        else if(!_hoveringUI) //&& MouseHover.HoveredObj.name == ItemName
         {
             //Vector3 _instantiatePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             //_instantiatePos.z = _distanceFromCam;
             #region Instantiate dropped object
-            /*            Vector3 _screenPoint = Input.mousePosition;
+                        Vector3 _screenPoint = Input.mousePosition;
 
                         _screenPoint.z = 5.84f;
                         Vector3 _instantiatePos = Camera.main.ScreenToWorldPoint(_screenPoint);
-                        Instantiate(ObjToInstantiate, _instantiatePos, ObjToInstantiate.transform.rotation);*/
+                        Instantiate(ObjToInstantiate, _instantiatePos, ObjToInstantiate.transform.rotation);
             #endregion
 
             MouseHover.HoveredObj.GetComponent<MeshRenderer>().enabled = true;
