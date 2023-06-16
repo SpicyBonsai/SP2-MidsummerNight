@@ -28,7 +28,7 @@ public class PlayerController : MonoBehaviour
     {
         _characterController = gameObject.GetComponent<CharacterController>();
         _navMeshAgent = gameObject.GetComponent<NavMeshAgent>();
-        print(_navMeshAgent);
+        //print(_navMeshAgent);
     }
 
 
