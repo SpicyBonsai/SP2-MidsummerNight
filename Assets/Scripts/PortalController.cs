@@ -30,8 +30,7 @@ public class PortalController : MonoBehaviour
             
             if (objMesh.material.HasFloat("_Dissolve"))
             {
-                Debug.Log(lerpResult);
-                lerpResult = 1 - Mathf.Clamp(lerpResult, 0f, 1f);
+                lerpResult = Mathf.Clamp(lerpResult, 0f, 1f);
                 objMesh.material.SetFloat("_Dissolve", lerpResult);
             }
 
