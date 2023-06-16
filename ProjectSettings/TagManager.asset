@@ -6,6 +6,7 @@ TagManager:
   tags:
   - HiddenObject
   - Portal
+  - UI_Element
   layers:
   - Default
   - TransparentFX
@@ -42,4 +43,7 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: TopLayer
+    uniqueID: 2988703555
     locked: 0
