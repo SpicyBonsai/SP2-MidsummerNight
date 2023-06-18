@@ -1,0 +1,320 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-9089830476967943441
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3aefdf2842a95a946a43b387888c70b3, type: 3}
+  m_Name: a7a61f9e-6f45-4c82-af1d-aa611cd084b9
+  m_EditorClassIdentifier: 
+  text: Hi!
+  children:
+  - 74164673-5e6a-403f-950a-69ca2a1ba1f8
+  - 13e05128-de80-4ab2-8a9d-d1be60392ebc
+  - 72cca83b-9349-4261-b0cb-4442b3d5f0c8
+  rect:
+    serializedVersion: 2
+    x: 628
+    y: 625
+    width: 500
+    height: 100
+  textAreaHeightOffset: 0
+--- !u!114 &-8511248449341750519
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3aefdf2842a95a946a43b387888c70b3, type: 3}
+  m_Name: b3346143-1cb2-429c-8205-46393c58becf
+  m_EditorClassIdentifier: 
+  text: 
+  children: []
+  rect:
+    serializedVersion: 2
+    x: 959
+    y: 380
+    width: 800
+    height: 100
+  textAreaHeightOffset: 0
+--- !u!114 &-8309196716611979037
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3aefdf2842a95a946a43b387888c70b3, type: 3}
+  m_Name: 1a069fb7-fe68-4b5a-9fd6-bc45f31dcadc
+  m_EditorClassIdentifier: 
+  text: 
+  children: []
+  rect:
+    serializedVersion: 2
+    x: 2457
+    y: 670
+    width: 500
+    height: 100
+  textAreaHeightOffset: 0
+--- !u!114 &-7538175486680265613
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3aefdf2842a95a946a43b387888c70b3, type: 3}
+  m_Name: 82d041cf-e8c1-4bc7-b9d6-c0dd11bbfa1d
+  m_EditorClassIdentifier: 
+  text: 
+  children: []
+  rect:
+    serializedVersion: 2
+    x: 2456
+    y: 859
+    width: 500
+    height: 100
+  textAreaHeightOffset: 0
+--- !u!114 &-7240491033816128910
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3aefdf2842a95a946a43b387888c70b3, type: 3}
+  m_Name: 26be59ab-26b5-431a-807d-c82e4a6a2c85
+  m_EditorClassIdentifier: 
+  text: 
+  children: []
+  rect:
+    serializedVersion: 2
+    x: 2456
+    y: 766
+    width: 500
+    height: 100
+  textAreaHeightOffset: 0
+--- !u!114 &-6765201338748766972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3aefdf2842a95a946a43b387888c70b3, type: 3}
+  m_Name: 295457ec-ee89-49f6-aeef-2cff507a76d1
+  m_EditorClassIdentifier: 
+  text: 
+  children:
+  - adf8e581-8d90-4134-ac31-5ed702e33cba
+  rect:
+    serializedVersion: 2
+    x: 79
+    y: 380
+    width: 800
+    height: 100
+  textAreaHeightOffset: 0
+--- !u!114 &-2493240994386149736
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3aefdf2842a95a946a43b387888c70b3, type: 3}
+  m_Name: 74164673-5e6a-403f-950a-69ca2a1ba1f8
+  m_EditorClassIdentifier: 
+  text: 'What the fuck What the fuck What the fuck What the fuck What the fuck What
+    the fuck What the fuck What the fuck What the fuck What the fuck What the fuck
+    What the fuck What the fuck What the fuck What the fuck What the fuck What the
+    fuck What the fuck What the fuck What the fuck What the fuck What the fuck What
+    the fuck What the fuck What the fuck What the fuck What the fuck What the fuck
+    What the fuck '
+  children:
+  - 40bf057b-698c-4257-9097-5efe6bccf169
+  rect:
+    serializedVersion: 2
+    x: 1236
+    y: 400
+    width: 500
+    height: 100
+  textAreaHeightOffset: 163
+--- !u!114 &-1063606430229181796
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3aefdf2842a95a946a43b387888c70b3, type: 3}
+  m_Name: 40bf057b-698c-4257-9097-5efe6bccf169
+  m_EditorClassIdentifier: 
+  text: 
+  children:
+  - 1a069fb7-fe68-4b5a-9fd6-bc45f31dcadc
+  rect:
+    serializedVersion: 2
+    x: 1796
+    y: 616
+    width: 500
+    height: 100
+  textAreaHeightOffset: 0
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dec24605fc459414ab9f7935fbd96c9f, type: 3}
+  m_Name: New Dialogue
+  m_EditorClassIdentifier: 
+  nodes:
+  - {fileID: 7263534464928311593}
+  - {fileID: -9089830476967943441}
+  - {fileID: -2493240994386149736}
+  - {fileID: 2789462428285623108}
+  - {fileID: -1063606430229181796}
+  - {fileID: 6464250022791981196}
+  - {fileID: 3809784841652687546}
+  - {fileID: -8309196716611979037}
+  - {fileID: -7538175486680265613}
+  - {fileID: -7240491033816128910}
+--- !u!114 &2789462428285623108
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3aefdf2842a95a946a43b387888c70b3, type: 3}
+  m_Name: 13e05128-de80-4ab2-8a9d-d1be60392ebc
+  m_EditorClassIdentifier: 
+  text: 
+  children:
+  - 40bf057b-698c-4257-9097-5efe6bccf169
+  - d1cc29a2-3e4a-497f-9c0d-1a307e30aaf2
+  rect:
+    serializedVersion: 2
+    x: 1237
+    y: 681
+    width: 500
+    height: 100
+  textAreaHeightOffset: 0
+--- !u!114 &3415387224032953932
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3aefdf2842a95a946a43b387888c70b3, type: 3}
+  m_Name: bd8c5ea8-5e14-4d1b-a7d6-a2a7258e1536
+  m_EditorClassIdentifier: 
+  text: 'What the fuck What the fuck What the fuck What the fuck What the fuck What
+    the fuck What the fuck What the fuck What the fuck What the fuck What the fuck
+    What the fuck What the fuck What the fuck What the fuck What the fuck What the
+    fuck What the fuck What the fuck What the fuck What the fuck What the fuck What
+    the fuck '
+  children: []
+  rect:
+    serializedVersion: 2
+    x: 1200
+    y: 517
+    width: 500
+    height: 100
+  textAreaHeightOffset: 102
+--- !u!114 &3809784841652687546
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3aefdf2842a95a946a43b387888c70b3, type: 3}
+  m_Name: 72cca83b-9349-4261-b0cb-4442b3d5f0c8
+  m_EditorClassIdentifier: 
+  text: 
+  children:
+  - d1cc29a2-3e4a-497f-9c0d-1a307e30aaf2
+  rect:
+    serializedVersion: 2
+    x: 1237
+    y: 777
+    width: 500
+    height: 100
+  textAreaHeightOffset: 0
+--- !u!114 &6464250022791981196
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3aefdf2842a95a946a43b387888c70b3, type: 3}
+  m_Name: d1cc29a2-3e4a-497f-9c0d-1a307e30aaf2
+  m_EditorClassIdentifier: 
+  text: 
+  children:
+  - 1a069fb7-fe68-4b5a-9fd6-bc45f31dcadc
+  - 82d041cf-e8c1-4bc7-b9d6-c0dd11bbfa1d
+  - 26be59ab-26b5-431a-807d-c82e4a6a2c85
+  rect:
+    serializedVersion: 2
+    x: 1793
+    y: 729
+    width: 500
+    height: 100
+  textAreaHeightOffset: 0
+--- !u!114 &7263534464928311593
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3aefdf2842a95a946a43b387888c70b3, type: 3}
+  m_Name: adf8e581-8d90-4134-ac31-5ed702e33cba
+  m_EditorClassIdentifier: 
+  text: Hello!
+  children:
+  - a7a61f9e-6f45-4c82-af1d-aa611cd084b9
+  rect:
+    serializedVersion: 2
+    x: 50
+    y: 626
+    width: 500
+    height: 100
+  textAreaHeightOffset: 0

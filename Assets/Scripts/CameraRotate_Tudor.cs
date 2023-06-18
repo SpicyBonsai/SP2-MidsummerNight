@@ -10,6 +10,18 @@ public class CameraRotate_Tudor : MonoBehaviour
 
     void Update()
     {
+        if (Input.GetKey(KeyCode.Q))
+        {
+            _targetRotation += 1 * Sensitivity;
+            transform.localEulerAngles = new Vector3(0, _targetRotation, 0);
+        }
+
+        if (Input.GetKey(KeyCode.E))
+        {
+            _targetRotation += -1 * Sensitivity;
+            transform.localEulerAngles = new Vector3(0, _targetRotation, 0);
+        }
+
         if (Input.GetMouseButton(1))
         {
             Cursor.lockState = CursorLockMode.Locked;

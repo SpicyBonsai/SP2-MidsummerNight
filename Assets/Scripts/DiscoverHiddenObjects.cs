@@ -27,7 +27,7 @@ public class DiscoverHiddenObjects : MonoBehaviour
             for(int i = 0; i < hits.Length; i++)
             {
                 RaycastHit hit = hits[i];
-                Debug.Log(hit.transform.tag);
+                //Debug.Log(hit.transform.tag);
 
                 if(hit.transform.tag == "Portal")
                 {
