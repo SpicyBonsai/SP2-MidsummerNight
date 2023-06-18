@@ -6,6 +6,7 @@ using UnityEngine.UI;
 
 public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
+    public InventoryObject Inventory;
     [HideInInspector]
     public Transform ParentAfterDrag;
     public GameObject ObjToInstantiate;
@@ -15,9 +16,10 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     public string ItemName;
     //public float _distanceFromCam;
 
-    bool _hoveringUI = false;
+    bool _hoveringUI = false,
+         _3DcursorInstance = false; //to instantiate 3D object at cursor pos. only once
 
-    GameObject instantiatedObj;
+    GameObject _instantiatedObj;
 
     //public Camera Cam; //uncomment for 3D screen
 
@@ -34,14 +36,26 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
     {
         //print(" dragging");
         #region Uncomment for 3D canvas space screen
-                Vector3 _screenPoint = Input.mousePosition;
+/*                Vector3 _screenPoint = Input.mousePosition;
                 _screenPoint.z = 60f;//distance of the plane from the camera
-                transform.position = Cam.ScreenToWorldPoint(_screenPoint);
+                transform.position = Cam.ScreenToWorldPoint(_screenPoint);*/
         #endregion
         transform.position = Input.mousePosition;
+        _hoveringUI = eventData.pointerCurrentRaycast.gameObject ? true : false;
 
-        //print(eventData.pointerCurrentRaycast.gameObject ? "Hovering Scrollbar" : "Out of scrollbar");
-
+        if (!_hoveringUI)
+        {
+            Vector3 _screenPoint = Input.mousePosition;
+            _screenPoint.z = 5.84f;
+            Vector3 _instantiatePos = Camera.main.ScreenToWorldPoint(_screenPoint);
+            
+            if (!_3DcursorInstance)
+            {
+                _instantiatedObj = Instantiate(ObjToInstantiate, _instantiatePos, ObjToInstantiate.transform.rotation);
+                _3DcursorInstance = true;
+            }
+            _instantiatedObj.transform.position = _instantiatePos;
+        }
     }
 
     public void OnEndDrag(PointerEventData eventData)
@@ -54,12 +68,9 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
                     print(_hit.collider.name) ;
                 }*/
             
-        transform.SetParent(ParentAfterDrag);
-        gameObject.GetComponent<Image>().raycastTarget = true;
-
         //transform.SetParent(ParentAfterDrag);
         _hoveringUI = eventData.pointerCurrentRaycast.gameObject ? true : false;
-        print(_hoveringUI);
+        //print(_hoveringUI);
         if (_hoveringUI)
             return;
         else if(!_hoveringUI) //&& MouseHover.HoveredObj.name == ItemName
@@ -67,15 +78,19 @@ public class DraggableItem : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
             //Vector3 _instantiatePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             //_instantiatePos.z = _distanceFromCam;
             #region Instantiate dropped object
-                        Vector3 _screenPoint = Input.mousePosition;
+            /* Vector3 _screenPoint = Input.mousePosition;
 
-                        _screenPoint.z = 5.84f;
-                        Vector3 _instantiatePos = Camera.main.ScreenToWorldPoint(_screenPoint);
-                        Instantiate(ObjToInstantiate, _instantiatePos, ObjToInstantiate.transform.rotation);
+             _screenPoint.z = 5.84f;
+             Vector3 _instantiatePos = Camera.main.ScreenToWorldPoint(_screenPoint);
+             Instantiate(ObjToInstantiate, _instantiatePos, ObjToInstantiate.transform.rotation);*/
             #endregion
 
             MouseHover.HoveredObj.GetComponent<MeshRenderer>().enabled = true;
         }
+        transform.SetParent(ParentAfterDrag);
+        gameObject.GetComponent<Image>().raycastTarget = true;
     }
+
+
 
 }

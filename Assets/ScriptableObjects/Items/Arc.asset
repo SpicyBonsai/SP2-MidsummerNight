@@ -9,9 +9,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a0e6d13636d93514a9e6e1426e0529f7, type: 3}
-  m_Name: ItemDatabase
+  m_Script: {fileID: 11500000, guid: 416480348dec9c64682d73091aaeed9e, type: 3}
+  m_Name: Arc
   m_EditorClassIdentifier: 
-  Items:
-  - {fileID: 11400000, guid: 8f3d95340b0aff445802eb644e541a49, type: 2}
-  - {fileID: 11400000, guid: e7e01a635ccfb374491c1787d902d7b6, type: 2}
+  ID: 0
+  ItemSprite: {fileID: 21300000, guid: 4c7c720558f096640a5dfa0307c84a2a, type: 3}
+  ItemObjType: 0
+  Description: 

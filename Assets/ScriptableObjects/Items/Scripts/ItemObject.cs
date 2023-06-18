@@ -12,6 +12,8 @@ public abstract class ItemObject : ScriptableObject
 {
     public int ID;
     public Sprite ItemSprite;
+    public GameObject ItemPrefab;
+    [HideInInspector]
     public ItemType ItemObjType;
     [TextArea(15, 20)]
     public string Description;

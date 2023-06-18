@@ -23,7 +23,56 @@ public class InventoryObject : ScriptableObject//, ISerializationCallbackReceive
                 return;
             }
         }
+
+        //commented 17.06
         Container.Items.Add(new InventoryItemSlot(_item.ID, _item, _amount));
+        
+        //17.06 added
+        //SetEmptyFirstSlot(_item, _amount);
+
+    }
+
+    public void RemoveItem(Item _item)
+    {
+        for (int i = 0; i < Container.Items.Count; i++)
+        {
+            if(Container.Items[i].Item.ID == _item.ID)
+            {
+                
+                //Container.Items[i].UpdateItemSlot(-1, null, 0);
+                
+                Container.Items[i].RemoveItem();
+                if(Container.Items[i].Amount < 1)
+                {
+                    Container.Items[i].UpdateItemSlot(-1, null, 0);
+                    Container.Items.Remove(Container.Items[i]);
+                }
+                //return;
+            }
+        }
+    }
+
+    public void MoveItem(InventoryItemSlot _item1, InventoryItemSlot _item2)
+    {
+        Debug.Log("Move Item");
+        InventoryItemSlot _temp = new InventoryItemSlot(_item2.ID, _item2.Item, _item2.Amount);
+        _item2.UpdateItemSlot(_item1.ID, _item1.Item, _item1.Amount);
+        _item1.UpdateItemSlot(_temp.ID, _temp.Item, _temp.Amount);
+    }
+
+    public InventoryItemSlot SetEmptyFirstSlot(Item _item, int _amount) //added 17.06
+    {
+        for (int i = 0; i < Container.Items.Count; i++)
+        {
+            if(Container.Items[i].ID <= -1)
+            {
+                Container.Items[i].UpdateItemSlot(_item.ID, _item, _amount);
+                return Container.Items[i];
+            }    
+        }
+
+        //set up for full inventory (if using Array)
+        return null;
     }
 
     //implement for using JSON format
@@ -88,6 +137,7 @@ public class InventoryObject : ScriptableObject//, ISerializationCallbackReceive
 [System.Serializable]
 public class Inventory{
     public List<InventoryItemSlot> Items = new List<InventoryItemSlot>();
+    //public InventoryItemSlot[] Items = new InventoryItemSlot[10];
 }
 
 [System.Serializable]
@@ -102,8 +152,26 @@ public class InventoryItemSlot
         Item = _item;
         Amount = _amount;
     }
+    public void UpdateItemSlot(int _id, Item _item, int _amount)
+    {
+        ID = _id;
+        Item = _item;
+        Amount = _amount;
+    }
+
+    public InventoryItemSlot() //added 17.06
+    {
+        ID = -1;
+        Item = null;
+        Amount = 0;
+    }
     public void AddAmount(int _value)
     {
         Amount += _value;
+    }
+
+    public void RemoveItem()
+    {
+        Amount -= 1;
     }
 }

@@ -313,6 +313,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InventoryPrefab: {fileID: 0}
   InventoryObj: {fileID: 11400000, guid: 307129c510aa63940a8c5f13530d068c, type: 2}
+  _placeholderSpriteSize: {x: 100, y: 50}
 --- !u!224 &169446111 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8098859800782861227, guid: fff5db22c32e87242b94c6ef6b5ba0ad, type: 3}
@@ -589,6 +590,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed8684109df477145aab19259213f8c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Inventory: {fileID: 0}
   ParentAfterDrag: {fileID: 0}
   ObjToInstantiate: {fileID: 0}
   Cam: {fileID: 0}
@@ -745,7 +747,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae8c18e4af870424c93d288cbce9bc0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ItemObj: {fileID: 11400000, guid: 700f3e81fa84dab40ac402cfedc01c41, type: 2}
+  ItemObj: {fileID: 11400000, guid: 8f3d95340b0aff445802eb644e541a49, type: 2}
 --- !u!1 &372575881
 GameObject:
   m_ObjectHideFlags: 0
@@ -798,6 +800,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed8684109df477145aab19259213f8c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Inventory: {fileID: 0}
   ParentAfterDrag: {fileID: 0}
   ObjToInstantiate: {fileID: 0}
   Cam: {fileID: 0}
@@ -1143,6 +1146,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed8684109df477145aab19259213f8c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Inventory: {fileID: 0}
   ParentAfterDrag: {fileID: 0}
   ObjToInstantiate: {fileID: 0}
   Cam: {fileID: 0}
@@ -2701,6 +2705,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed8684109df477145aab19259213f8c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Inventory: {fileID: 0}
   ParentAfterDrag: {fileID: 0}
   ObjToInstantiate: {fileID: 2348775943876124373, guid: fd1df312aa5827f45a732119b8b40d70, type: 3}
   Cam: {fileID: 0}
@@ -2756,9 +2761,10 @@ GameObject:
   - component: {fileID: 1186838750}
   - component: {fileID: 1186838752}
   - component: {fileID: 1186838749}
+  - component: {fileID: 1186838753}
   m_Layer: 5
   m_Name: InventoryScreen
-  m_TagString: Untagged
+  m_TagString: UI_Element
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2797,6 +2803,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   InventoryPrefab: {fileID: 2552738267479618308, guid: b6cbb2288dae4a443b63341d27b2c80b, type: 3}
   InventoryObj: {fileID: 11400000, guid: 307129c510aa63940a8c5f13530d068c, type: 2}
+  _placeholderSpriteSize: {x: 140, y: 50}
 --- !u!114 &1186838750
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2856,11 +2863,24 @@ MonoBehaviour:
   m_Spacing: 30
   m_ChildForceExpandWidth: 0
   m_ChildForceExpandHeight: 0
-  m_ChildControlWidth: 1
+  m_ChildControlWidth: 0
   m_ChildControlHeight: 0
   m_ChildScaleWidth: 1
-  m_ChildScaleHeight: 0
+  m_ChildScaleHeight: 1
   m_ReverseArrangement: 0
+--- !u!114 &1186838753
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1186838747}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7daa04f8837ea9c46b6a6437c227c8d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  TestBool: 0
 --- !u!1001 &1200401683
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3963,7 +3983,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae8c18e4af870424c93d288cbce9bc0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ItemObj: {fileID: 11400000, guid: 700f3e81fa84dab40ac402cfedc01c41, type: 2}
+  ItemObj: {fileID: 11400000, guid: 8f3d95340b0aff445802eb644e541a49, type: 2}
 --- !u!1001 &1715675077
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4120,6 +4140,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed8684109df477145aab19259213f8c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Inventory: {fileID: 0}
   ParentAfterDrag: {fileID: 0}
   ObjToInstantiate: {fileID: 0}
   Cam: {fileID: 0}
@@ -5224,7 +5245,6 @@ GameObject:
   - component: {fileID: 2073987480}
   - component: {fileID: 2073987479}
   - component: {fileID: 2073987478}
-  - component: {fileID: 2073987482}
   m_Layer: 5
   m_Name: SideScrollPanel
   m_TagString: UI_Element
@@ -5336,19 +5356,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2073987476}
   m_CullTransparentMesh: 1
---- !u!114 &2073987482
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2073987476}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7daa04f8837ea9c46b6a6437c227c8d6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  MouseOverUI: 0
 --- !u!1 &2074621257 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3028819350661330635, guid: cd1b9bbf0059eac4eb6d87857fc8dc76, type: 3}
@@ -5366,7 +5373,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae8c18e4af870424c93d288cbce9bc0a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ItemObj: {fileID: 11400000, guid: 700f3e81fa84dab40ac402cfedc01c41, type: 2}
+  ItemObj: {fileID: 11400000, guid: 8f3d95340b0aff445802eb644e541a49, type: 2}
 --- !u!1 &2143575172 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5862970613565672352, guid: fff5db22c32e87242b94c6ef6b5ba0ad, type: 3}
@@ -5452,6 +5459,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed8684109df477145aab19259213f8c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Inventory: {fileID: 0}
   ParentAfterDrag: {fileID: 0}
   ObjToInstantiate: {fileID: 3028819350661330635, guid: cd1b9bbf0059eac4eb6d87857fc8dc76, type: 3}
   Cam: {fileID: 0}
