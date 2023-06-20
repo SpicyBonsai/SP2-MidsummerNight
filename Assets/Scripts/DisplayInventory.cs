@@ -47,13 +47,14 @@ public class DisplayInventory : MonoBehaviour
             else
             {
                 var _obj = Instantiate(InventoryPrefab, Vector3.zero, Quaternion.identity, transform);
+                //print(InventoryObj.Database.GetItem[_slot.Item.ID]);
                 _obj.transform.GetChild(0).GetComponentInChildren<Image>().sprite = InventoryObj.Database.GetItem[_slot.Item.ID].ItemSprite;
                 _obj.GetComponentInChildren<TextMeshProUGUI>().text = _slot.Amount == 1 ? "" : _slot.Amount.ToString("n0");
 
                 AddEvent(_obj, EventTriggerType.PointerEnter, delegate { OnEnter(_obj); });
                 AddEvent(_obj, EventTriggerType.PointerExit, delegate { OnExit(_obj); });
                 AddEvent(_obj, EventTriggerType.BeginDrag, delegate { OnDragStart(_obj, _slot); });
-                AddEvent(_obj, EventTriggerType.EndDrag, delegate { OnDragEnd(_obj); });
+                AddEvent(_obj, EventTriggerType.EndDrag, delegate { OnDragEnd(_obj, _slot); });
                 AddEvent(_obj, EventTriggerType.Drag, delegate { OnDrag(_obj); });
 
                 itemsDisplayed.Add(_slot, _obj);
@@ -84,13 +85,24 @@ public class DisplayInventory : MonoBehaviour
             AddEvent(_obj, EventTriggerType.PointerEnter, delegate { OnEnter(_obj); });
             AddEvent(_obj, EventTriggerType.PointerExit, delegate { OnExit(_obj); });
             AddEvent(_obj, EventTriggerType.BeginDrag, delegate { OnDragStart(_obj, _slot); });
-            AddEvent(_obj, EventTriggerType.EndDrag, delegate { OnDragEnd(_obj); });
+            AddEvent(_obj, EventTriggerType.EndDrag, delegate { OnDragEnd(_obj, _slot); });
             AddEvent(_obj, EventTriggerType.Drag, delegate { OnDrag(_obj); });
 
             itemsDisplayed.Add(_slot, _obj);
             itemsInSlotsDisplayed.Add(_obj, InventoryObj.Container.Items[i]);
         }
 
+    }
+
+    void RemoveSlot(InventoryItemSlot _inventroyItemSlot)
+    {
+        for (int i = 0; i < InventoryObj.Container.Items.Count; i++)
+        {
+            if (InventoryObj.Container.Items[i].ID == _inventroyItemSlot.ID)
+            {
+
+            }
+        }
     }
 
     public void CreateSlots() //added 17.06
@@ -145,17 +157,13 @@ public class DisplayInventory : MonoBehaviour
     }
     public void OnDragStart(GameObject _obj, InventoryItemSlot _inventoryItemSlot)
     {
-        print("Drag started");
+        //print("Drag started");
         var _mouseObj = new GameObject();
         var _rt = _mouseObj.AddComponent<RectTransform>();
         _rt.sizeDelta = _placeholderSpriteSize; //the same as img
 
         _parentAfterDrag = transform.parent;
         _mouseObj.transform.SetParent(transform.root);
-        //transform.SetAsLastSibling();
-        //_mouseObj.transform.parent.SetParent(transform.parent);
-
-        //print(_mouseObj);
 
         //if (itemsDisplayed[_obj].ID >= 0   //in the tutorial the reverted dictionary is used and he uses Array instead of List
 
@@ -166,7 +174,7 @@ public class DisplayInventory : MonoBehaviour
         MouseItemInstance._obj = _mouseObj;
         MouseItemInstance._item = _inventoryItemSlot;
     }
-    public void OnDragEnd(GameObject _obj)
+    public void OnDragEnd(GameObject _obj, InventoryItemSlot _inventoryItemSlot)
     {
         if (MouseItemInstance._hoverObj)
         {
@@ -174,23 +182,37 @@ public class DisplayInventory : MonoBehaviour
         }
         else
         {
-/*            InventoryObj.RemoveItem(itemsInSlotsDisplayed[_obj].Item);
-            if(itemsInSlotsDisplayed[_obj].Amount <= 0)
+            InventoryItemSlot _temInvSlot = _inventoryItemSlot;
+            GameObject _tempItemObj = _obj;
+            
+            if (itemsInSlotsDisplayed[_obj].Amount <= 0)
             {
-                //GameObject _gm = InventoryObj.Database.GetItem[itemsInSlotsDisplayed[_obj].ID].ItemPrefab;
-                itemsDisplayed.Remove(itemsInSlotsDisplayed[_obj]);
-                itemsDisplayed.Add(_slot, _obj);
-                itemsInSlotsDisplayed.Add(_obj, InventoryObj.Container.Items[i]);
-            }*/
+                itemsDisplayed.Remove(_temInvSlot);
+                itemsInSlotsDisplayed.Remove(_tempItemObj);
+            }
+            InventoryObj.RemoveItem(itemsInSlotsDisplayed[_obj].Item);
+            Destroy(_obj);
+            /*
+                        InventoryObj.RemoveItem(itemsInSlotsDisplayed[_obj].Item);
+                        if (itemsInSlotsDisplayed[_obj].Amount <= 0)
+                        {
+                            //GameObject _gm = InventoryObj.Database.GetItem[itemsInSlotsDisplayed[_obj].ID].ItemPrefab;
+                            itemsDisplayed.Remove(itemsInSlotsDisplayed[_obj]);
+                            itemsDisplayed.Add(_slot, _obj);
+                            itemsInSlotsDisplayed.Add(_obj, InventoryObj.Container.Items[i]);
+                        }*/
         }
         Destroy(MouseItemInstance._obj);
         MouseItemInstance._item = null;
+        
     }
     public void OnDrag(GameObject _obj)
     {
         if (MouseItemInstance._obj != null)
             MouseItemInstance._obj.GetComponent<RectTransform>().position = Input.mousePosition;
-        //print("Dragging");
+        PointerEventData eventData = new PointerEventData(EventSystem.current);
+        
+        print(eventData.pointerCurrentRaycast.gameObject);
     }
 
 
