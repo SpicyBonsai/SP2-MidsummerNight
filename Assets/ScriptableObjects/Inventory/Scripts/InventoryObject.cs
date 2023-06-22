@@ -38,7 +38,6 @@ public class InventoryObject : ScriptableObject//, ISerializationCallbackReceive
         {
             if(Container.Items[i].Item.ID == _item.ID)
             {
-                
                 //Container.Items[i].UpdateItemSlot(-1, null, 0);
                 
                 Container.Items[i].RemoveItem();

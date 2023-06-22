@@ -185,22 +185,15 @@ public class DisplayInventory : MonoBehaviour
             InventoryItemSlot _temInvSlot = _inventoryItemSlot;
             GameObject _tempItemObj = _obj;
             
-            if (itemsInSlotsDisplayed[_obj].Amount <= 0)
+            if (itemsInSlotsDisplayed[_obj].Amount == 1)
             {
-                itemsDisplayed.Remove(_temInvSlot);
-                itemsInSlotsDisplayed.Remove(_tempItemObj);
+                InventoryObj.RemoveItem(itemsInSlotsDisplayed[_obj].Item);
+                itemsDisplayed.Remove(_inventoryItemSlot);
+                itemsInSlotsDisplayed.Remove(_obj);
+                Destroy(_obj);
             }
-            InventoryObj.RemoveItem(itemsInSlotsDisplayed[_obj].Item);
-            Destroy(_obj);
-            /*
-                        InventoryObj.RemoveItem(itemsInSlotsDisplayed[_obj].Item);
-                        if (itemsInSlotsDisplayed[_obj].Amount <= 0)
-                        {
-                            //GameObject _gm = InventoryObj.Database.GetItem[itemsInSlotsDisplayed[_obj].ID].ItemPrefab;
-                            itemsDisplayed.Remove(itemsInSlotsDisplayed[_obj]);
-                            itemsDisplayed.Add(_slot, _obj);
-                            itemsInSlotsDisplayed.Add(_obj, InventoryObj.Container.Items[i]);
-                        }*/
+            else if (itemsInSlotsDisplayed[_obj].Amount > 1)
+                InventoryObj.RemoveItem(itemsInSlotsDisplayed[_obj].Item);
         }
         Destroy(MouseItemInstance._obj);
         MouseItemInstance._item = null;
