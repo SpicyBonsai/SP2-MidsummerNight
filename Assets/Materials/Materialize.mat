@@ -15,7 +15,7 @@ Material:
   m_LightmapFlags: 1
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
-  m_CustomRenderQueue: 3000
+  m_CustomRenderQueue: 2450
   stringTagMap: {}
   disabledShaderPasses: []
   m_SavedProperties:
@@ -46,10 +46,11 @@ Material:
     - _DecalMeshBiasType: 0
     - _DecalMeshDepthBias: 0
     - _DecalMeshViewBias: 0
-    - _Dissolve: 0
+    - _Dissolve: 1
     - _DrawOrder: 0
     - _DstBlend: 10
-    - _NoiseScale: 200
+    - _LightEdge_Size: 0.04
+    - _NoiseScale: 209.92
     - _QueueControl: 0
     - _QueueOffset: 0
     - _ReceiveShadows: 1
@@ -61,6 +62,7 @@ Material:
     - _ZWriteControl: 1
     m_Colors:
     - _Color: {r: 0, g: 0, b: 0, a: 0}
+    - _EdgeColor: {r: 0, g: 5.145098, b: 23.968628, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &1488570230116498860
 MonoBehaviour:

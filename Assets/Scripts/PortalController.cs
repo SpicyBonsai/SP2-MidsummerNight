@@ -5,41 +5,35 @@ using UnityEngine;
 public class PortalController : MonoBehaviour
 {
     [SerializeField] List<GameObject> hiddenObjects = new List<GameObject>();
-    [SerializeField] List<GameObject> objectsToHide = new List<GameObject>();
+    [SerializeField] List<GameObject> visibleObjects = new List<GameObject>();
+
+    List<GameObject> objectsToHide = new List<GameObject>();
+    List<GameObject> objectsToShow = new List<GameObject>();
+
     private Vector3 playerPosition;
     private Vector3 lastPlayerPosition;
-    float lerpResult, elapsedTime;
-    public float desiredTime = 0.5f;
-    MeshRenderer objMesh;
-    bool isDissolvingIn = false;
 
-    // Start is called before the first frame update
-    void Start()
+    private void Update() 
     {
-        //Debug.Log(transform.up);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        elapsedTime += Time.deltaTime;
-        lerpResult = elapsedTime/desiredTime;
-
-        if (isDissolvingIn)
+        if(objectsToHide.Count > 0)
         {
-            
-            if (objMesh.material.HasFloat("_Dissolve"))
+            foreach(GameObject obj in objectsToHide)
             {
-                lerpResult = Mathf.Clamp(lerpResult, 0f, 1f);
-                objMesh.material.SetFloat("_Dissolve", lerpResult);
+                hiddenObjects.Add(obj);
+                visibleObjects.Remove(obj);
             }
+        }   
+        if(objectsToShow.Count > 0)
+        {
+            foreach(GameObject obj in objectsToShow)
+            {
+                visibleObjects.Add(obj);
+                hiddenObjects.Remove(obj);
+            }
+        } 
 
-            if(lerpResult >= 1)
-            {
-                objMesh = null;
-                isDissolvingIn = false;
-            }
-        }
+        objectsToShow.Clear();
+        objectsToHide.Clear();
     }
 
     private void OnTriggerStay(Collider other) 
@@ -58,33 +52,41 @@ public class PortalController : MonoBehaviour
         {
             lastPlayerPosition = other.transform.position;
             //Debug.Log("Last player position = " + other.transform.position);
-            if (Vector3.Dot(lastPlayerPosition - playerPosition, transform.up) > 0)
-            {
-                foreach (GameObject obj in hiddenObjects)
-                {
-                    elapsedTime = 0;
-                    isDissolvingIn = true;
-                    objMesh = obj.GetComponent<MeshRenderer>();
-                    objMesh.enabled = true;
-                }
 
-                foreach (GameObject obj in objectsToHide)
-                {
-                    obj.GetComponent<MeshRenderer>().enabled = false;
-                }
-            }
-            else
-            {
-                foreach (GameObject obj in hiddenObjects)
-                {
-                    obj.GetComponent<MeshRenderer>().enabled = false;
-                }
 
-                foreach (GameObject obj in objectsToHide)
-                {
-                    obj.GetComponent<MeshRenderer>().enabled = true;
-                }
+            // if (Vector3.Dot(lastPlayerPosition - playerPosition, transform.up) > 0)
+            // {
+                
+            // }
+
+            foreach (GameObject obj in hiddenObjects)
+            {
+                obj.GetComponent<ChangeObjectOpacity>().DisolveIn();
+                objectsToShow.Add(obj);
             }
+
+            foreach (GameObject obj in visibleObjects)
+            {
+                obj.GetComponent<ChangeObjectOpacity>().DisolveOut();
+                objectsToHide.Add(obj);
+            }
+
+
+
+            // else
+            // {
+            //     foreach (GameObject obj in hiddenObjects)
+            //     {
+            //         obj.GetComponent<ChangeObjectOpacity>().DisolveIn();
+            //         obj.GetComponent<MeshRenderer>().enabled = false;
+            //     }
+
+            //     foreach (GameObject obj in objectsToHide)
+            //     {
+            //         obj.GetComponent<ChangeObjectOpacity>().DisolveOut();
+            //         obj.GetComponent<MeshRenderer>().enabled = true;
+            //     }
+            // }
         }
         //if player position minus previous player position move in the direction of the portal's normal, then do something
     }
