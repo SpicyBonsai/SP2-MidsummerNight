@@ -53,7 +53,7 @@ public class InventoryObject : ScriptableObject//, ISerializationCallbackReceive
 
     public void MoveItem(InventoryItemSlot _item1, InventoryItemSlot _item2)
     {
-        Debug.Log("Move Item");
+        //Debug.Log("Move Item");
         InventoryItemSlot _temp = new InventoryItemSlot(_item2.ID, _item2.Item, _item2.Amount);
         _item2.UpdateItemSlot(_item1.ID, _item1.Item, _item1.Amount);
         _item1.UpdateItemSlot(_temp.ID, _temp.Item, _temp.Amount);

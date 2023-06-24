@@ -5,6 +5,7 @@ using TMPro;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using UnityEngine.Events;
+using UnityEngine.AI;
 
 public class DisplayInventory : MonoBehaviour
 {
@@ -12,14 +13,21 @@ public class DisplayInventory : MonoBehaviour
     public GameObject InventoryPrefab;
     public InventoryObject InventoryObj;
     public Vector2 _placeholderSpriteSize = new Vector2(300, 100);
-
+    public GameObject testItem1, testItem2, testItem3, testItem4;
     Transform _parentAfterDrag;
     private int numberOfColumns;
+     GameObject _instantiatedObj;
+    public GameObject _objToInsantiate;
+    bool _3DcursorInstance = false; //to instantiate 3D object at cursor pos. only once
+    bool _conditionToRemoveItem = true;
+    public string _testInstantiatingFunc;
+
     //Dictionary<InventoryItemSlot, GameObject> itemsDisplayed = new Dictionary<InventoryItemSlot, GameObject>();
     Dictionary<GameObject, InventoryItemSlot> itemsInSlotsDisplayed = new Dictionary<GameObject, InventoryItemSlot>();
 
     public Dictionary<InventoryItemSlot, GameObject> itemsDisplayed = new Dictionary<InventoryItemSlot, GameObject>();
 
+    //Dictionary<InventoryItemSlot, GameObject> _instantiatedObjects = new Dictionary<InventoryItemSlot, GameObject>();
     // Start is called before the first frame update
     void Start()
     {
@@ -32,6 +40,7 @@ public class DisplayInventory : MonoBehaviour
     {
         UpdateDisplay();
         //UpdateSlots(); //created 17.06
+        //print(MouseItemInstance._obj);
     }
 
     void UpdateDisplay()
@@ -59,6 +68,7 @@ public class DisplayInventory : MonoBehaviour
 
                 itemsDisplayed.Add(_slot, _obj);
                 itemsInSlotsDisplayed.Add(_obj, InventoryObj.Container.Items[i]);
+                //_instantiatedObjects.Add(_slot, null);
             }
             //print("name: " + _slot.Item.Name + " | ID = " + _slot.Item.ID);
             /*            foreach (KeyValuePair<InventoryItemSlot, GameObject> itemsDusplay in itemsDisplayed)
@@ -104,8 +114,8 @@ public class DisplayInventory : MonoBehaviour
             }
         }
     }
-
-    public void CreateSlots() //added 17.06
+    #region Added 17.06 for static inventory
+/*    public void CreateSlots() 
     {
         itemsInSlotsDisplayed = new Dictionary<GameObject, InventoryItemSlot>();
 
@@ -133,7 +143,8 @@ public class DisplayInventory : MonoBehaviour
                 _slot.Key.GetComponentInChildren<TextMeshProUGUI>().text = "" ;
             }
         }
-    }
+    }*/
+    #endregion
 
     private void AddEvent(GameObject _obj, EventTriggerType type, UnityAction<BaseEventData> _action)
     {
@@ -157,10 +168,31 @@ public class DisplayInventory : MonoBehaviour
     }
     public void OnDragStart(GameObject _obj, InventoryItemSlot _inventoryItemSlot)
     {
+        _testInstantiatingFunc = "we started dragging";
+
+        //_instantiatedObj = new GameObject();
+        //_instantiatedObj = testItem4;
+        var _objToInstantiateTemp = InventoryObj.Database.GetItem[itemsInSlotsDisplayed[_obj].Item.ID].ItemPrefab;
+        _objToInsantiate = _objToInstantiateTemp;
         //print("Drag started");
         var _mouseObj = new GameObject();
+        _mouseObj.name = "ItemSpiteHolder";
         var _rt = _mouseObj.AddComponent<RectTransform>();
         _rt.sizeDelta = _placeholderSpriteSize; //the same as img
+
+        var _mouseGameObj = new GameObject();
+        _mouseGameObj.name = "ItemObjectHolder";
+        _mouseGameObj.transform.localScale = _objToInsantiate.transform.localScale;
+        var _meshFilter = _mouseGameObj.AddComponent<MeshFilter>();
+        _meshFilter.mesh = _objToInsantiate.GetComponent<MeshFilter>().sharedMesh;
+        var _meshRenderer = _mouseGameObj.AddComponent<MeshRenderer>();
+        _meshRenderer.materials = _objToInsantiate.GetComponent<MeshRenderer>().sharedMaterials;
+        var _collider = _mouseGameObj.AddComponent<MeshCollider>();
+        _collider.sharedMesh = _objToInsantiate.GetComponent<MeshCollider>().sharedMesh;
+        _collider.convex = true;
+        _collider.isTrigger = false; // the object won't be interactable anymore
+        _mouseGameObj.AddComponent<NavMeshObstacle>();
+
 
         _parentAfterDrag = transform.parent;
         _mouseObj.transform.SetParent(transform.root);
@@ -172,6 +204,7 @@ public class DisplayInventory : MonoBehaviour
         _img.raycastTarget = false;
 
         MouseItemInstance._obj = _mouseObj;
+        MouseItemInstance._gameObj = _mouseGameObj;
         MouseItemInstance._item = _inventoryItemSlot;
     }
     public void OnDragEnd(GameObject _obj, InventoryItemSlot _inventoryItemSlot)
@@ -180,11 +213,8 @@ public class DisplayInventory : MonoBehaviour
         {
             InventoryObj.MoveItem(itemsInSlotsDisplayed[_obj], itemsInSlotsDisplayed[MouseItemInstance._hoverObj]);
         }
-        else
+        else if (!MouseItemInstance._hoverObj && _conditionToRemoveItem)
         {
-            InventoryItemSlot _temInvSlot = _inventoryItemSlot;
-            GameObject _tempItemObj = _obj;
-            
             if (itemsInSlotsDisplayed[_obj].Amount == 1)
             {
                 InventoryObj.RemoveItem(itemsInSlotsDisplayed[_obj].Item);
@@ -195,17 +225,54 @@ public class DisplayInventory : MonoBehaviour
             else if (itemsInSlotsDisplayed[_obj].Amount > 1)
                 InventoryObj.RemoveItem(itemsInSlotsDisplayed[_obj].Item);
         }
+        _testInstantiatingFunc = "we NOT dragging";
+        //_instantiatedObj = new GameObject();
+        //_instantiatedObj = testItem3;
         Destroy(MouseItemInstance._obj);
         MouseItemInstance._item = null;
-        
     }
     public void OnDrag(GameObject _obj)
     {
+        //print(itemsInSlotsDisplayed[_obj]);
+        //GameObject _instantiatedObj = null;
         if (MouseItemInstance._obj != null)
             MouseItemInstance._obj.GetComponent<RectTransform>().position = Input.mousePosition;
-        PointerEventData eventData = new PointerEventData(EventSystem.current);
-        
-        print(eventData.pointerCurrentRaycast.gameObject);
+
+        Vector3 _screenPoint = Input.mousePosition;
+        _screenPoint.z = 5.84f;
+        Vector3 _instantiatePos = Camera.main.ScreenToWorldPoint(_screenPoint);
+        if (MouseItemInstance._gameObj != null)
+            MouseItemInstance._gameObj.transform.position = _instantiatePos;
+
+        if (MouseHover.CursorIsOverUI)
+        {
+            _testInstantiatingFunc = "we are dragging on UI";
+            //_instantiatedObj = new GameObject();
+            //_instantiatedObj = testItem1;
+            MouseItemInstance._obj.SetActive(true);
+            MouseItemInstance._gameObj.SetActive(false);
+            print(MouseItemInstance._gameObj);
+        }
+        else
+        {
+            _testInstantiatingFunc = "we are dragging on World";
+            MouseItemInstance._obj.SetActive(false);
+            MouseItemInstance._gameObj.SetActive(true);
+            //_instantiatedObj = new GameObject();
+            //_instantiatedObj = testItem2;
+
+
+            /*            if (!_3DcursorInstance)
+                        {
+                            MouseItemInstance._obj = Instantiate(_objToInsantiate, _instantiatePos, _objToInsantiate.transform.rotation);
+                            _3DcursorInstance = true;
+                        }*/
+            //_instantiatedObj.transform.position = _instantiatePos;
+
+            /*            if (MouseItemInstance._obj != null)
+                            MouseItemInstance._obj.transform.position = _instantiatePos;*/
+
+        }
     }
 
 
@@ -220,7 +287,13 @@ public class DisplayInventory : MonoBehaviour
 
 public class MouseItem{
     public GameObject _obj;
+    public GameObject _gameObj;
     public InventoryItemSlot _item;
     public InventoryItemSlot _hoverItem;
     public GameObject _hoverObj;
 }
+
+/*class MappedValue
+{
+    public GameObject _
+}*/
