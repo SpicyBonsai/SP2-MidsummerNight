@@ -78,10 +78,11 @@ namespace Lyr.Dialogue
         {
             DialogueNode newNode = CreateInstance<DialogueNode>();
             newNode.name = Guid.NewGuid().ToString();
+            
             if (parent != null)
             {
                 parent.AddChild(newNode.name);
-
+                newNode.SetPlayerSpeaking(!parent.IsPlayerSpeaking());
                 newNode.SetPosition(new Vector2(
                     parent.GetRect().xMax + parent.GetRect().width / 10,
                     parent.GetRect().y));
