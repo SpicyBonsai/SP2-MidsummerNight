@@ -170,28 +170,25 @@ public class DisplayInventory : MonoBehaviour
     {
         _testInstantiatingFunc = "we started dragging";
 
-        //_instantiatedObj = new GameObject();
-        //_instantiatedObj = testItem4;
-        var _objToInstantiateTemp = InventoryObj.Database.GetItem[itemsInSlotsDisplayed[_obj].Item.ID].ItemPrefab;
-        _objToInsantiate = _objToInstantiateTemp;
-        //print("Drag started");
+        //creating img holder
         var _mouseObj = new GameObject();
         _mouseObj.name = "ItemSpiteHolder";
         var _rt = _mouseObj.AddComponent<RectTransform>();
         _rt.sizeDelta = _placeholderSpriteSize; //the same as img
 
+        //creating obj holder
+        _objToInsantiate = InventoryObj.Database.GetItem[itemsInSlotsDisplayed[_obj].Item.ID].ItemPrefab;
         var _mouseGameObj = new GameObject();
         _mouseGameObj.name = "ItemObjectHolder";
         _mouseGameObj.transform.localScale = _objToInsantiate.transform.localScale;
+        _mouseGameObj.transform.eulerAngles = _objToInsantiate.transform.eulerAngles;
         var _meshFilter = _mouseGameObj.AddComponent<MeshFilter>();
         _meshFilter.mesh = _objToInsantiate.GetComponent<MeshFilter>().sharedMesh;
         var _meshRenderer = _mouseGameObj.AddComponent<MeshRenderer>();
         _meshRenderer.materials = _objToInsantiate.GetComponent<MeshRenderer>().sharedMaterials;
-        var _collider = _mouseGameObj.AddComponent<MeshCollider>();
-        _collider.sharedMesh = _objToInsantiate.GetComponent<MeshCollider>().sharedMesh;
-        _collider.convex = true;
-        _collider.isTrigger = false; // the object won't be interactable anymore
-        _mouseGameObj.AddComponent<NavMeshObstacle>();
+        //var _collider = _mouseGameObj.AddComponent<MeshCollider>();
+        //_collider.sharedMesh = _objToInsantiate.GetComponent<MeshCollider>().sharedMesh;
+        //_collider.convex = true;
 
 
         _parentAfterDrag = transform.parent;
@@ -209,32 +206,39 @@ public class DisplayInventory : MonoBehaviour
     }
     public void OnDragEnd(GameObject _obj, InventoryItemSlot _inventoryItemSlot)
     {
+        string _itemName = _objToInsantiate.name;
+        print(MouseItemInstance._hoverObj);
+
         if (MouseItemInstance._hoverObj)
         {
             InventoryObj.MoveItem(itemsInSlotsDisplayed[_obj], itemsInSlotsDisplayed[MouseItemInstance._hoverObj]);
         }
-        else if (!MouseItemInstance._hoverObj && _conditionToRemoveItem)
+        else if (!MouseItemInstance._hoverObj)
         {
-            if (itemsInSlotsDisplayed[_obj].Amount == 1)
+            if(MouseHover.HoveredObj.name == _itemName)
             {
-                InventoryObj.RemoveItem(itemsInSlotsDisplayed[_obj].Item);
-                itemsDisplayed.Remove(_inventoryItemSlot);
-                itemsInSlotsDisplayed.Remove(_obj);
-                Destroy(_obj);
+                //MouseItemInstance._gameObj.GetComponent<MeshCollider>().isTrigger = false; // the object won't be interactable anymore
+                //MouseItemInstance._gameObj.AddComponent<NavMeshObstacle>();
+                MouseHover.HoveredObj.GetComponent<MeshRenderer>().enabled = true;
+                if (itemsInSlotsDisplayed[_obj].Amount == 1)
+                {
+                    InventoryObj.RemoveItem(itemsInSlotsDisplayed[_obj].Item);
+                    itemsDisplayed.Remove(_inventoryItemSlot);
+                    itemsInSlotsDisplayed.Remove(_obj);
+                    Destroy(_obj);
+                }
+                else if (itemsInSlotsDisplayed[_obj].Amount > 1)
+                    InventoryObj.RemoveItem(itemsInSlotsDisplayed[_obj].Item);
             }
-            else if (itemsInSlotsDisplayed[_obj].Amount > 1)
-                InventoryObj.RemoveItem(itemsInSlotsDisplayed[_obj].Item);
         }
+
         _testInstantiatingFunc = "we NOT dragging";
-        //_instantiatedObj = new GameObject();
-        //_instantiatedObj = testItem3;
         Destroy(MouseItemInstance._obj);
+        Destroy(MouseItemInstance._gameObj);
         MouseItemInstance._item = null;
     }
     public void OnDrag(GameObject _obj)
     {
-        //print(itemsInSlotsDisplayed[_obj]);
-        //GameObject _instantiatedObj = null;
         if (MouseItemInstance._obj != null)
             MouseItemInstance._obj.GetComponent<RectTransform>().position = Input.mousePosition;
 
@@ -247,31 +251,14 @@ public class DisplayInventory : MonoBehaviour
         if (MouseHover.CursorIsOverUI)
         {
             _testInstantiatingFunc = "we are dragging on UI";
-            //_instantiatedObj = new GameObject();
-            //_instantiatedObj = testItem1;
             MouseItemInstance._obj.SetActive(true);
             MouseItemInstance._gameObj.SetActive(false);
-            print(MouseItemInstance._gameObj);
         }
         else
         {
             _testInstantiatingFunc = "we are dragging on World";
             MouseItemInstance._obj.SetActive(false);
             MouseItemInstance._gameObj.SetActive(true);
-            //_instantiatedObj = new GameObject();
-            //_instantiatedObj = testItem2;
-
-
-            /*            if (!_3DcursorInstance)
-                        {
-                            MouseItemInstance._obj = Instantiate(_objToInsantiate, _instantiatePos, _objToInsantiate.transform.rotation);
-                            _3DcursorInstance = true;
-                        }*/
-            //_instantiatedObj.transform.position = _instantiatePos;
-
-            /*            if (MouseItemInstance._obj != null)
-                            MouseItemInstance._obj.transform.position = _instantiatePos;*/
-
         }
     }
 

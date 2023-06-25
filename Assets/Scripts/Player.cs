@@ -30,16 +30,6 @@ public class Player : MonoBehaviour
             Destroy(other.gameObject);
         }
     }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-/*        var _item = collision.transform.GetComponent<GroundItem>();
-        if (_item)
-        {
-            Inventory.AddItem(new Item(_item.ItemObj), 1);
-            Destroy(collision.gameObject);
-        }*/
-    }
     private void OnApplicationQuit()
     {
         Inventory.Container.Items.Clear();
