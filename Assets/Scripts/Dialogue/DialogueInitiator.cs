@@ -29,5 +29,11 @@ public class DialogueInitiator : MonoBehaviour
             instructionsOverlay.SetActive(false);
             inDialogue = true;
         }
+
+        if(DialogueUI.activeSelf && !distanceChecker.playerInRange)
+        {
+            DialogueUI.SetActive(false);
+            inDialogue = false;
+        }
     }
 }
