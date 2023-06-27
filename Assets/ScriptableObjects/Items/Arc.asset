@@ -9,10 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d8a508183aabb8d46b44046fe4e0f447, type: 3}
-  m_Name: TestItemMemory
+  m_Script: {fileID: 11500000, guid: 416480348dec9c64682d73091aaeed9e, type: 3}
+  m_Name: Arc
   m_EditorClassIdentifier: 
-  ID: 2
-  ItemSprite: {fileID: 0}
-  ItemObjType: 1
+  ID: 0
+  ItemSprite: {fileID: 21300000, guid: 4c7c720558f096640a5dfa0307c84a2a, type: 3}
+  ItemPrefab: {fileID: 3028819350661330635, guid: cd1b9bbf0059eac4eb6d87857fc8dc76, type: 3}
+  ItemObjType: 0
   Description: 

@@ -18,6 +18,7 @@ public class Player : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.L))
             Inventory.Load();
+
     }
 
     public void OnTriggerEnter(Collider other)
@@ -38,4 +39,5 @@ public class Player : MonoBehaviour
     {
         GUI.Label(new Rect(10, 30, 50, 20), _guiText);
     }
+
 }
