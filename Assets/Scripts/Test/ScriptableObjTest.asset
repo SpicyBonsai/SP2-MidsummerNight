@@ -9,10 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d8a508183aabb8d46b44046fe4e0f447, type: 3}
-  m_Name: TestItemMemory
+  m_Script: {fileID: 11500000, guid: 16c4725b169dd474cb8160b213653cea, type: 3}
+  m_Name: ScriptableObjTest
   m_EditorClassIdentifier: 
-  ID: 2
-  ItemSprite: {fileID: 0}
-  ItemObjType: 1
-  Description: 

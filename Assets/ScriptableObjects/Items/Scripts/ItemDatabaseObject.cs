@@ -11,9 +11,6 @@ public class ItemDatabaseObject : ScriptableObject, ISerializationCallbackReceiv
 
     public void OnAfterDeserialize()
     {
-        //cleaning dicts to be sure tis empty
-        //GetID = new Dictionary<ItemObject, int>(); 
-
         for (int i = 0; i < Items.Length; i++)
         {
             //GetID.Add(Items[i], i);
@@ -24,6 +21,8 @@ public class ItemDatabaseObject : ScriptableObject, ISerializationCallbackReceiv
 
     public void OnBeforeSerialize()
     {
+        //cleaning dicts to be sure its empty
         GetItem = new Dictionary<int, ItemObject>();
+        //GetID = new Dictionary<ItemObject, int>();
     }
 }

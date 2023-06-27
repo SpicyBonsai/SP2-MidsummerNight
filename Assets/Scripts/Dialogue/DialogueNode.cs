@@ -2,17 +2,20 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEditor;
+using System;
 
 namespace Lyr.Dialogue
 {
     public class DialogueNode : ScriptableObject
     {
+        [SerializeField]
+        bool isPlayerSpeaking = false;
         [SerializeField] 
         private string text;
         [SerializeField] 
         private List<string> children = new List<string>();
         [SerializeField] 
-        private Rect rect = new Rect(0, 0, 500, 100);
+        private Rect rect = new Rect(0, 0, 300, 100);
         
         [Range(0f, 1000f)]
         public float textAreaHeightOffset = 0f;
@@ -53,7 +56,19 @@ namespace Lyr.Dialogue
         {
             return children;
         }
+        
+        public bool IsPlayerSpeaking()
+        {
+            return isPlayerSpeaking;
+        }
 
+        public void SetPlayerSpeaking(bool value)
+        {
+            Undo.RecordObject(this, "Change dialogue speaker");
+            isPlayerSpeaking = value;
+
+            EditorUtility.SetDirty(this);
+        }
         public void AddChild(string childID)
         {
             Undo.RecordObject(this, "Add Dialogue Link");
@@ -67,6 +82,7 @@ namespace Lyr.Dialogue
             children.Remove(childID);
             EditorUtility.SetDirty(this);
         }
+
 
     }
 }

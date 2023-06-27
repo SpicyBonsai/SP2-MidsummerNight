@@ -39,6 +39,28 @@ namespace Lyr.Dialogue
             return nodes[0];
         }
 
+        public IEnumerable<DialogueNode> GetPlayerChildren(DialogueNode parentNode)
+        {
+            foreach(DialogueNode node in GetAllChildren(parentNode))
+            {
+                if(node.IsPlayerSpeaking())
+                {
+                    yield return node;
+                }
+            }
+        }
+
+        public IEnumerable<DialogueNode> GetAIChildren(DialogueNode parentNode)
+        {
+            foreach(DialogueNode node in GetAllChildren(parentNode))
+            {
+                if(!node.IsPlayerSpeaking())
+                {
+                    yield return node;
+                }
+            }
+        }
+
         public IEnumerable<DialogueNode> GetAllChildren(DialogueNode parentNode)
         {
             foreach(string childID in parentNode.GetChildren())
@@ -78,10 +100,11 @@ namespace Lyr.Dialogue
         {
             DialogueNode newNode = CreateInstance<DialogueNode>();
             newNode.name = Guid.NewGuid().ToString();
+            
             if (parent != null)
             {
                 parent.AddChild(newNode.name);
-
+                newNode.SetPlayerSpeaking(!parent.IsPlayerSpeaking());
                 newNode.SetPosition(new Vector2(
                     parent.GetRect().xMax + parent.GetRect().width / 10,
                     parent.GetRect().y));

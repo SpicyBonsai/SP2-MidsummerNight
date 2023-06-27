@@ -9,6 +9,7 @@ namespace Lyr.Dialogue.Editor
     {
         Dialogue selectedDialogue;
         [NonSerialized] GUIStyle nodeStyle;
+        [NonSerialized] GUIStyle playerNodeStyle;
         [NonSerialized] GUIStyle textAreaStyle;
         [NonSerialized] DialogueNode draggingNode = null;
         [NonSerialized] public Vector2 draggingOffset;
@@ -51,6 +52,11 @@ namespace Lyr.Dialogue.Editor
             nodeStyle.normal.background = EditorGUIUtility.Load("node0") as Texture2D;
             nodeStyle.padding = new RectOffset(20, 20, 20, 20);
             nodeStyle.border = new RectOffset(12, 12, 12, 12);
+
+            playerNodeStyle = new GUIStyle();
+            playerNodeStyle.normal.background = EditorGUIUtility.Load("node2") as Texture2D;
+            playerNodeStyle.padding = new RectOffset(20, 20, 20, 20);
+            playerNodeStyle.border = new RectOffset(12, 12, 12, 12);
             
         }
 
@@ -165,6 +171,12 @@ namespace Lyr.Dialogue.Editor
 
         private void DrawNodes(DialogueNode node)
         {   
+            GUIStyle style = nodeStyle;
+            if (node.IsPlayerSpeaking())
+            {
+                style = playerNodeStyle;
+            }
+
             foreach(DialogueNode otherNode in selectedDialogue.GetAllNodes())
             {
                 //if nodes overlap, offset their position a bit
@@ -176,11 +188,12 @@ namespace Lyr.Dialogue.Editor
                 }
             }
 
-            float textAreaHeight = nodeStyle.CalcHeight(new GUIContent(node.GetText()), node.GetRect().width);
+            float textAreaHeight = style.CalcHeight(new GUIContent(node.GetText()), node.GetRect().width);
             textAreaStyle = new GUIStyle(EditorStyles.textField);
             textAreaStyle.wordWrap = true;
+
             // GUILayout.BeginArea(new Rect(node.GetRect().x, node.GetRect().y, node.GetRect().width, node.GetRect().height), nodeStyle);
-            GUILayout.BeginArea(new Rect(node.GetRect().x, node.GetRect().y, node.GetRect().width, textAreaHeight + node.textAreaHeightOffset + 40f), nodeStyle);
+            GUILayout.BeginArea(new Rect(node.GetRect().x, node.GetRect().y, node.GetRect().width, textAreaHeight + node.textAreaHeightOffset + 40f), style);
             
             //set text using the text field from the scriptable object as an input
             //if it's the same, it doesn't record an undo event 
