@@ -18,8 +18,8 @@ public class DisplayInventory : MonoBehaviour
     private int numberOfColumns;
      GameObject _instantiatedObj;
     public GameObject _objToInsantiate;
-    bool _3DcursorInstance = false; //to instantiate 3D object at cursor pos. only once
-    bool _conditionToRemoveItem = true;
+    //bool _3DcursorInstance = false; //to instantiate 3D object at cursor pos. only once
+    //bool _conditionToRemoveItem = true;
     public string _testInstantiatingFunc;
 
     //Dictionary<InventoryItemSlot, GameObject> itemsDisplayed = new Dictionary<InventoryItemSlot, GameObject>();
