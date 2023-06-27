@@ -13,14 +13,12 @@ public class DisplayInventory : MonoBehaviour
     public GameObject InventoryPrefab;
     public InventoryObject InventoryObj;
     public Vector2 _placeholderSpriteSize = new Vector2(300, 100);
-    public GameObject testItem1, testItem2, testItem3, testItem4;
     Transform _parentAfterDrag;
     private int numberOfColumns;
-     GameObject _instantiatedObj;
-    public GameObject _objToInsantiate;
-    //bool _3DcursorInstance = false; //to instantiate 3D object at cursor pos. only once
-    //bool _conditionToRemoveItem = true;
-    public string _testInstantiatingFunc;
+    GameObject _instantiatedObj;
+    GameObject _objToInsantiate;
+    bool _3DcursorInstance = false; //to instantiate 3D object at cursor pos. only once
+    bool _conditionToRemoveItem = true;
 
     //Dictionary<InventoryItemSlot, GameObject> itemsDisplayed = new Dictionary<InventoryItemSlot, GameObject>();
     Dictionary<GameObject, InventoryItemSlot> itemsInSlotsDisplayed = new Dictionary<GameObject, InventoryItemSlot>();
@@ -115,35 +113,35 @@ public class DisplayInventory : MonoBehaviour
         }
     }
     #region Added 17.06 for static inventory
-/*    public void CreateSlots() 
-    {
-        itemsInSlotsDisplayed = new Dictionary<GameObject, InventoryItemSlot>();
-
-        for (int i = 0; i < InventoryObj.Container.Items.Count; i++)
+    /*    public void CreateSlots() 
         {
-            var _obj = Instantiate(InventoryPrefab, Vector3.zero, Quaternion.identity, transform);
-            itemsInSlotsDisplayed.Add(_obj, InventoryObj.Container.Items[i]);
-        }
-    }
+            itemsInSlotsDisplayed = new Dictionary<GameObject, InventoryItemSlot>();
 
-    public void UpdateSlots()
-    {
-        foreach (KeyValuePair<GameObject, InventoryItemSlot> _slot in itemsInSlotsDisplayed)
-        {
-            if(_slot.Value.ID >= 0)
+            for (int i = 0; i < InventoryObj.Container.Items.Count; i++)
             {
-                _slot.Key.transform.GetChild(0).GetComponentInChildren<Image>().sprite = InventoryObj.Database.GetItem[_slot.Value.Item.ID].ItemSprite;
-                _slot.Key.transform.GetChild(0).GetComponentInChildren<Image>().color = new Color(1, 1, 1, 1);
-                _slot.Key.GetComponentInChildren<TextMeshProUGUI>().text = _slot.Value.Amount == 1 ? "" : _slot.Value.Amount.ToString("n0");
-            }
-            else
-            {
-                _slot.Key.transform.GetChild(0).GetComponentInChildren<Image>().sprite = null;
-                _slot.Key.transform.GetChild(0).GetComponentInChildren<Image>().color = new Color(1, 1, 1, 0);
-                _slot.Key.GetComponentInChildren<TextMeshProUGUI>().text = "" ;
+                var _obj = Instantiate(InventoryPrefab, Vector3.zero, Quaternion.identity, transform);
+                itemsInSlotsDisplayed.Add(_obj, InventoryObj.Container.Items[i]);
             }
         }
-    }*/
+
+        public void UpdateSlots()
+        {
+            foreach (KeyValuePair<GameObject, InventoryItemSlot> _slot in itemsInSlotsDisplayed)
+            {
+                if(_slot.Value.ID >= 0)
+                {
+                    _slot.Key.transform.GetChild(0).GetComponentInChildren<Image>().sprite = InventoryObj.Database.GetItem[_slot.Value.Item.ID].ItemSprite;
+                    _slot.Key.transform.GetChild(0).GetComponentInChildren<Image>().color = new Color(1, 1, 1, 1);
+                    _slot.Key.GetComponentInChildren<TextMeshProUGUI>().text = _slot.Value.Amount == 1 ? "" : _slot.Value.Amount.ToString("n0");
+                }
+                else
+                {
+                    _slot.Key.transform.GetChild(0).GetComponentInChildren<Image>().sprite = null;
+                    _slot.Key.transform.GetChild(0).GetComponentInChildren<Image>().color = new Color(1, 1, 1, 0);
+                    _slot.Key.GetComponentInChildren<TextMeshProUGUI>().text = "" ;
+                }
+            }
+        }*/
     #endregion
 
     private void AddEvent(GameObject _obj, EventTriggerType type, UnityAction<BaseEventData> _action)
@@ -168,8 +166,6 @@ public class DisplayInventory : MonoBehaviour
     }
     public void OnDragStart(GameObject _obj, InventoryItemSlot _inventoryItemSlot)
     {
-        _testInstantiatingFunc = "we started dragging";
-
         //creating img holder
         var _mouseObj = new GameObject();
         _mouseObj.name = "ItemSpiteHolder";
@@ -207,7 +203,6 @@ public class DisplayInventory : MonoBehaviour
     public void OnDragEnd(GameObject _obj, InventoryItemSlot _inventoryItemSlot)
     {
         string _itemName = _objToInsantiate.name;
-        print(MouseItemInstance._hoverObj);
 
         if (MouseItemInstance._hoverObj)
         {
@@ -215,11 +210,15 @@ public class DisplayInventory : MonoBehaviour
         }
         else if (!MouseItemInstance._hoverObj)
         {
-            if(MouseHover.HoveredObj.name == _itemName)
+            var hoveredObj = MouseHover.HoveredObj;
+            if (hoveredObj.name == _itemName && !hoveredObj.GetComponent<MeshRenderer>().enabled) // && hoveredObj.transform.parent.GetComponent<BrokenObject>()._brokenParts[hoveredObj])
             {
+
                 //MouseItemInstance._gameObj.GetComponent<MeshCollider>().isTrigger = false; // the object won't be interactable anymore
                 //MouseItemInstance._gameObj.AddComponent<NavMeshObstacle>();
-                MouseHover.HoveredObj.GetComponent<MeshRenderer>().enabled = true;
+
+                //hoveredObj.transform.parent.GetComponent<BrokenObject>()._brokenParts[hoveredObj] = false;
+                //hoveredObj.GetComponent<BrokenPart>().isFixed = true;
                 if (itemsInSlotsDisplayed[_obj].Amount == 1)
                 {
                     InventoryObj.RemoveItem(itemsInSlotsDisplayed[_obj].Item);
@@ -229,10 +228,12 @@ public class DisplayInventory : MonoBehaviour
                 }
                 else if (itemsInSlotsDisplayed[_obj].Amount > 1)
                     InventoryObj.RemoveItem(itemsInSlotsDisplayed[_obj].Item);
+
+                hoveredObj.GetComponent<MeshRenderer>().enabled = true;
+                
             }
         }
 
-        _testInstantiatingFunc = "we NOT dragging";
         Destroy(MouseItemInstance._obj);
         Destroy(MouseItemInstance._gameObj);
         MouseItemInstance._item = null;
@@ -250,13 +251,11 @@ public class DisplayInventory : MonoBehaviour
 
         if (MouseHover.CursorIsOverUI)
         {
-            _testInstantiatingFunc = "we are dragging on UI";
             MouseItemInstance._obj.SetActive(true);
             MouseItemInstance._gameObj.SetActive(false);
         }
         else
         {
-            _testInstantiatingFunc = "we are dragging on World";
             MouseItemInstance._obj.SetActive(false);
             MouseItemInstance._gameObj.SetActive(true);
         }
@@ -272,7 +271,8 @@ public class DisplayInventory : MonoBehaviour
 }
 
 
-public class MouseItem{
+public class MouseItem
+{
     public GameObject _obj;
     public GameObject _gameObj;
     public InventoryItemSlot _item;
