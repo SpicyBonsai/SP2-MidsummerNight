@@ -2,12 +2,11 @@ using UnityEngine.Audio;
 using System;
 using UnityEngine;
 
-[System.Serializable]
 public class AudioManager : MonoBehaviour
 {
     [Header("To use: ")]
     [Header("FindObjectOfType<AudioManager>().Play(track name);")]
-    public Sound[] Sounds;
+    public Sound[] SoundsList;
     public static AudioManager Instance;
 
     // Start is called before the first frame update
@@ -23,7 +22,7 @@ public class AudioManager : MonoBehaviour
 
         DontDestroyOnLoad(gameObject);
 
-        foreach (Sound _s in Sounds)
+        foreach (Sound _s in SoundsList)
         {
             _s.Source = gameObject.AddComponent<AudioSource>();
             _s.Source.clip = _s.Clip;
@@ -36,9 +35,28 @@ public class AudioManager : MonoBehaviour
 
     public void Play (string _name)
     {
-         Sound _s = Array.Find(Sounds, Sounds => Sounds.Name == _name);
+         Sound _s = Array.Find(SoundsList, Sound => Sound.Name == _name);
         if (_s == null)
             return;
+
         _s.Source.Play();
+    }
+
+    public void Pause (string _name)
+    {
+        Sound _s = Array.Find(SoundsList, Sound => Sound.Name == _name);
+        if (_s == null)
+            return;
+
+        _s.Source.Pause();
+    }
+
+    public void Stop(string _name)
+    {
+        Sound _s = Array.Find(SoundsList, Sound => Sound.Name == _name);
+        if (_s == null)
+            return;
+
+        _s.Source.Stop();
     }
 }
