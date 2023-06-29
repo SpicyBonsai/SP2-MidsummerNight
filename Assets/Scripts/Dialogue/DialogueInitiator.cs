@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class DialogueInitiator : MonoBehaviour, IInteractable
 {
-    [SerializeField] GameObject instructionsOverlay;
-    [SerializeField] GameObject UIDialogue;
+    [Header("General Dialogue Parameters:")]
     [SerializeField] Lyr.Dialogue.Dialogue currentDialogue;
     bool inDialogue = false;
     public bool InRange { get; private set; }
@@ -13,7 +12,7 @@ public class DialogueInitiator : MonoBehaviour, IInteractable
     private Transform _playerPos;
     private Lyr.Dialogue.PlayerConversant _playerConversant;
 
-    [Header("Parameters to play with")]
+    [Header("Interactable Dialogue Parameters:")]
 
     [Tooltip("This changes the distance from which the dialogue can start")]
     [SerializeField] private float _distanceToInteract = 2f;
@@ -33,7 +32,7 @@ public class DialogueInitiator : MonoBehaviour, IInteractable
     // Update is called once per frame
     void Update()
     {
-        if (!UIDialogue.activeSelf || !PlayerInRange())
+        if (!DialogueManager.GetInstance().GetDialogueUI().activeSelf || !PlayerInRange())
         {
             inDialogue = false;
         }
@@ -44,7 +43,7 @@ public class DialogueInitiator : MonoBehaviour, IInteractable
         
         if(InRange)
         {
-            instructionsOverlay.SetActive(PlayerInRange());
+            DialogueManager.GetInstance().SetInteractableOverlay(PlayerInRange());
         }
         
 
@@ -57,14 +56,33 @@ public class DialogueInitiator : MonoBehaviour, IInteractable
     public void Interact()
     {
         _playerConversant.StartDialogue(currentDialogue, this);
-        UIDialogue.SetActive(true);
-        UIDialogue.GetComponentInChildren<Lyr.UI.DialogueUI>().InitiateDialogue();
-        instructionsOverlay.SetActive(false);
+        DialogueManager.GetInstance().OpenDialogue();
+        DialogueManager.GetInstance().GetDialogueUI().GetComponentInChildren<Lyr.UI.DialogueUI>().InitiateDialogue();
+
+        DialogueManager.GetInstance().SetInteractableOverlay(false);
         inDialogue = true;
     }
 
     private void OnDrawGizmos() 
     {
-        Gizmos.DrawWireSphere(gameObject.transform.position, _distanceToInteract);
+        if(gameObject.tag == "DialogueTrigger")
+        {
+            Gizmos.color = new Color(1, 0, 0, 0.3f);
+            Gizmos.DrawCube(gameObject.transform.position, gameObject.transform.localScale);
+        }
+        else if (gameObject.tag == "Interactable")
+        {
+            Gizmos.DrawWireSphere(gameObject.transform.position, _distanceToInteract);
+        }
     }
+
+    private void OnTriggerEnter(Collider other) 
+    {
+        if(gameObject.tag == "DialogueTrigger")
+        {
+            Interact();
+            gameObject.SetActive(false);
+        }    
+    }
+
 }

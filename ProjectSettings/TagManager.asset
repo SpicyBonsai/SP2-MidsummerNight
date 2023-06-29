@@ -8,6 +8,8 @@ TagManager:
   - Portal
   - UI_Element
   - Terrain
+  - DialogueTrigger
+  - Interactable
   layers:
   - Default
   - TransparentFX

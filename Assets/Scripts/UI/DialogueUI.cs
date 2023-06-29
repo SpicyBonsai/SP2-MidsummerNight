@@ -25,11 +25,6 @@ namespace Lyr.UI
         private bool _skippingLine;
         
 
-
-        void Start()
-        {
-        }
-
         public void InitiateDialogue()
         {
             playerConversant = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerConversant>();

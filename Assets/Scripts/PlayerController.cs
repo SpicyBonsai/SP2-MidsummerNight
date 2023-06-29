@@ -67,8 +67,6 @@ public class PlayerController : MonoBehaviour
             if (InputManager.GetInstance().InteractButtonPressed)
             {
                 _ray = Camera.main.ScreenPointToRay(InputManager.GetInstance().MousePosition);
-
-                Debug.Log("Clicked !");
                 if (Physics.Raycast(_ray, out _raycastHit, Mathf.Infinity, GroundMask))
                 {
                     GameObject hitObject = _raycastHit.collider.gameObject;

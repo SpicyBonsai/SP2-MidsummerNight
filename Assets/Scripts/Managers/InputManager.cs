@@ -67,11 +67,14 @@ public class InputManager : MonoBehaviour
         Submit = _submit.WasPerformedThisFrame();
         LeftClick = _leftClick.WasPerformedThisFrame();
         ResetDialogue = _resetDialogue.WasPerformedThisFrame();
+
+        if(InteractButtonPressed) Debug.Log("Clicked !");
     }
 
     public void SwitchToGameplay()
     {
         PlayerInput.SwitchCurrentActionMap("Gameplay");
+        Debug.Log(PlayerInput.currentActionMap);
     }
 
     // public void SwitchToDialogue()
@@ -82,6 +85,7 @@ public class InputManager : MonoBehaviour
     public void SwitchToUI()
     {
         PlayerInput.SwitchCurrentActionMap("UI");
+        Debug.Log(PlayerInput.currentActionMap);
     }
 
 
