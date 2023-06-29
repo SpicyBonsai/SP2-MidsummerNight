@@ -8,7 +8,7 @@ namespace Lyr.Dialogue
 {
     public class DialogueNode : ScriptableObject
     {
-        [SerializeField]
+        [SerializeField] 
         bool isPlayerSpeaking = false;
         [SerializeField] 
         private string text;
@@ -17,8 +17,31 @@ namespace Lyr.Dialogue
         [SerializeField] 
         private Rect rect = new Rect(0, 0, 300, 100);
         
-        [Range(0f, 1000f)]
+        [Range(0f, 1000f)] 
         public float textAreaHeightOffset = 0f;
+
+        [SerializeField] 
+        private string OnEnterAction;
+        [SerializeField] 
+        private string OnExitAction;
+
+        [SerializeField] 
+        private string OnTimeAction;
+
+        public string GetOnEnterAction()
+        {
+            return OnEnterAction;
+        }
+        public string GetOnExitAction()
+        {
+            return OnExitAction;
+        }        
+
+        public string GetOnTimeAction()
+        {
+            return OnTimeAction;
+        }
+
 
         public Rect GetRect()
         {
