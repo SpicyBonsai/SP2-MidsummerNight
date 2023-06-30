@@ -112,6 +112,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dialogue
       objectReference: {fileID: 0}
+    - target: {fileID: 844664005205611474, guid: 39b3ef50b19bcd84b8f9ac118b819aee, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 844664005205611474, guid: 39b3ef50b19bcd84b8f9ac118b819aee, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 844664005205611474, guid: 39b3ef50b19bcd84b8f9ac118b819aee, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -100
+      objectReference: {fileID: 0}
+    - target: {fileID: 1260342674612009794, guid: 39b3ef50b19bcd84b8f9ac118b819aee, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 754c564a99396544cab4d2065a8eabb1, type: 3}
     - target: {fileID: 1514585706727653783, guid: 39b3ef50b19bcd84b8f9ac118b819aee, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -146,7 +162,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1514585706727653783, guid: 39b3ef50b19bcd84b8f9ac118b819aee, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 888
+      value: 1080
       objectReference: {fileID: 0}
     - target: {fileID: 1514585706727653783, guid: 39b3ef50b19bcd84b8f9ac118b819aee, type: 3}
       propertyPath: m_LocalPosition.x
@@ -196,17 +212,49 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5081470263377079031, guid: 39b3ef50b19bcd84b8f9ac118b819aee, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5148051000828849661, guid: 39b3ef50b19bcd84b8f9ac118b819aee, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5148051000828849661, guid: 39b3ef50b19bcd84b8f9ac118b819aee, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 994.2543
+      objectReference: {fileID: 0}
+    - target: {fileID: 5148051000828849661, guid: 39b3ef50b19bcd84b8f9ac118b819aee, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 994.1947
+      objectReference: {fileID: 0}
+    - target: {fileID: 5148051000828849661, guid: 39b3ef50b19bcd84b8f9ac118b819aee, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5148051000828849661, guid: 39b3ef50b19bcd84b8f9ac118b819aee, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5148051001219110393, guid: 39b3ef50b19bcd84b8f9ac118b819aee, type: 3}
+      propertyPath: m_PreserveAspect
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5148051001219110398, guid: 39b3ef50b19bcd84b8f9ac118b819aee, type: 3}
+      propertyPath: m_AspectRatio
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5148051001219110399, guid: 39b3ef50b19bcd84b8f9ac118b819aee, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5148051001219110399, guid: 39b3ef50b19bcd84b8f9ac118b819aee, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5148051001219110399, guid: 39b3ef50b19bcd84b8f9ac118b819aee, type: 3}
       propertyPath: m_SizeDelta.x
-      value: -49.759186
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5148051001725513764, guid: 39b3ef50b19bcd84b8f9ac118b819aee, type: 3}
       propertyPath: m_AnchorMax.y
@@ -240,7 +288,8 @@ PrefabInstance:
       propertyPath: DialogueScreen
       value: 
       objectReference: {fileID: 3008473196371916888}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5148051000828849660, guid: 39b3ef50b19bcd84b8f9ac118b819aee, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 39b3ef50b19bcd84b8f9ac118b819aee, type: 3}
 --- !u!224 &8914119951914441343 stripped
 RectTransform:

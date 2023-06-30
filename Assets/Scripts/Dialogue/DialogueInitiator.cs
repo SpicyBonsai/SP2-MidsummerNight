@@ -6,6 +6,9 @@ public class DialogueInitiator : MonoBehaviour, IInteractable
 {
     [Header("General Dialogue Parameters:")]
     [SerializeField] Lyr.Dialogue.Dialogue currentDialogue;
+    [SerializeField] Sprite characterImage;
+    [SerializeField] Vector2 offsetValue;
+    [SerializeField] string characterName;
     bool inDialogue = false;
     public bool InRange { get; private set; }
     private PlayerController _playerController;
@@ -32,6 +35,7 @@ public class DialogueInitiator : MonoBehaviour, IInteractable
     // Update is called once per frame
     void Update()
     {
+
         if (!DialogueManager.GetInstance().GetDialogueUI().activeSelf || !PlayerInRange())
         {
             inDialogue = false;
@@ -57,7 +61,12 @@ public class DialogueInitiator : MonoBehaviour, IInteractable
     {
         _playerConversant.StartDialogue(currentDialogue, this);
         DialogueManager.GetInstance().OpenDialogue();
+        DialogueManager.GetInstance().SetImage(characterImage);
+        DialogueManager.GetInstance().OffsetImage(offsetValue);
+        DialogueManager.GetInstance().SetName(characterName);
+
         DialogueManager.GetInstance().GetDialogueUI().GetComponentInChildren<Lyr.UI.DialogueUI>().InitiateDialogue();
+
 
         DialogueManager.GetInstance().SetInteractableOverlay(false);
         inDialogue = true;
