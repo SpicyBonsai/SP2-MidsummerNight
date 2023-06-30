@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: be8f3f8f9c5579a46a547a6b92d93032, type: 3}
-  m_Name: MainInventory
+  m_Name: MemoryInventory
   m_EditorClassIdentifier: 
   savePath: /Inventory.Save
-  Database: {fileID: 11400000, guid: d4272de57a15ba343b178935baf93f8d, type: 2}
+  Database: {fileID: 11400000, guid: b244ef5e57f588d4caa6c51823e74748, type: 2}
   Container:
     Items: []

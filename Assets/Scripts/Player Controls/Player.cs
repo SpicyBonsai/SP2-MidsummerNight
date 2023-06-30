@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class Player : MonoBehaviour
 {
-    public InventoryObject Inventory;
+    public InventoryObject ItemInventory;
+    public InventoryObject MemoryInventory;
+    public GameObject MemoryUI;
 
     string _guiText;
 
@@ -13,26 +15,44 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.P))
         {
             _guiText = "File saved";
-            Inventory.Save();
+            ItemInventory.Save();
         }
 
         if (Input.GetKeyDown(KeyCode.L))
-            Inventory.Load();
+            ItemInventory.Load();
+
+        if (Input.GetKeyDown(KeyCode.M) && !MemoryUI.activeInHierarchy)
+        {
+            MemoryUI.SetActive(true);
+        }
+        else if (Input.GetKeyDown(KeyCode.M) && MemoryUI.activeInHierarchy)
+        {
+            MemoryUI.SetActive(false);
+        }
 
     }
 
     public void OnTriggerEnter(Collider other)
     {
         var _item = other.GetComponent<GroundItem>();
+        var _memoryFragment = other.GetComponent<MemoryFragment>();
+
         if (_item)
         {
-            Inventory.AddItem(new Item(_item.ItemObj), 1);
+            ItemInventory.AddItem(new Item(_item.ItemObj), 1);
+            Destroy(other.gameObject);
+        }
+        else if (_memoryFragment)
+        {
+            MemoryInventory.AddItem(new Item(_memoryFragment.ItemObj), 1);
+            Destroy(other.gameObject.transform.parent.gameObject);
             Destroy(other.gameObject);
         }
     }
     private void OnApplicationQuit()
     {
-        Inventory.Container.Items.Clear();
+        ItemInventory.Container.Items.Clear();
+        MemoryInventory.Container.Items.Clear();
     }
 
     private void OnGUI()

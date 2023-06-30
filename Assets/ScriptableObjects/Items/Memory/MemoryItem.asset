@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8a508183aabb8d46b44046fe4e0f447, type: 3}
   m_Name: MemoryItem
   m_EditorClassIdentifier: 
-  ID: 2
-  ItemSprite: {fileID: 21300000, guid: f09eae8c0ea04254b90c5386a034a225, type: 3}
-  ItemPrefab: {fileID: 100000, guid: 2450c3f03dafc4d4996a7ae8061511cd, type: 3}
+  ID: 0
+  ItemSprite: {fileID: 21300000, guid: 36752584b8d295547959d405d49261f3, type: 3}
+  ItemPrefab: {fileID: 2252453150545344186, guid: 9df39f313c98ee64bac43e695382982c, type: 3}
   ItemObjType: 1
-  Description: 
+  ItemDescription: 
+  AudioClip: {fileID: 0}
