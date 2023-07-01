@@ -63,18 +63,18 @@ Material:
     m_Ints: []
     m_Floats:
     - _AlphaCutoff: 0.5
-    - _Brightness: 3.75
+    - _Brightness: 5
     - _BurnSpeed: 0.28
-    - _ColorBlend: 0.575
+    - _ColorBlend: 0.749
     - _Cutoff: 0.5
-    - _DepthFade: 0.8
+    - _DepthFade: 0.92
     - _InnerStep: 0.58
-    - _Offset: 0.05
-    - _OpacityCutoff: 0.05
+    - _Offset: 0
+    - _OpacityCutoff: 0.066
     - _OpacityStep: 0.188
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _Shading: 0.4
+    - _Shading: 0.51
     - __dirty: 0
     m_Colors:
     - _BaseColor: {r: 1, g: 0.41099083, b: 0.18431371, a: 0}

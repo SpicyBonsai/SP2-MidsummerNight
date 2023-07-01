@@ -38,18 +38,18 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _DisolveAmount: 3.37
-    - _DissolveScale: 2.15
+    - _DisolveAmount: -0.7
+    - _DissolveScale: 1.62
     - _DistortionAmount: 0.05
-    - _Gradient: 2.38
+    - _Gradient: 2.1
     - _GradientPos: -0.02
     - _QueueControl: 0
     - _QueueOffset: 0
     m_Colors:
-    - _Color: {r: 6135.9688, g: 931.6392, b: 0, a: 1}
+    - _Color: {r: 11.984314, g: 2.1960785, b: 0, a: 1}
     - _DissolveSpeed: {r: -0.1, g: -0.8, b: 0, a: 0}
     - _DistortionSpeed: {r: 0, g: -0.4, b: 0, a: 0}
-    - _OuterColor: {r: 191.74902, g: 32.125492, b: 16.062746, a: 1}
+    - _OuterColor: {r: 48.905663, g: 5.5193534, b: 1.1534352, a: 1}
   m_BuildTextureStacks: []
 --- !u!114 &958545455939351349
 MonoBehaviour:

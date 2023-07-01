@@ -89,8 +89,11 @@ public class DialogueInitiator : MonoBehaviour, IInteractable
     {
         if(gameObject.tag == "DialogueTrigger")
         {
-            Gizmos.color = new Color(1, 0, 0, 0.3f);
-            Gizmos.DrawCube(gameObject.transform.position, gameObject.transform.localScale);
+            // Gizmos.color = new Color(1, 0, 0, 0.3f);
+            // Gizmos.DrawCube(gameObject.transform.position, transform.localScale);
+
+            gameObject.GetComponent<MeshRenderer>().enabled = true;
+            
         }
         else if (gameObject.tag == "Interactable")
         {
