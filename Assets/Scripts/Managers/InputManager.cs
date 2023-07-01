@@ -68,24 +68,19 @@ public class InputManager : MonoBehaviour
         LeftClick = _leftClick.WasPerformedThisFrame();
         ResetDialogue = _resetDialogue.WasPerformedThisFrame();
 
-        if(InteractButtonPressed) Debug.Log("Clicked !");
+        //if(InteractButtonPressed) Debug.Log("Clicked !");
     }
 
     public void SwitchToGameplay()
     {
         PlayerInput.SwitchCurrentActionMap("Gameplay");
-        Debug.Log(PlayerInput.currentActionMap);
+        //Debug.Log(PlayerInput.currentActionMap);
     }
-
-    // public void SwitchToDialogue()
-    // {
-    //     PlayerInput.SwitchCurrentActionMap("Dialogue");
-    // }
 
     public void SwitchToUI()
     {
         PlayerInput.SwitchCurrentActionMap("UI");
-        Debug.Log(PlayerInput.currentActionMap);
+        //Debug.Log(PlayerInput.currentActionMap);
     }
 
 

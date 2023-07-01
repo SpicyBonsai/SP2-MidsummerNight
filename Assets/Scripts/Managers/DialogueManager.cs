@@ -12,6 +12,9 @@ public class DialogueManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI nameText;
     [SerializeField] private RectTransform imageOffsetRect;
     [SerializeField] private Vector3 initialImagePosition = new Vector3(-900, -500, 0);
+    [SerializeField] public Color currentColor { get; private set; }
+
+    [SerializeField] private TextMeshProUGUI[] dialogueButtons;
     
     #region Singleton Pattern Setup
     private static DialogueManager instance;
@@ -55,6 +58,24 @@ public class DialogueManager : MonoBehaviour
     public void SetName(string name)
     {
         nameText.text = name;
+    }
+
+    public void SetCurrentColor(Color color)
+    {
+        currentColor = color;
+    }
+
+    public void SetNameColor(Color color)
+    {
+        nameText.color = color;
+    }
+
+    public void SetButtonsColor(Color color)
+    {
+        foreach(TextMeshProUGUI button in dialogueButtons)
+        {
+            button.color = color;
+        }
     }
 
     public void OpenDialogue()

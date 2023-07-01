@@ -5,15 +5,19 @@ using UnityEngine;
 public class DialogueInitiator : MonoBehaviour, IInteractable
 {
     [Header("General Dialogue Parameters:")]
-    [SerializeField] Lyr.Dialogue.Dialogue currentDialogue;
-    [SerializeField] Sprite characterImage;
-    [SerializeField] Vector2 offsetValue;
-    [SerializeField] string characterName;
+    [SerializeField] private Lyr.Dialogue.Dialogue currentDialogue;
+    [SerializeField] private Sprite characterImage;
+    [SerializeField] private Vector2 offsetValue;
+    [SerializeField] private string characterName;
+    [SerializeField] private Color characterColor;
+    private Color infoColor;
     bool inDialogue = false;
     public bool InRange { get; private set; }
     private PlayerController _playerController;
     private Transform _playerPos;
     private Lyr.Dialogue.PlayerConversant _playerConversant;
+    private DialogueManager _dialogueManager;
+
 
     [Header("Interactable Dialogue Parameters:")]
 
@@ -28,6 +32,12 @@ public class DialogueInitiator : MonoBehaviour, IInteractable
         _playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
         _playerPos = GameObject.FindGameObjectWithTag("Player").transform;
         _playerConversant = GameObject.FindGameObjectWithTag("Player").GetComponent<Lyr.Dialogue.PlayerConversant>();
+        _dialogueManager = DialogueManager.GetInstance();
+    }
+
+    private void OnEnable() 
+    {
+        infoColor = new Color(characterColor.r, characterColor.g, characterColor.b, 0.8f);    
     }
 
     private bool PlayerInRange() => (_playerPos.position - gameObject.transform.position).magnitude <= _distanceToInteract;
@@ -36,7 +46,7 @@ public class DialogueInitiator : MonoBehaviour, IInteractable
     void Update()
     {
 
-        if (!DialogueManager.GetInstance().GetDialogueUI().activeSelf || !PlayerInRange())
+        if (!_dialogueManager.GetDialogueUI().activeSelf || !PlayerInRange())
         {
             inDialogue = false;
         }
@@ -47,7 +57,7 @@ public class DialogueInitiator : MonoBehaviour, IInteractable
         
         if(InRange)
         {
-            DialogueManager.GetInstance().SetInteractableOverlay(PlayerInRange());
+            _dialogueManager.SetInteractableOverlay(PlayerInRange());
         }
         
 
@@ -60,15 +70,18 @@ public class DialogueInitiator : MonoBehaviour, IInteractable
     public void Interact()
     {
         _playerConversant.StartDialogue(currentDialogue, this);
-        DialogueManager.GetInstance().OpenDialogue();
-        DialogueManager.GetInstance().SetImage(characterImage);
-        DialogueManager.GetInstance().OffsetImage(offsetValue);
-        DialogueManager.GetInstance().SetName(characterName);
+        _dialogueManager.OpenDialogue();
+        _dialogueManager.SetImage(characterImage);
+        _dialogueManager.OffsetImage(offsetValue);
+        _dialogueManager.SetName(characterName);
+        _dialogueManager.SetNameColor(characterColor);
+        _dialogueManager.SetButtonsColor(infoColor);
+        _dialogueManager.SetCurrentColor(characterColor);
+        
+        _dialogueManager.GetDialogueUI().GetComponentInChildren<Lyr.UI.DialogueUI>().InitiateDialogue();
 
-        DialogueManager.GetInstance().GetDialogueUI().GetComponentInChildren<Lyr.UI.DialogueUI>().InitiateDialogue();
 
-
-        DialogueManager.GetInstance().SetInteractableOverlay(false);
+        _dialogueManager.SetInteractableOverlay(false);
         inDialogue = true;
     }
 

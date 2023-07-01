@@ -84,7 +84,7 @@ namespace Lyr.Dialogue
 
         public bool HasNext()
         {
-            return currentNode.GetChildren().Count > 0;
+            return currentNode?.GetChildren().Count > 0;
         }
 
         internal IEnumerable<DialogueNode> GetChoices()
