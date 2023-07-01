@@ -1,0 +1,49 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-1513931301882268126
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3aefdf2842a95a946a43b387888c70b3, type: 3}
+  m_Name: ee8c7263-4111-4584-a64b-6bdaf758592b
+  m_EditorClassIdentifier: 
+  isPlayerSpeaking: 0
+  text: 'In winter''s grasp, the chill takes hold,
+
+    But spring arrives with warmth
+    untold.
+
+    Through open windows, let it sweep,
+
+    To drive away the cold,
+    so deep.'
+  children: []
+  rect:
+    serializedVersion: 2
+    x: 22
+    y: 18
+    width: 300
+    height: 100
+  textAreaHeightOffset: 0
+  OnEnterAction: 
+  OnExitAction: 
+  OnTimeAction: 
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dec24605fc459414ab9f7935fbd96c9f, type: 3}
+  m_Name: Poetry_01
+  m_EditorClassIdentifier: 
+  nodes:
+  - {fileID: -1513931301882268126}
