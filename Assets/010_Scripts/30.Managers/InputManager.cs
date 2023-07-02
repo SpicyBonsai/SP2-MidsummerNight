@@ -49,10 +49,10 @@ public class InputManager : MonoBehaviour
         _mousePosition = PlayerInput.actions["MousePosition"];
         _menuOpenAction = PlayerInput.actions["MenuOPEN"];
         _UIMenuCloseAction = PlayerInput.actions["MenuCLOSE"];
+        _saveButtonPressed = PlayerInput.actions["SaveBTN"];
         _submit = PlayerInput.actions["Submit"];
         _leftClick = PlayerInput.actions["Click"];
         _resetDialogue = PlayerInput.actions["ResetDialogue"];
-        _saveButtonPressed = PlayerInput.actions["SaveButtonPressed"];
     }
 
     public static InputManager GetInstance() 
