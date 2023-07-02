@@ -6,6 +6,7 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(PlayerInput))]
 public class InputManager : MonoBehaviour
 {
+    //Public Properties for Input Actions to be accessed by other scripts (e.g. PlayerController)
     public bool InteractButtonPressed { get; private set; }
     public Vector2 MousePosition { get; private set; }
     public bool MenuOpenInput { get; private set; }
@@ -13,7 +14,9 @@ public class InputManager : MonoBehaviour
     public bool Submit { get; private set; }
     public bool LeftClick { get; private set; }
     public bool ResetDialogue { get; private set; }
+    public bool SaveButtonPressed { get; private set; }
 
+    //Object instance of the PlayerInput component attached to this GameObject (this is a singleton)
     public static PlayerInput PlayerInput;
     
     private InputAction _interactPressed;
@@ -23,6 +26,7 @@ public class InputManager : MonoBehaviour
     private InputAction _submit;
     private InputAction _leftClick;
     private InputAction _resetDialogue;
+    private InputAction _saveButtonPressed;
 
 
 
@@ -37,7 +41,7 @@ public class InputManager : MonoBehaviour
             Debug.LogError("Found more than one Input Manager in the scene.");
         }
         instance = this;
-
+        
         PlayerInput = gameObject.GetComponent<PlayerInput>();    
         PlayerInput.SwitchCurrentActionMap("Gameplay");
 
@@ -48,6 +52,7 @@ public class InputManager : MonoBehaviour
         _submit = PlayerInput.actions["Submit"];
         _leftClick = PlayerInput.actions["Click"];
         _resetDialogue = PlayerInput.actions["ResetDialogue"];
+        _saveButtonPressed = PlayerInput.actions["SaveButtonPressed"];
     }
 
     public static InputManager GetInstance() 
@@ -67,20 +72,20 @@ public class InputManager : MonoBehaviour
         Submit = _submit.WasPerformedThisFrame();
         LeftClick = _leftClick.WasPerformedThisFrame();
         ResetDialogue = _resetDialogue.WasPerformedThisFrame();
+        SaveButtonPressed = _saveButtonPressed.WasPerformedThisFrame();
 
-        //if(InteractButtonPressed) Debug.Log("Clicked !");
     }
 
     public void SwitchToGameplay()
     {
         PlayerInput.SwitchCurrentActionMap("Gameplay");
-        //Debug.Log(PlayerInput.currentActionMap);
+
     }
 
     public void SwitchToUI()
     {
         PlayerInput.SwitchCurrentActionMap("UI");
-        //Debug.Log(PlayerInput.currentActionMap);
+
     }
 
 
