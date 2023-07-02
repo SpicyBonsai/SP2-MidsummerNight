@@ -15,8 +15,8 @@ public abstract class ItemObject : ScriptableObject
     public GameObject ItemPrefab;
     [HideInInspector]
     public ItemType ItemObjType;
-    [TextArea(15, 20)]
-    public string Description;
+    [TextArea(5, 10)]
+    public string ItemDescription;
 }
 
 [System.Serializable]

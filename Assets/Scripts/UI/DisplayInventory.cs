@@ -13,6 +13,7 @@ public class DisplayInventory : MonoBehaviour
     public GameObject InventoryPrefab;
     public InventoryObject InventoryObj;
     public Vector2 _placeholderSpriteSize = new Vector2(300, 100);
+
     Transform _parentAfterDrag;
     private int numberOfColumns;
     GameObject _instantiatedObj;
