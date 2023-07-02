@@ -257,6 +257,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "SaveBTN",
+                    "type": "Button",
+                    "id": "f7f09af2-b557-4d61-b8ac-6c455dcab23d",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -708,6 +717,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "ResetDialogue",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "90e099dc-279a-4fe5-8f24-a6b4b626880c",
+                    "path": "<Keyboard>/f5",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SaveBTN",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
