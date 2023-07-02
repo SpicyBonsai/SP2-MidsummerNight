@@ -2,12 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.InputSystem;
 
 public class PlayerController : MonoBehaviour
 {
     //public Variables
-    public float Speed,
-                 GroundDistance = 0.4f;
+    public float Speed;
+    public float GroundDistance = 0.4f;
     public bool PointAndClick = false; //we will put input type into settings later, now it's a variable in inspector
     public LayerMask GroundMask;
     public Transform GroundCheck;
@@ -23,6 +24,11 @@ public class PlayerController : MonoBehaviour
     Ray _ray;
     CharacterController _characterController;
     NavMeshAgent _navMeshAgent;
+
+    public bool IsTryingToInteract = false;
+    public IInteractable ObjToInteractWith;
+
+
 
     void Start()
     {
@@ -58,37 +64,73 @@ public class PlayerController : MonoBehaviour
         #region Point&Click
         else
         {
-            if (Input.GetMouseButtonDown(0))
+            if (InputManager.GetInstance().InteractButtonPressed)
             {
-                _ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-
+                _ray = Camera.main.ScreenPointToRay(InputManager.GetInstance().MousePosition);
                 if (Physics.Raycast(_ray, out _raycastHit, Mathf.Infinity, GroundMask))
                 {
-                    //Vector3 _pointerPos = new Vector3(_raycastHit.point.x, 0 + Pointer.GetComponent<SphereCollider>().radius, _raycastHit.point.z); //for pointer to be always at y = 0
-                    //Pointer.GetComponent<GroundSnap>().SetPostiion(_pointerPos); //PointerGroundSet.SetPostiion(_pointerPos);
-
+                    GameObject hitObject = _raycastHit.collider.gameObject;
                     Vector3 _pointerPos = _raycastHit.point; 
                     Pointer.transform.position = _pointerPos;
                     _navMeshAgent.SetDestination(Pointer.transform.position);
+
+                    if(hitObject.layer == LayerMask.NameToLayer("Interactable"))
+                    {
+
+                        IInteractable interact = hitObject.GetComponent(typeof(IInteractable)) as IInteractable;
+
+                        if(interact.InRange)
+                        {
+                            _navMeshAgent.ResetPath();
+                            Pointer.transform.position = GameObject.FindGameObjectWithTag("Player").transform.position;
+                            interact.Interact();
+                        }
+                        else
+                        {
+                            ObjToInteractWith = interact;
+                            if(Physics.Raycast(_raycastHit.point, Vector3.down, out _raycastHit, Mathf.Infinity, LayerMask.NameToLayer("Ground")))
+                            {
+                                Pointer.transform.position = _raycastHit.point;
+                                _navMeshAgent.SetDestination(Pointer.transform.position);
+                            }
+
+                            //here we could create a custom effect around the interactable object that gets activated when the player clicks him
+                        }
+                    }
+                    else
+                    {
+                        IsTryingToInteract = false;
+                        ObjToInteractWith = null;
+                    }
                 }
+
             }
 
-            #region Point&Click without NavMesh
-            /* without NavMesh
-                        if (transform.position != _raycastHit.point)
-                        {
-                            _movementDirection = _raycastHit.point - transform.position;
-                            _characterController.Move(_movementDirection.normalized * Time.deltaTime * Speed);
-
-                        }*/
-            #endregion
         }
         #endregion
+
+        if(ObjToInteractWith != null)
+        {
+            if(ObjToInteractWith.InRange)
+            {
+                ObjToInteractWith.Interact();
+                _navMeshAgent.ResetPath();
+                ObjToInteractWith = null;
+            }    
+        }
 
         #region Temporary for GUI Debug
         _guiText = PointAndClick ? "Point&Click" : "WASD/Gamepad";
         #endregion
     }
+
+    public void StopWalking()
+    {
+        _navMeshAgent.ResetPath();
+    }
+
+
+
 
     private void OnGUI()
     {
