@@ -8,8 +8,10 @@ public class DialogueInitiator : MonoBehaviour, IInteractable
     [SerializeField] private Lyr.Dialogue.Dialogue currentDialogue;
     [SerializeField] private Sprite characterImage;
     [SerializeField] private Vector2 offsetValue;
+    [SerializeField] private float imageScaleAmount = 1;
     [SerializeField] private string characterName;
     [SerializeField] private Color characterColor;
+    [SerializeField] private bool shouldCharacterStop;
     private Color infoColor;
     bool inDialogue = false;
     public bool InRange { get; private set; }
@@ -17,6 +19,7 @@ public class DialogueInitiator : MonoBehaviour, IInteractable
     private Transform _playerPos;
     private Lyr.Dialogue.PlayerConversant _playerConversant;
     private DialogueManager _dialogueManager;
+    
 
 
     [Header("Interactable Dialogue Parameters:")]
@@ -73,10 +76,15 @@ public class DialogueInitiator : MonoBehaviour, IInteractable
         _dialogueManager.OpenDialogue();
         _dialogueManager.SetImage(characterImage);
         _dialogueManager.OffsetImage(offsetValue);
+        _dialogueManager.ScaleImage(imageScaleAmount);
         _dialogueManager.SetName(characterName);
         _dialogueManager.SetNameColor(characterColor);
         _dialogueManager.SetButtonsColor(infoColor);
         _dialogueManager.SetCurrentColor(characterColor);
+        if(shouldCharacterStop)
+        {
+            _playerController.StopWalking();
+        }
         
         _dialogueManager.GetDialogueUI().GetComponentInChildren<Lyr.UI.DialogueUI>().InitiateDialogue();
 
@@ -91,8 +99,6 @@ public class DialogueInitiator : MonoBehaviour, IInteractable
         {
             // Gizmos.color = new Color(1, 0, 0, 0.3f);
             // Gizmos.DrawCube(gameObject.transform.position, transform.localScale);
-
-            gameObject.GetComponent<MeshRenderer>().enabled = true;
             
         }
         else if (gameObject.tag == "Interactable")

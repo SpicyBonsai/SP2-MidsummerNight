@@ -50,8 +50,22 @@ public class DialogueManager : MonoBehaviour
     
     }
 
+    public void ScaleImage(float scaleAmount)
+    {
+        imageOffsetRect.localScale = Vector3.one * scaleAmount;
+    }
+
     public void SetImage(Sprite image)
     {
+        if (image == null)
+        {
+            profileImage.color = Color.clear;
+        } 
+        else
+        {
+            profileImage.color = Color.white;
+        }
+
         profileImage.sprite = image;
     }
 

@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dec24605fc459414ab9f7935fbd96c9f, type: 3}
+  m_Name: SeemsBroken
+  m_EditorClassIdentifier: 
+  nodes:
+  - {fileID: 8427512207562707568}
+--- !u!114 &8427512207562707568
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3aefdf2842a95a946a43b387888c70b3, type: 3}
+  m_Name: 400324f3-3988-4edc-a8ba-584fef31df76
+  m_EditorClassIdentifier: 
+  isPlayerSpeaking: 0
+  text: This is one of the transport gates, it seems to be broken...
+  children: []
+  rect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 300
+    height: 100
+  textAreaHeightOffset: 0
+  OnEnterAction: 
+  OnExitAction: 
+  OnTimeAction: 

@@ -20,6 +20,7 @@ namespace Lyr.UI
         [SerializeField] GameObject DialogueScreen;
         [SerializeField] GameObject continueText;
         [SerializeField] private float typingSpeed = 0.04f;
+        [SerializeField] private float timeBetweenLines = 0.3f;
         private Coroutine displayLine;
         private bool canContinueToNextLine = false;
         private bool _skippingLine;
@@ -183,6 +184,11 @@ namespace Lyr.UI
                 {
                     playerConversant.TriggerOnTime();
                     continue;
+                }
+
+                if(letter == '\n')
+                {
+                    yield return new WaitForSeconds(timeBetweenLines);
                 }
 
                 AIText.text += letter;

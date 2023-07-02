@@ -124,6 +124,11 @@ public class PlayerController : MonoBehaviour
         #endregion
     }
 
+    public void StopWalking()
+    {
+        _navMeshAgent.ResetPath();
+    }
+
 
 
 
