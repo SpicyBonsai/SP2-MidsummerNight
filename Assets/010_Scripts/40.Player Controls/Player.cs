@@ -39,13 +39,14 @@ public class Player : MonoBehaviour
 
         if (_item)
         {
+            print(other);
             ItemInventory.AddItem(new Item(_item.ItemObj), 1);
             Destroy(other.gameObject);
         }
         else if (_memoryFragment)
         {
             MemoryInventory.AddItem(new Item(_memoryFragment.ItemObj), 1);
-            Destroy(other.gameObject.transform.parent.gameObject);
+            //Destroy(other.gameObject.transform.parent.gameObject);
             Destroy(other.gameObject);
         }
     }
