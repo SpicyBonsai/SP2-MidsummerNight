@@ -6,6 +6,8 @@ using UnityEngine.InputSystem;
 [RequireComponent(typeof(PlayerInput))]
 public class InputManager : MonoBehaviour
 {
+    [SerializeField] private bool isMenu;
+
     //Public Properties for Input Actions to be accessed by other scripts (e.g. PlayerController)
     public bool InteractButtonPressed { get; private set; }
     public Vector2 MousePosition { get; private set; }
@@ -43,7 +45,15 @@ public class InputManager : MonoBehaviour
         instance = this;
         
         PlayerInput = gameObject.GetComponent<PlayerInput>();    
-        PlayerInput.SwitchCurrentActionMap("Gameplay");
+
+        if(isMenu)
+        {
+            SwitchToUI();   
+        }
+        else
+        {
+            SwitchToGameplay();
+        }
 
         _interactPressed = PlayerInput.actions["Click"];
         _mousePosition = PlayerInput.actions["MousePosition"];

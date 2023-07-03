@@ -109,6 +109,7 @@ public class DialogueInitiator : MonoBehaviour, IInteractable
 
     private void OnTriggerEnter(Collider other) 
     {
+        Debug.Log("Triggered");
         if(gameObject.tag == "DialogueTrigger")
         {
             Interact();

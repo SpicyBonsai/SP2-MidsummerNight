@@ -30,7 +30,7 @@ Transform:
   m_GameObject: {fileID: 5826382879312148408}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -0.32, y: 4.72, z: 13.25}
-  m_LocalScale: {x: 33.00857, y: 8.2125, z: 3.8683047}
+  m_LocalScale: {x: 6.0742373, y: 8.2125, z: 3.1431522}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -64,7 +64,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5826382879312148408}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -111,11 +111,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3dfa493bd750ab343adf67ee7fb9b622, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentDialogue: {fileID: 11400000, guid: c81ca7a8d4c711342852c0797c780811, type: 2}
-  characterImage: {fileID: 21300000, guid: 754c564a99396544cab4d2065a8eabb1, type: 3}
-  offsetValue: {x: 100, y: 0}
-  characterName: Helistra
-  characterColor: {r: 0.6784314, g: 0.33333334, b: 0.33333334, a: 1}
+  currentDialogue: {fileID: 11400000, guid: 97483146af5d38d408de0ea16e294f50, type: 2}
+  characterImage: {fileID: 21300000, guid: 5225422d97a79ad41805a76a4c30b1db, type: 3}
+  offsetValue: {x: -50, y: 0}
+  imageScaleAmount: 1.1
+  characterName: Lyr
+  characterColor: {r: 0, g: 0.5471698, b: 0.35241443, a: 1}
+  shouldCharacterStop: 1
   _distanceToInteract: 2
 --- !u!114 &5826382879312148405
 MonoBehaviour:

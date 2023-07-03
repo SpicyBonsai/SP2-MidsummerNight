@@ -7,7 +7,7 @@
             "actions": [
                 {
                     "name": "MousePosition",
-                    "type": "Value",
+                    "type": "PassThrough",
                     "id": "41e7a7f7-7b9b-4566-b29a-2f4b49660dec",
                     "expectedControlType": "Vector2",
                     "processors": "",
@@ -16,12 +16,12 @@
                 },
                 {
                     "name": "Click",
-                    "type": "Button",
+                    "type": "PassThrough",
                     "id": "983ad474-d429-4a9f-b70d-a5a63edb6cc9",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 },
                 {
                     "name": "MenuOPEN",
@@ -88,7 +88,7 @@
                 {
                     "name": "",
                     "id": "95e73aca-398a-43f2-9a3d-7ec3ef34d9c7",
-                    "path": "",
+                    "path": "<Keyboard>/f",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
