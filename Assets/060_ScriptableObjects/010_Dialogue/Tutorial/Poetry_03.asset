@@ -1,0 +1,68 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dec24605fc459414ab9f7935fbd96c9f, type: 3}
+  m_Name: Poetry_03
+  m_EditorClassIdentifier: 
+  nodes:
+  - {fileID: 6454045469661886245}
+--- !u!114 &6454045469661886245
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3aefdf2842a95a946a43b387888c70b3, type: 3}
+  m_Name: ce95f348-3f25-4aae-88ef-1089f016794a
+  m_EditorClassIdentifier: 
+  isPlayerSpeaking: 0
+  text: "Spring's hope recedes, its light withdrawn, \nAs winter's touch leaves hearts
+    forlorn. \nA creeping frost invades each vein, \nA chilling darkness, unrestrained."
+  children: []
+  rect:
+    serializedVersion: 2
+    x: 1
+    y: 0
+    width: 300
+    height: 100
+  textAreaHeightOffset: 0
+  OnEnterAction: 
+  OnExitAction: 
+  OnTimeAction: 
+--- !u!114 &7113793460536194385
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3aefdf2842a95a946a43b387888c70b3, type: 3}
+  m_Name: 6a963ab1-2ab4-487a-9a41-cca0c836f671
+  m_EditorClassIdentifier: 
+  isPlayerSpeaking: 0
+  text: "Spring's hope recedes, its light withdrawn,\LAs winter's touch leaves hearts
+    forlorn.\LA creeping frost invades each vein,\LA chilling darkness, unrestrained."
+  children: []
+  rect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 300
+    height: 100
+  textAreaHeightOffset: 0
+  OnEnterAction: 
+  OnExitAction: 
+  OnTimeAction: 
