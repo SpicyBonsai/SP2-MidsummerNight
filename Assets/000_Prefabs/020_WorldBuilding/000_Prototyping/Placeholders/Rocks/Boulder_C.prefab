@@ -99,6 +99,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: dc56a705a279aca408e2e86b09f7a842, type: 3}
+      propertyPath: m_TagString
+      value: Terrain
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: dc56a705a279aca408e2e86b09f7a842, type: 3}
 --- !u!4 &636674100697899671 stripped
