@@ -5390,7 +5390,7 @@ PrefabInstance:
       objectReference: {fileID: 2105433052}
     - target: {fileID: 19645284803343817, guid: 5d5af2327eb6d274f94e5474f05e3327, type: 3}
       propertyPath: PointAndClick
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 19645284803343823, guid: 5d5af2327eb6d274f94e5474f05e3327, type: 3}
       propertyPath: m_Name
@@ -6670,7 +6670,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1019945095
 RectTransform:
   m_ObjectHideFlags: 0
@@ -10897,12 +10897,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_BindingMode: 1
   m_FollowOffset: {x: 0, y: 7, z: -7}
-  m_XDamping: 1.422229
-  m_YDamping: 1.422229
+  m_XDamping: 1.407582
+  m_YDamping: 1.407582
   m_ZDamping: 5
   m_AngularDampingMode: 0
   m_PitchDamping: 0
-  m_YawDamping: 4.977803
+  m_YawDamping: 4.926536
   m_RollDamping: 0
   m_AngularDamping: 0
 --- !u!114 &1739712121
@@ -10921,8 +10921,8 @@ MonoBehaviour:
   m_LookaheadTime: 0.05
   m_LookaheadSmoothing: 4.4
   m_LookaheadIgnoreY: 0
-  m_HorizontalDamping: 1.422229
-  m_VerticalDamping: 1.422229
+  m_HorizontalDamping: 1.407582
+  m_VerticalDamping: 1.407582
   m_ScreenX: 0.5
   m_ScreenY: 0.5
   m_DeadZoneWidth: 0
