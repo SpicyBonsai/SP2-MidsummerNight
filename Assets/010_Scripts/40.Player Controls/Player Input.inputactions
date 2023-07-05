@@ -7,7 +7,7 @@
             "actions": [
                 {
                     "name": "MousePosition",
-                    "type": "Value",
+                    "type": "PassThrough",
                     "id": "41e7a7f7-7b9b-4566-b29a-2f4b49660dec",
                     "expectedControlType": "Vector2",
                     "processors": "",
@@ -16,12 +16,12 @@
                 },
                 {
                     "name": "Click",
-                    "type": "Button",
+                    "type": "PassThrough",
                     "id": "983ad474-d429-4a9f-b70d-a5a63edb6cc9",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 },
                 {
                     "name": "MenuOPEN",
@@ -88,7 +88,7 @@
                 {
                     "name": "",
                     "id": "95e73aca-398a-43f2-9a3d-7ec3ef34d9c7",
-                    "path": "",
+                    "path": "<Keyboard>/f",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
@@ -253,6 +253,15 @@
                     "name": "ResetDialogue",
                     "type": "Button",
                     "id": "406503e3-b00b-46f5-abb9-7a1685ff2f58",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "SaveBTN",
+                    "type": "Button",
+                    "id": "f7f09af2-b557-4d61-b8ac-6c455dcab23d",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -708,6 +717,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "ResetDialogue",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "90e099dc-279a-4fe5-8f24-a6b4b626880c",
+                    "path": "<Keyboard>/f5",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "SaveBTN",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
