@@ -13114,6 +13114,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Moon Tile Lit
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: f3ca586c999bdb74e8cf2af5f90abe4b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f3ca586c999bdb74e8cf2af5f90abe4b, type: 3}
 --- !u!4 &850106133 stripped
@@ -19101,6 +19105,10 @@ PrefabInstance:
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: fdf54d4091bbc96409e2db4098c74488, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: fdf54d4091bbc96409e2db4098c74488, type: 3}
       propertyPath: m_TagString
       value: Terrain
       objectReference: {fileID: 0}
@@ -25007,8 +25015,8 @@ Transform:
   - {fileID: 15134612}
   - {fileID: 811279388}
   - {fileID: 309330242}
-  - {fileID: 1381751725}
   - {fileID: 54002637}
+  - {fileID: 1381751725}
   - {fileID: 1093554120}
   - {fileID: 627549349}
   m_Father: {fileID: 1180656423}
