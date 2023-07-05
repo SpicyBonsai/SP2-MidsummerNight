@@ -231,7 +231,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5826382879312148404, guid: 175fd030f7e8d214bb382a63afca1331, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -5.21
+      value: -2.64
       objectReference: {fileID: 0}
     - target: {fileID: 5826382879312148404, guid: 175fd030f7e8d214bb382a63afca1331, type: 3}
       propertyPath: m_LocalRotation.w
@@ -6157,7 +6157,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &977591785
 Transform:
   m_ObjectHideFlags: 0
@@ -6593,17 +6593,9 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1087272850365830422, guid: e93f3ec09e49a4b498b2ae8c0894298e, type: 3}
-      propertyPath: m_InitialTime
+    - target: {fileID: 452112141, guid: e93f3ec09e49a4b498b2ae8c0894298e, type: 3}
+      propertyPath: m_SizeDelta.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 1087272850365830422, guid: e93f3ec09e49a4b498b2ae8c0894298e, type: 3}
-      propertyPath: m_SceneBindings.Array.size
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 1087272850365830422, guid: e93f3ec09e49a4b498b2ae8c0894298e, type: 3}
-      propertyPath: m_SceneBindings.Array.data[15].key
-      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 1087272850365830422, guid: e93f3ec09e49a4b498b2ae8c0894298e, type: 3}
       propertyPath: m_SceneBindings.Array.data[13].value
@@ -6612,7 +6604,7 @@ PrefabInstance:
     - target: {fileID: 1087272850365830422, guid: e93f3ec09e49a4b498b2ae8c0894298e, type: 3}
       propertyPath: m_SceneBindings.Array.data[15].value
       value: 
-      objectReference: {fileID: 977591784}
+      objectReference: {fileID: 2080331767}
     - target: {fileID: 1269169852328559273, guid: e93f3ec09e49a4b498b2ae8c0894298e, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -6725,14 +6717,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI HUD
       objectReference: {fileID: 0}
-    - target: {fileID: 4827669221776283371, guid: e93f3ec09e49a4b498b2ae8c0894298e, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4956616276293338111, guid: e93f3ec09e49a4b498b2ae8c0894298e, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5853555986962658178, guid: e93f3ec09e49a4b498b2ae8c0894298e, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -6755,10 +6739,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5853555986962658178, guid: e93f3ec09e49a4b498b2ae8c0894298e, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7405143979816429686, guid: e93f3ec09e49a4b498b2ae8c0894298e, type: 3}
-      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -10345,12 +10325,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_BindingMode: 1
   m_FollowOffset: {x: 0, y: 7, z: -7}
-  m_XDamping: 1.417094
-  m_YDamping: 1.417094
+  m_XDamping: 1.455261
+  m_YDamping: 1.455261
   m_ZDamping: 5
   m_AngularDampingMode: 0
   m_PitchDamping: 0
-  m_YawDamping: 4.959828
+  m_YawDamping: 5.093413
   m_RollDamping: 0
   m_AngularDamping: 0
 --- !u!114 &1739712121
@@ -10369,8 +10349,8 @@ MonoBehaviour:
   m_LookaheadTime: 0.05
   m_LookaheadSmoothing: 4.4
   m_LookaheadIgnoreY: 0
-  m_HorizontalDamping: 1.417094
-  m_VerticalDamping: 1.417094
+  m_HorizontalDamping: 1.455261
+  m_VerticalDamping: 1.455261
   m_ScreenX: 0.5
   m_ScreenY: 0.5
   m_DeadZoneWidth: 0
@@ -12653,7 +12633,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2080331768
 Transform:
   m_ObjectHideFlags: 0
