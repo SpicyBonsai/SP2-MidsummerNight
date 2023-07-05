@@ -9,7 +9,7 @@ EditorBuildSettings:
     path: Assets/080_Scenes/MainMenu.unity
     guid: 59404667023252640a853222f0303066
   - enabled: 1
-    path: Assets/080_Scenes/Tutorial_Scene.unity
-    guid: 4daac43392a0742498889823991449cf
+    path: Assets/080_Scenes/Tutorial_Scene_Spicy.unity
+    guid: 4d8315c00cebb9d40bd8d6a4b3841a7c
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: a80a5b28ef0eaad48a3ff1def000fb61, type: 2}
