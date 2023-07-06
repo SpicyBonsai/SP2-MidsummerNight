@@ -12,23 +12,23 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            _guiText = "File saved";
-            ItemInventory.Save();
-        }
+        // if (Input.GetKeyDown(KeyCode.P))
+        // {
+        //     _guiText = "File saved";
+        //     ItemInventory.Save();
+        // }
 
-        if (Input.GetKeyDown(KeyCode.L))
-            ItemInventory.Load();
+        // if (Input.GetKeyDown(KeyCode.L))
+        //     ItemInventory.Load();
 
-        if (Input.GetKeyDown(KeyCode.M) && !MemoryUI.activeInHierarchy)
-        {
-            MemoryUI.SetActive(true);
-        }
-        else if (Input.GetKeyDown(KeyCode.M) && MemoryUI.activeInHierarchy)
-        {
-            MemoryUI.SetActive(false);
-        }
+        // if (Input.GetKeyDown(KeyCode.M) && !MemoryUI.activeInHierarchy)
+        // {
+        //     MemoryUI.SetActive(true);
+        // }
+        // else if (Input.GetKeyDown(KeyCode.M) && MemoryUI.activeInHierarchy)
+        // {
+        //     MemoryUI.SetActive(false);
+        // }
 
     }
 

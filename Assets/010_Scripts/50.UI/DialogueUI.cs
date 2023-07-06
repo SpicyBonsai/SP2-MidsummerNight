@@ -37,7 +37,7 @@ namespace Lyr.UI
         }
 
         void ButtonClick()
-        {
+        {  
             if(canContinueToNextLine && !playerConversant.HasNext())
             {
                 ExitDialogue();

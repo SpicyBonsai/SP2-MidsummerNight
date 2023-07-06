@@ -18,7 +18,7 @@ public class CameraRotate_Tudor : MonoBehaviour
     }
     void Update()
     {
-        if (Input.GetMouseButton(1))
+        if (InputManager.GetInstance().RightClick)
         {
             //_targetRotation = transform.forward.y;
             if(returnToFacing != null)
@@ -32,13 +32,14 @@ public class CameraRotate_Tudor : MonoBehaviour
 
 
             //Cursor.lockState = CursorLockMode.Locked;
-            _targetRotation += Input.GetAxis("Mouse X") * Sensitivity;
-            _targetRotation += Input.GetAxis("RightJoystick_X") * Sensitivity;
+            _targetRotation += InputManager.GetInstance().MouseMovement.x * Sensitivity;
+                // _targetRotation += Input.GetAxis("Mouse X") * Sensitivity;
+                // _targetRotation += Input.GetAxis("RightJoystick_X") * Sensitivity;
 
             transform.localRotation = Quaternion.Euler(0f, _targetRotation, 0f);
             //transform.localEulerAngles = new Vector3(0, _targetRotation, 0);
         }
-        else if(Input.GetMouseButton(0)){
+        else if(InputManager.GetInstance().LeftClick){
             //_targetRotation = transform.localRotation.y;
             if(Vector3.Dot(transform.forward, playerTransform.forward) < 0.99f && returnToFacing == null)
             {
@@ -64,7 +65,7 @@ public class CameraRotate_Tudor : MonoBehaviour
         Vector3 initialDirection = transform.forward;
         yield return new WaitForSeconds(returnToFacingDelay);
 
-        while(lerpDuration < 1 && !Input.GetKey(KeyCode.Q))
+        while(lerpDuration < 1)
         {
             elapsedTime += Time.deltaTime;
             lerpDuration = elapsedTime/desiredTime;
