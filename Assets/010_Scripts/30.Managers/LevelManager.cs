@@ -7,6 +7,6 @@ public class LevelManager : MonoBehaviour
 {
     public void NewGame()
     {
-        SceneManager.LoadScene("080_Scenes/Tutorial_Scene");
+        SceneManager.LoadScene(1);
     }
 }

@@ -18,6 +18,6 @@ public class LevitateMenuButton : MonoBehaviour
     void Update()
     {
         _rectTransform.anchoredPosition += new Vector2(0, Mathf.Sin(Time.time * _levitateSpeed) * _levitateDistance);
-        Debug.Log(Mathf.Sin(Time.time));
+        // Debug.Log(Mathf.Sin(Time.time));
     }
 }
