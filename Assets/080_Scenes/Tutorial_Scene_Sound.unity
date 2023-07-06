@@ -406,7 +406,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &18087208
 RectTransform:
   m_ObjectHideFlags: 0
@@ -27324,12 +27324,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_BindingMode: 1
   m_FollowOffset: {x: 0, y: 7, z: -7}
-  m_XDamping: 1.429348
-  m_YDamping: 1.429348
+  m_XDamping: 1.219816
+  m_YDamping: 1.219816
   m_ZDamping: 5
   m_AngularDampingMode: 0
   m_PitchDamping: 0
-  m_YawDamping: 5.00272
+  m_YawDamping: 4.269355
   m_RollDamping: 0
   m_AngularDamping: 0
 --- !u!114 &1739712121
@@ -27348,8 +27348,8 @@ MonoBehaviour:
   m_LookaheadTime: 0.05
   m_LookaheadSmoothing: 4.4
   m_LookaheadIgnoreY: 0
-  m_HorizontalDamping: 1.429348
-  m_VerticalDamping: 1.429348
+  m_HorizontalDamping: 1.219816
+  m_VerticalDamping: 1.219816
   m_ScreenX: 0.5
   m_ScreenY: 0.5
   m_DeadZoneWidth: 0
