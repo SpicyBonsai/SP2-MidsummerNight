@@ -63,6 +63,7 @@ public class InputManager : MonoBehaviour
         _submit = PlayerInput.actions["Submit"];
         _leftClick = PlayerInput.actions["Click"];
         _resetDialogue = PlayerInput.actions["ResetDialogue"];
+        _saveButtonPressed = PlayerInput.actions["SaveBTN"];
     }
 
     public static InputManager GetInstance() 
