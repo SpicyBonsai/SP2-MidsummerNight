@@ -20,6 +20,8 @@ public class InputManager : MonoBehaviour
     public bool RightClick { get; private set; }
     public Vector2 MouseMovement { get; private set; }
     public bool OpenConsole { get; private set; }
+    public bool SkipCutscene { get; private set; }
+    public bool CancelSkipCutscene { get; private set; }
 
 
     //Object instance of the PlayerInput component attached to this GameObject (this is a singleton)
@@ -36,7 +38,7 @@ public class InputManager : MonoBehaviour
     private InputAction _rightClick;
     private InputAction _mouseMovement;
     private InputAction _openConsole;
-
+    private InputAction _skipCutscene;
 
 
 
@@ -67,6 +69,7 @@ public class InputManager : MonoBehaviour
         _leftClick = PlayerInput.actions["Click"];
         _saveButtonPressed = PlayerInput.actions["SaveBTN"];
         _rightClick = PlayerInput.actions["RightClick"];
+        _skipCutscene = PlayerInput.actions["SkipCutscene"];
 
         //Assign the InputAction objects to the corresponding InputActionAssets in the Gameplay action map
         _mousePosition = PlayerInput.actions["MousePosition"];
@@ -95,21 +98,18 @@ public class InputManager : MonoBehaviour
         MousePosition = _mousePosition.ReadValue<Vector2>();
         MenuOpenInput = _menuOpenAction.WasPerformedThisFrame();
         MouseMovement = _mouseMovement.ReadValue<Vector2>();
-
         InteractButtonPressed = _interactPressed.IsPressed();
         UIMenuCloseInput = _UIMenuCloseAction.WasPerformedThisFrame();
         Submit = _submit.WasPerformedThisFrame();
         ResetDialogue = _resetDialogue.WasPerformedThisFrame();
-
-        
-        
-        
         LeftClick = _leftClick.WasPerformedThisFrame();
         SaveButtonPressed = _saveButtonPressed.WasPerformedThisFrame();
         RightClick = _rightClick.IsPressed();
         OpenConsole = _openConsole.WasPerformedThisFrame();
 
-        Debug.Log(_openConsole.actionMap);
+        SkipCutscene = _skipCutscene.IsPressed();
+        CancelSkipCutscene = _skipCutscene.WasReleasedThisFrame();
+
 
     }
 
@@ -132,6 +132,7 @@ public class InputManager : MonoBehaviour
         _leftClick = PlayerInput.actions["Click"];
         _saveButtonPressed = PlayerInput.actions["SaveBTN"];
         _rightClick = PlayerInput.actions["RightClick"];
+        _skipCutscene = PlayerInput.actions["SkipCutscene"];
     }
 
 
