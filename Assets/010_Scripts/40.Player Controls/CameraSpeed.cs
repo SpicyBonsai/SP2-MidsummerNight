@@ -43,7 +43,7 @@ public class CameraSpeed : MonoBehaviour
 
 
         //TODO replace the input
-        if(Input.GetMouseButton(1))
+        if(InputManager.GetInstance().RightClick)
         {
             camTransposer.m_XDamping = xDampingWhenHold;
             camTransposer.m_YDamping = yDampingWhenHold;

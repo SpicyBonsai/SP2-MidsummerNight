@@ -29,6 +29,20 @@ namespace Lyr.Dialogue
                 }
             }
         }
+        
+        private void Awake() 
+        {
+            nodeLookup.Clear();
+
+            foreach(DialogueNode node in GetAllNodes())
+            {
+                if (node != null)
+                {
+                    nodeLookup[node.name] = node;
+                }
+            }
+        }
+
         public IEnumerable<DialogueNode> GetAllNodes()
         {
             return nodes;
@@ -54,6 +68,8 @@ namespace Lyr.Dialogue
         {
             foreach(DialogueNode node in GetAllChildren(parentNode))
             {
+                //the code inside here doesn't seem to be running
+                //DebugConsole.GetInstance().LogMessage("GetAIChildren() called; current node is " + node.name);
                 if(!node.IsPlayerSpeaking())
                 {
                     yield return node;
@@ -63,6 +79,7 @@ namespace Lyr.Dialogue
 
         public IEnumerable<DialogueNode> GetAllChildren(DialogueNode parentNode)
         {
+
             foreach(string childID in parentNode.GetChildren())
             {
                 if(nodeLookup.ContainsKey(childID))
@@ -84,14 +101,8 @@ namespace Lyr.Dialogue
 
         public void RemoveNode(DialogueNode nodeToDelete)
         {
-            // Undo.IncrementCurrentGroup();
-
-            // Undo.RecordObject(nodeToDelete, "Removed Node");
             nodes.Remove(nodeToDelete);
-            CleanDanglingChildren(nodeToDelete);
-            // Undo.DestroyObjectImmediate(nodeToDelete);
-
-            // Undo.CollapseUndoOperations(Undo.GetCurrentGroup());    
+            CleanDanglingChildren(nodeToDelete); 
         
             OnValidate();
         }

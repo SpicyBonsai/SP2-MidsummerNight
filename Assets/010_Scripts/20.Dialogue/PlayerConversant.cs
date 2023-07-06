@@ -62,8 +62,10 @@ namespace Lyr.Dialogue
             }
 
             DialogueNode[] children = currentDialogue.GetAIChildren(currentNode).ToArray();
-            int randomIndex = UnityEngine.Random.Range(0, children.Count());
+
+            int randomIndex = 0; //UnityEngine.Random.Range(0, children.Count());
             currentNode = children[randomIndex];
+
             //onConversationUpdated();
         }
 

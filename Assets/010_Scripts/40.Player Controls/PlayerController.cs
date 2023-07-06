@@ -47,14 +47,14 @@ public class PlayerController : MonoBehaviour
         #endregion
 
         #region WASD/Joystick
-        float _x = Input.GetAxis("Horizontal");
-        float _z = Input.GetAxis("Vertical");
+        // float _x = Input.GetAxis("Horizontal");
+        // float _z = Input.GetAxis("Vertical");
 
-        Vector3 _move = transform.right * _x + transform.forward * _z;
+        // Vector3 _move = transform.right * _x + transform.forward * _z;
         if (!PointAndClick)
         {
             _navMeshAgent.ResetPath();
-            _navMeshAgent.Move(Speed * Time.deltaTime * _move);
+            // _navMeshAgent.Move(Speed * Time.deltaTime * _move);
             _velocity.y += _gravity * Time.deltaTime;
             //_characterController.Move(_velocity * Time.deltaTime);
             _navMeshAgent.Move(_velocity * Time.deltaTime);
@@ -132,8 +132,8 @@ public class PlayerController : MonoBehaviour
 
 
 
-    private void OnGUI()
-    {
-        GUI.Label(new Rect(10, 10, 50, 20), _guiText);
-    }
+    // private void OnGUI()
+    // {
+    //     GUI.Label(new Rect(10, 10, 50, 20), _guiText);
+    // }
 }

@@ -49,6 +49,33 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "RightClick",
+                    "type": "PassThrough",
+                    "id": "b1b5d08b-ef2e-4e5a-94e6-e6c8f69db9d9",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "MouseMovement",
+                    "type": "PassThrough",
+                    "id": "ba992894-a4ed-43ce-a292-bf8c5c7a7391",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "OpenConsole",
+                    "type": "Button",
+                    "id": "f0da7a8b-c08a-4ed5-992b-95a9c54161fe",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -106,32 +133,37 @@
                     "action": "SaveBTN",
                     "isComposite": false,
                     "isPartOfComposite": false
-                }
-            ]
-        },
-        {
-            "name": "Dialogue",
-            "id": "651d0829-7c30-4365-ae23-9dafa4861c51",
-            "actions": [
-                {
-                    "name": "Interact",
-                    "type": "Button",
-                    "id": "57c535fc-8d9d-4709-b1b8-484e28812585",
-                    "expectedControlType": "Button",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                }
-            ],
-            "bindings": [
+                },
                 {
                     "name": "",
-                    "id": "213dbaaf-21a1-4583-9e1a-ecd97f9e84f0",
-                    "path": "<Mouse>/leftButton",
+                    "id": "56dd0b86-8118-4a6e-bac1-ae4841bbdce8",
+                    "path": "<Mouse>/rightButton",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "Interact",
+                    "action": "RightClick",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "962f5c7d-ba6a-43b2-bdf5-a7adf7452d1d",
+                    "path": "<Mouse>/delta",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MouseMovement",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "62e717b8-c816-4cf5-b690-80d99590a2b7",
+                    "path": "<Keyboard>/OEM1",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "OpenConsole",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -262,6 +294,15 @@
                     "name": "SaveBTN",
                     "type": "Button",
                     "id": "f7f09af2-b557-4d61-b8ac-6c455dcab23d",
+                    "expectedControlType": "Button",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "OpenConsole",
+                    "type": "Button",
+                    "id": "92e4dddd-533d-4b9b-85c2-1ba875338335",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
@@ -728,6 +769,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "SaveBTN",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "14362ae1-df00-45e2-9d35-ffd093bf6fed",
+                    "path": "<Keyboard>/OEM1",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "OpenConsole",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
