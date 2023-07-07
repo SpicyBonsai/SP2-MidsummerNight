@@ -5356,6 +5356,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Player_Walk
       objectReference: {fileID: 0}
+    - target: {fileID: 1802193380068265283, guid: 5d5af2327eb6d274f94e5474f05e3327, type: 3}
+      propertyPath: MemoryUI
+      value: 
+      objectReference: {fileID: 1669607604}
+    - target: {fileID: 1802193380068265283, guid: 5d5af2327eb6d274f94e5474f05e3327, type: 3}
+      propertyPath: WorldItemsUI
+      value: 
+      objectReference: {fileID: 299172379}
+    - target: {fileID: 6067912224460595505, guid: 5d5af2327eb6d274f94e5474f05e3327, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5d5af2327eb6d274f94e5474f05e3327, type: 3}
 --- !u!1001 &782062739
@@ -6515,7 +6527,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &977591785
 Transform:
   m_ObjectHideFlags: 0
@@ -8122,7 +8134,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 161396124}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 47db0e7243fbecb40ae48c90d8ac348c, type: 3}
   m_Name: 
@@ -8130,6 +8142,7 @@ MonoBehaviour:
   ItemInventory: {fileID: 11400000, guid: 307129c510aa63940a8c5f13530d068c, type: 2}
   MemoryInventory: {fileID: 11400000, guid: a9aab0b36953ec747a45ac9b5f8e891b, type: 2}
   MemoryUI: {fileID: 1669607604}
+  WorldItemsUI: {fileID: 0}
 --- !u!4 &1250478665 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5826382879312148404, guid: 175fd030f7e8d214bb382a63afca1331, type: 3}
@@ -12183,6 +12196,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88d01808092db704e9b5dbd7aa1bec66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CursorOverUI: {fileID: 0}
   InventoryPrefab: {fileID: 2552738267479618308, guid: b6cbb2288dae4a443b63341d27b2c80b, type: 3}
   InventoryObj: {fileID: 11400000, guid: 307129c510aa63940a8c5f13530d068c, type: 2}
   _placeholderSpriteSize: {x: 140, y: 50}

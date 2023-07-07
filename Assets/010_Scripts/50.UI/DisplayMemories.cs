@@ -7,9 +7,9 @@ using UnityEngine.EventSystems;
 using UnityEngine.Events;
 using UnityEngine.AI;
 
-public sealed class DisplayMemories : MonoBehaviour
+public class DisplayMemories : MonoBehaviour
 {
-    private static DisplayMemories _instance;
+/*    private static DisplayMemories _instance;
     public static DisplayMemories Instance
     {
         get
@@ -18,7 +18,7 @@ public sealed class DisplayMemories : MonoBehaviour
                 _instance = new DisplayMemories();
             return _instance;
         }
-    }
+    }*/
 
     public MouseItem MouseItemInstance = new MouseItem();
     public GameObject InventoryPrefab;
@@ -177,7 +177,6 @@ public sealed class DisplayMemories : MonoBehaviour
         string _itemName = _objToInsantiate.name;
         bool memoryActivated = false; //is true when player puts the memory into proper place
         var hoveredObj = MouseHover.HoveredObj;
-        print(_itemName);
         if (hoveredObj.name == _itemName) //&& !hoveredObj.GetComponent<MeshRenderer>().enabled) // && hoveredObj.transform.parent.GetComponent<BrokenObject>()._brokenParts[hoveredObj])
           {
             memoryActivated = true;
@@ -186,7 +185,6 @@ public sealed class DisplayMemories : MonoBehaviour
             hoveredObj.GetComponent<MeshRenderer>().material = MouseItemInstance._gameObj.GetComponent<MeshRenderer>().material;
             //hoveredObj.transform.parent.GetComponent<BrokenObject>()._brokenParts[hoveredObj] = false;
             //hoveredObj.GetComponent<BrokenPart>().isFixed = true;
-            print("we're here");
             //hoveredObj.GetComponent<MeshRenderer>().enabled = true;
 
           }

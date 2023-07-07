@@ -6,68 +6,73 @@ public class Player : MonoBehaviour
 {
     public InventoryObject ItemInventory;
     public InventoryObject MemoryInventory;
-    public DataSave DataSave; 
+    //public DataSave DataSave; 
     public GameObject MemoryUI;
     public GameObject WorldItemsUI;
+    public CursorOutUiElemRange CursorOverUI;
 
     string _guiText;
+    bool _inUIMap = false;
 
     private void Start()
     {
         //MemoryUI = DisplayMemories.Instance.gameObject;
         //print(MemoryUI);
         //WorldItemsUI = DisplayInventory.Instance.gameObject;
+        MemoryUI.SetActive(false);
+        //WorldItemsUI.SetActive(false);
     }
     private void Update()
     {
+        print(InputManager.GetInstance().MousePosition);
+        if (CursorOverUI.TestBool)
+        {
+            //InputManager.GetInstance().SwitchToUI();
+            //print("hovering PANEL UI");
+        }
+        else
+        {
+            //print("not over ");
+            //InputManager.GetInstance().SwitchToGameplay();
+        }
+
         if (Input.GetKeyDown(KeyCode.P))
         {
             _guiText = "File saved";
-            //ItemInventory.Save();
-            DataSave.Save();
+            ItemInventory.Save();
+            //DataSave.Save();
         }
 
         if (Input.GetKeyDown(KeyCode.L))
-            DataSave.Load();
-            //ItemInventory.Load();
-
+            //DataSave.Load();
+            ItemInventory.Load();
         #region UI controllers
-        if (Input.GetKeyDown(KeyCode.M) && !MemoryUI.activeInHierarchy)
+        if (Input.GetKeyDown(KeyCode.B) && !MemoryUI.activeInHierarchy)
         {
             InputManager.GetInstance().SwitchToUI();
             MemoryUI.SetActive(true);
+            _inUIMap = true;
         }
-        else if (Input.GetKeyDown(KeyCode.M) && MemoryUI.activeInHierarchy)
+        else if (Input.GetKeyDown(KeyCode.B) && MemoryUI.activeInHierarchy)
         {
-            InputManager.GetInstance().SwitchToGameplay();
+                InputManager.GetInstance().SwitchToGameplay();
             MemoryUI.SetActive(false);
+            _inUIMap = false;
         }
-        print(InputManager.GetInstance());
-        /*
-                if(MouseHover.HoveredObj.GetComponent<IUIInterface>() )
-                    InputManager.GetInstance().SwitchToUI();
-                else
-                    InputManager.GetInstance().SwitchToGameplay();*/
 
-/*        if (MouseHover.CursorIsOverUI)
-            InputManager.GetInstance().SwitchToUI();
-        else
-            InputManager.GetInstance().SwitchToGameplay();*/
-
-        if (Input.GetKeyDown(KeyCode.N) && !WorldItemsUI.activeInHierarchy)
+/*        if (Input.GetKeyDown(KeyCode.N) && !WorldItemsUI.activeInHierarchy)
         {
             InputManager.GetInstance().SwitchToUI();
             WorldItemsUI.SetActive(true);
-            print("opening Panel");
+            //print("opening Panel");
         }
         else if (Input.GetKeyDown(KeyCode.N) && WorldItemsUI.activeInHierarchy)
         {
             InputManager.GetInstance().SwitchToGameplay();
             WorldItemsUI.SetActive(false);
-            print("closing dat shit");
-        }
+            //print("closing dat shit");
+        }*/
         #endregion
-        print(InputManager.GetInstance());
         /*
                 if(MouseHover.HoveredObj.GetComponent<IUIInterface>() )
                     InputManager.GetInstance().SwitchToUI();
@@ -88,7 +93,6 @@ public class Player : MonoBehaviour
 
         if (_item)
         {
-            print(other);
             ItemInventory.AddItem(new Item(_item.ItemObj), 1);
             Destroy(other.gameObject);
         }

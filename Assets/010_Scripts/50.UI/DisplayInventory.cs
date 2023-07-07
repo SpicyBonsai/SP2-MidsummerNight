@@ -7,9 +7,9 @@ using UnityEngine.EventSystems;
 using UnityEngine.Events;
 using UnityEngine.AI;
 
-public sealed class DisplayInventory : MonoBehaviour, IPointerEnterHandler
+public class DisplayInventory : MonoBehaviour, IPointerEnterHandler
 {
-    private static DisplayInventory _instance;
+/*    private static DisplayInventory _instance;
     public static DisplayInventory Instance
     {
         get
@@ -18,7 +18,7 @@ public sealed class DisplayInventory : MonoBehaviour, IPointerEnterHandler
                 _instance = new DisplayInventory();
             return _instance;
         }
-    }
+    }*/
     public MouseItem MouseItemInstance = new MouseItem();
     public CursorOutUiElemRange CursorOverUI;
     public GameObject InventoryPrefab;
@@ -51,12 +51,12 @@ public sealed class DisplayInventory : MonoBehaviour, IPointerEnterHandler
         UpdateDisplay();
         if (CursorOverUI.TestBool)
         {
-            print("hovering PANEL UI");
+            //print("hovering PANEL UI");
             //InputManager.GetInstance().SwitchToUI();
         }
         else
         {
-            print("not over ");
+            //print("not over ");
             //InputManager.GetInstance().SwitchToGameplay();
         }
         //UpdateSlots(); //created 17.06
