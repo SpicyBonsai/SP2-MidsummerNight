@@ -6,6 +6,7 @@ public class Player : MonoBehaviour
 {
     public InventoryObject ItemInventory;
     public InventoryObject MemoryInventory;
+    public DataSave DataSave; 
     public GameObject MemoryUI;
     public GameObject WorldItemsUI;
 
@@ -22,11 +23,14 @@ public class Player : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.P))
         {
             _guiText = "File saved";
-            ItemInventory.Save();
+            //ItemInventory.Save();
+            DataSave.Save();
         }
 
         if (Input.GetKeyDown(KeyCode.L))
-            ItemInventory.Load();
+            DataSave.Load();
+            //ItemInventory.Load();
+
         #region UI controllers
         if (Input.GetKeyDown(KeyCode.M) && !MemoryUI.activeInHierarchy)
         {
@@ -38,6 +42,17 @@ public class Player : MonoBehaviour
             InputManager.GetInstance().SwitchToGameplay();
             MemoryUI.SetActive(false);
         }
+        print(InputManager.GetInstance());
+        /*
+                if(MouseHover.HoveredObj.GetComponent<IUIInterface>() )
+                    InputManager.GetInstance().SwitchToUI();
+                else
+                    InputManager.GetInstance().SwitchToGameplay();*/
+
+/*        if (MouseHover.CursorIsOverUI)
+            InputManager.GetInstance().SwitchToUI();
+        else
+            InputManager.GetInstance().SwitchToGameplay();*/
 
         if (Input.GetKeyDown(KeyCode.N) && !WorldItemsUI.activeInHierarchy)
         {
