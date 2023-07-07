@@ -7,9 +7,16 @@ public class Player : MonoBehaviour
     public InventoryObject ItemInventory;
     public InventoryObject MemoryInventory;
     public GameObject MemoryUI;
+    public GameObject WorldItemsUI;
 
     string _guiText;
 
+    private void Start()
+    {
+        //MemoryUI = DisplayMemories.Instance.gameObject;
+        //print(MemoryUI);
+        //WorldItemsUI = DisplayInventory.Instance.gameObject;
+    }
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.P))
@@ -23,12 +30,25 @@ public class Player : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.M) && !MemoryUI.activeInHierarchy)
         {
+            InputManager.GetInstance().SwitchToUI();
             MemoryUI.SetActive(true);
         }
         else if (Input.GetKeyDown(KeyCode.M) && MemoryUI.activeInHierarchy)
         {
+            InputManager.GetInstance().SwitchToGameplay();
             MemoryUI.SetActive(false);
         }
+        print(InputManager.GetInstance());
+        /*
+                if(MouseHover.HoveredObj.GetComponent<IUIInterface>() )
+                    InputManager.GetInstance().SwitchToUI();
+                else
+                    InputManager.GetInstance().SwitchToGameplay();*/
+
+/*        if (MouseHover.CursorIsOverUI)
+            InputManager.GetInstance().SwitchToUI();
+        else
+            InputManager.GetInstance().SwitchToGameplay();*/
 
     }
 

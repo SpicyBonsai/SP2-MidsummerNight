@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class CursorOutUiElemRange : MonoBehaviour 
+public class CursorOutUiElemRange : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     public bool TestBool;
     public static bool MouseOverUI
@@ -16,15 +16,18 @@ public class CursorOutUiElemRange : MonoBehaviour
         //print(MouseOverUI);
         TestBool = _mouseOverUI;
     }
+
     public void OnPointerEnter(PointerEventData eventData)
     {
+        //InputManager.GetInstance().SwitchToUI();
         _mouseOverUI = true;
-        print("hovered panel");
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
+        //InputManager.GetInstance().SwitchToGameplay();
         _mouseOverUI = false;
-        print("unhovered");
     }
+
+
 }

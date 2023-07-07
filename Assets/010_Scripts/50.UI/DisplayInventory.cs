@@ -7,9 +7,20 @@ using UnityEngine.EventSystems;
 using UnityEngine.Events;
 using UnityEngine.AI;
 
-public class DisplayInventory : MonoBehaviour
+public sealed class DisplayInventory : MonoBehaviour, IPointerEnterHandler
 {
+    private static DisplayInventory _instance;
+    public static DisplayInventory Instance
+    {
+        get
+        {
+            if (_instance == null)
+                _instance = new DisplayInventory();
+            return _instance;
+        }
+    }
     public MouseItem MouseItemInstance = new MouseItem();
+    public CursorOutUiElemRange CursorOverUI;
     public GameObject InventoryPrefab;
     public InventoryObject InventoryObj;
     public Vector2 _placeholderSpriteSize = new Vector2(300, 100);
@@ -38,6 +49,16 @@ public class DisplayInventory : MonoBehaviour
     void Update()
     {
         UpdateDisplay();
+        if (CursorOverUI.TestBool)
+        {
+            print("hovering PANEL UI");
+            //InputManager.GetInstance().SwitchToUI();
+        }
+        else
+        {
+            print("not over ");
+            //InputManager.GetInstance().SwitchToGameplay();
+        }
         //UpdateSlots(); //created 17.06
         //print(MouseItemInstance._obj);
     }
@@ -156,17 +177,20 @@ public class DisplayInventory : MonoBehaviour
 
     public void OnEnter(GameObject _obj)
     {
+        //InputManager.GetInstance().SwitchToUI();
         MouseItemInstance._hoverObj = _obj;
         if (itemsDisplayed.ContainsValue(_obj))
             MouseItemInstance._hoverItem = itemsInSlotsDisplayed[_obj];
     }
     public void OnExit(GameObject _obj)
     {
+        //InputManager.GetInstance().SwitchToUI();
         MouseItemInstance._hoverObj = null;
         MouseItemInstance._hoverItem = null;
     }
     public void OnDragStart(GameObject _obj, InventoryItemSlot _inventoryItemSlot)
     {
+        //InputManager.GetInstance().SwitchToUI();
         //creating img holder
         var _mouseObj = new GameObject();
         _mouseObj.name = "ItemSpiteHolder";
@@ -203,14 +227,17 @@ public class DisplayInventory : MonoBehaviour
     }
     public void OnDragEnd(GameObject _obj, InventoryItemSlot _inventoryItemSlot)
     {
+        
         string _itemName = _objToInsantiate.name;
 
         if (MouseItemInstance._hoverObj)
         {
             InventoryObj.MoveItem(itemsInSlotsDisplayed[_obj], itemsInSlotsDisplayed[MouseItemInstance._hoverObj]);
+            //InputManager.GetInstance().SwitchToUI();
         }
         else if (!MouseItemInstance._hoverObj)
         {
+            //InputManager.GetInstance().SwitchToGameplay();
             var hoveredObj = MouseHover.HoveredObj;
             if (hoveredObj.name == _itemName && !hoveredObj.GetComponent<MeshRenderer>().enabled) // && hoveredObj.transform.parent.GetComponent<BrokenObject>()._brokenParts[hoveredObj])
             {
@@ -238,9 +265,14 @@ public class DisplayInventory : MonoBehaviour
         Destroy(MouseItemInstance._obj);
         Destroy(MouseItemInstance._gameObj);
         MouseItemInstance._item = null;
+/*        gameObject.GetComponent<Image>().enabled = true;
+        _obj.GetComponent<Image>().enabled = true;
+        _obj.transform.GetChild(0).GetComponent<Image>().enabled = true;
+*/
     }
     public void OnDrag(GameObject _obj)
     {
+        //InputManager.GetInstance().SwitchToUI();
         if (MouseItemInstance._obj != null)
             MouseItemInstance._obj.GetComponent<RectTransform>().position = Input.mousePosition;
 
@@ -267,7 +299,15 @@ public class DisplayInventory : MonoBehaviour
         {
             return new Vector3(0, (-Y_SpaceBetweenItems * (i % numberOfColumns)), 0); //number of columns = items quantity
         }*/
+    public void OnPointerEnter(PointerEventData eventData)
+    {
+        print("hovered panel");
+    }
 
+    public void OnPointerExit(PointerEventData eventData)
+    {
+        print("unhovered");
+    }
 
 }
 

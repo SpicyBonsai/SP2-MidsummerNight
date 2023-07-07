@@ -12,7 +12,8 @@ public class PlayerController : MonoBehaviour
     public bool PointAndClick = false; //we will put input type into settings later, now it's a variable in inspector
     public LayerMask GroundMask;
     public Transform GroundCheck;
-    public GameObject Pointer;
+    
+    private GameObject Pointer;
     //public static GroundSnap PointerGroundSet;
 
     //private Variables
@@ -35,6 +36,7 @@ public class PlayerController : MonoBehaviour
         _characterController = gameObject.GetComponent<CharacterController>();
         _navMeshAgent = gameObject.GetComponent<NavMeshAgent>();
         //print(_navMeshAgent);
+        Pointer = GameObject.FindGameObjectWithTag("Pointer");
     }
 
 

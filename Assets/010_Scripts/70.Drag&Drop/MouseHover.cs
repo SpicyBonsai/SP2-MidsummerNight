@@ -18,6 +18,13 @@ public class MouseHover : MonoBehaviour
     }
     static bool _cursorIsOverUI;
 
+    public static GameObject HoveredUIelement
+    {
+        get { return _hoveredUIelem; }
+    }
+    static GameObject _hoveredUIelem;
+    public static List<GameObject> RaycastResults;
+
     Ray _ray;
     RaycastHit _hit;
 
@@ -29,6 +36,13 @@ public class MouseHover : MonoBehaviour
             _hoveredObj = _hit.collider.transform.gameObject;
         }
         _cursorIsOverUI = IsPointerOverUIObject();
+
+       // print(_cursorIsOverUI);
+
+/*        if (CursorIsOverUI)
+            InputManager.GetInstance().SwitchToUI();
+        else
+            InputManager.GetInstance().SwitchToGameplay();*/
     }
 
     public static bool IsPointerOverUIObject()

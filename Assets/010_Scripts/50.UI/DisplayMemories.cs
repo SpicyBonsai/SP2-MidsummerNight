@@ -7,8 +7,18 @@ using UnityEngine.EventSystems;
 using UnityEngine.Events;
 using UnityEngine.AI;
 
-public class DisplayMemories : MonoBehaviour
+public sealed class DisplayMemories : MonoBehaviour
 {
+    private static DisplayMemories _instance;
+    public static DisplayMemories Instance
+    {
+        get
+        {
+            if (_instance == null)
+                _instance = new DisplayMemories();
+            return _instance;
+        }
+    }
 
     public MouseItem MouseItemInstance = new MouseItem();
     public GameObject InventoryPrefab;
