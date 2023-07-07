@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+
 using UnityEngine;
 using UnityEngine.Playables;
 using UnityEngine.UI;
 using TMPro;
+using System.Linq;
 
-public class SkipCutscene : MonoBehaviour
+public class CutsceneOptions : MonoBehaviour
 {
     [SerializeField] PlayableDirector _director;
     Coroutine _skipCoroutine;
@@ -18,7 +20,24 @@ public class SkipCutscene : MonoBehaviour
     private TextMeshProUGUI _skippingText;
     private float _timeToSkip = 5f;
 
+
+    [SerializeField] GameOptions _gameOptions;
+    [SerializeField] GameObject _subtitles;
+
     private void Start() {
+        
+        if(!_gameOptions.SubtitlesOn)
+        {
+            _subtitles.SetActive(false);
+            foreach(var binding in _director.playableAsset.outputs.ToArray())
+            {
+                if( binding.streamName.Contains("Sub"))
+                {
+                    _director.SetGenericBinding(binding.sourceObject, null);
+                }
+            }
+
+        }
         _skippingText = _skippingIndicator.GetComponentInChildren<TextMeshProUGUI>();
     }
     void Update()

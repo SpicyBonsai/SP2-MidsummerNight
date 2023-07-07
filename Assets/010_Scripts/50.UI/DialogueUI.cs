@@ -19,12 +19,12 @@ namespace Lyr.UI
         [SerializeField] GameObject goodbyeText;
         [SerializeField] GameObject DialogueScreen;
         [SerializeField] GameObject continueText;
-        [SerializeField] private float typingSpeed = 0.04f;
+        [SerializeField] private float typingSpeed = 0.1f;
         [SerializeField] private float timeBetweenLines = 0.3f;
         private Coroutine displayLine;
         private bool canContinueToNextLine = false;
         private bool _skippingLine;
-        
+        [SerializeField] GameOptions gameOptions;
 
         public void InitiateDialogue()
         {
@@ -192,7 +192,7 @@ namespace Lyr.UI
                 }
 
                 AIText.text += letter;
-                yield return new WaitForSeconds(typingSpeed);
+                yield return new WaitForSeconds(typingSpeed * (1 - gameOptions.TextSpeed));
             }
 
             canContinueToNextLine = true;
