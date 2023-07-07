@@ -17,33 +17,34 @@ public class CameraRotate : MonoBehaviour
     void Update()
     {
         #region If right mouse btn down 
-        if (Input.GetMouseButtonDown(1))
+        if (InputManager.GetInstance().LeftClick)
         {
             _btnPressed = 1;
         }
-        else if(Input.GetMouseButtonUp(1))
+        else if(InputManager.GetInstance().RightClick)
         {
             _btnPressed = 0;
         }
         #endregion
+        /*
+                #region Camera rotation horizontally
+                _targetRotation += Input.GetAxis("Mouse X") * Sensitivity * _btnPressed;
+                _targetRotation += Input.GetAxis("RightJoystick_X") * Sensitivity;
+                transform.localEulerAngles = new Vector3(0, _targetRotation, 0);
+                #endregion
 
-        #region Camera rotation horizontally
-        _targetRotation += Input.GetAxis("Mouse X") * Sensitivity * _btnPressed;
-        _targetRotation += Input.GetAxis("RightJoystick_X") * Sensitivity;
-        transform.localEulerAngles = new Vector3(0, _targetRotation, 0);
-        #endregion
+                #region Scale up/down when scrolling a mousewheel
+                if (Input.mouseScrollDelta.y > 0)
+                    _lenseDistanceMultiplier = -100f;
+                else if (Input.mouseScrollDelta.y < 0)
+                    _lenseDistanceMultiplier = 100f;
+                else
+                    _lenseDistanceMultiplier = 0;
 
-        #region Scale up/down when scrolling a mousewheel
-        if (Input.mouseScrollDelta.y > 0)
-            _lenseDistanceMultiplier = -100f;
-        else if (Input.mouseScrollDelta.y < 0)
-            _lenseDistanceMultiplier = 100f;
-        else
-            _lenseDistanceMultiplier = 0;
-
-        Cam.m_Lens.FieldOfView += _lenseDistanceMultiplier * Sensitivity * Time.deltaTime;
-        Cam.m_Lens.FieldOfView = Mathf.Clamp(Cam.m_Lens.FieldOfView, MinCamScale, MaxCamScale);
-        //print(Cam.m_Lens.FieldOfView);
-        #endregion
+                Cam.m_Lens.FieldOfView += _lenseDistanceMultiplier * Sensitivity * Time.deltaTime;
+                Cam.m_Lens.FieldOfView = Mathf.Clamp(Cam.m_Lens.FieldOfView, MinCamScale, MaxCamScale);
+                //print(Cam.m_Lens.FieldOfView);
+                #endregion
+        */
     }
 }

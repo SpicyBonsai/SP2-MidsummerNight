@@ -168,7 +168,7 @@ public class DisplayMemories : MonoBehaviour
         bool memoryActivated = false; //is true when player puts the memory into proper place
         var hoveredObj = MouseHover.HoveredObj;
         print(_itemName);
-        if (hoveredObj.name == _itemName) //&& !hoveredObj.GetComponent<MeshRenderer>().enabled) // && hoveredObj.transform.parent.GetComponent<BrokenObject>()._brokenParts[hoveredObj])
+        if (hoveredObj?.name == _itemName) //&& !hoveredObj.GetComponent<MeshRenderer>().enabled) // && hoveredObj.transform.parent.GetComponent<BrokenObject>()._brokenParts[hoveredObj])
           {
             memoryActivated = true;
             //MouseItemInstance._gameObj.GetComponent<MeshCollider>().isTrigger = false; // the object won't be interactable anymore
@@ -180,7 +180,7 @@ public class DisplayMemories : MonoBehaviour
             //hoveredObj.GetComponent<MeshRenderer>().enabled = true;
 
           }
-        else if (hoveredObj.name != _itemName) // || hoveredObj.GetComponent<MeshRenderer>().enabled)
+        else if (hoveredObj?.name != _itemName) // || hoveredObj.GetComponent<MeshRenderer>().enabled)
         {
            // _panelUI.GetComponent<Image>().color = _panelUIcolor;
 /*            _panelUI.GetComponent<Image>().raycastTarget = true;
@@ -207,7 +207,7 @@ public class DisplayMemories : MonoBehaviour
 
         //moving 3D object along with the cursor
         MouseItemInstance._gameObj.SetActive(true);
-        Vector3 _screenPoint = Input.mousePosition;
+        Vector3 _screenPoint = InputManager.GetInstance().MousePosition;
         _screenPoint.z = 5.84f;
         Vector3 _instantiatePos = Camera.main.ScreenToWorldPoint(_screenPoint);
         MouseItemInstance._gameObj.transform.position = _instantiatePos;

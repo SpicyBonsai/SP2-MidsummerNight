@@ -18,14 +18,14 @@ public class CutsceneOptions : MonoBehaviour
     [SerializeField] GameObject _skippingIndicator;
     [SerializeField] Image _skippingImage;
     private TextMeshProUGUI _skippingText;
-    private float _timeToSkip = 5f;
+    [SerializeField] private float _timeToSkip = 5f;
 
 
     [SerializeField] GameOptions _gameOptions;
     [SerializeField] GameObject _subtitles;
 
     private void Start() {
-        
+
         if(!_gameOptions.SubtitlesOn)
         {
             _subtitles.SetActive(false);

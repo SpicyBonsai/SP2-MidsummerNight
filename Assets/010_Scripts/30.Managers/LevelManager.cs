@@ -53,6 +53,11 @@ public class LevelManager : MonoBehaviour
         SceneManager.LoadScene(1);
     }
 
+    public void LoadGame()
+    {
+        SceneManager.LoadScene(1);
+    }
+
 
     //this gets called when the player changes either the slider or the toggle values
     //this keeps the values up to date so we can access them from anywhere
@@ -93,5 +98,16 @@ public class LevelManager : MonoBehaviour
     public bool GetToggleValue(string name, int preference = 0)
     {
         return PlayerPrefs.GetInt(name, preference) == 1 ? true : false;
+    }
+
+
+    public void ReturnToMainMenu()
+    {
+        SceneManager.LoadScene(0);
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
     }
 }
