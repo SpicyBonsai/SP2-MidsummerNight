@@ -24,11 +24,29 @@ public class PlayerController : MonoBehaviour
     Ray _ray;
     CharacterController _characterController;
     NavMeshAgent _navMeshAgent;
+    [SerializeField] private bool _mouseOverUI;
 
     public bool IsTryingToInteract = false;
     public IInteractable ObjToInteractWith;
 
+    #region MouseOverUI
+    //Subscribe to Event from Cursor over UI detection Script
+    private void OnEnable()
+    {
+        CursorOutUiElemRange.MouseOverUIChanged += OnMouseOverUIChanged;
+    }
 
+    //Unsubscribe to Event from Cursor over UI detection Script
+    private void OnDisable()
+    {
+        CursorOutUiElemRange.MouseOverUIChanged -= OnMouseOverUIChanged;
+    }
+
+    private void OnMouseOverUIChanged(bool mouseOverUI)
+    {
+        _mouseOverUI = mouseOverUI;
+    }
+    #endregion
 
     void Start()
     {
@@ -40,6 +58,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
+        if (_mouseOverUI) { return; }
         #region Gravity
         /*_isGrounded = Physics.CheckSphere(GroundCheck.position, GroundDistance, GroundMask);
         if (_isGrounded && _velocity.y < 0)

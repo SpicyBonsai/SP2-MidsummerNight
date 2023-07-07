@@ -406,7 +406,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &18087208
 RectTransform:
   m_ObjectHideFlags: 0
@@ -11931,6 +11931,10 @@ PrefabInstance:
       propertyPath: Pointer
       value: 
       objectReference: {fileID: 2105433052}
+    - target: {fileID: 19645284803343817, guid: 5d5af2327eb6d274f94e5474f05e3327, type: 3}
+      propertyPath: PointAndClick
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 19645284803343823, guid: 5d5af2327eb6d274f94e5474f05e3327, type: 3}
       propertyPath: m_Name
       value: Player_Walk
@@ -17289,7 +17293,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4956616276293338111, guid: e93f3ec09e49a4b498b2ae8c0894298e, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5811267627893260267, guid: e93f3ec09e49a4b498b2ae8c0894298e, type: 3}
       propertyPath: m_IsActive
@@ -24438,7 +24442,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1543249323}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7daa04f8837ea9c46b6a6437c227c8d6, type: 3}
   m_Name: 
@@ -32421,7 +32425,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2080331768
 Transform:
   m_ObjectHideFlags: 0

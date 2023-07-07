@@ -3,28 +3,27 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class CursorOutUiElemRange : MonoBehaviour 
+public class CursorOutUiElemRange : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
-    public bool TestBool;
-    public static bool MouseOverUI
-    {
-        get { return _mouseOverUI; }
-    }
-    static bool _mouseOverUI;
+    public static event System.Action<bool> MouseOverUIChanged;
+    public static bool MouseOverUI { get; private set; }
+    private bool _mouseOverUI;
+
     private void Update()
     {
-        //print(MouseOverUI);
-        TestBool = _mouseOverUI;
+        MouseOverUI = _mouseOverUI;
+        MouseOverUIChanged?.Invoke(MouseOverUI);
     }
+
     public void OnPointerEnter(PointerEventData eventData)
     {
         _mouseOverUI = true;
-        print("hovered panel");
+        Debug.Log("Hovered panel");
     }
 
     public void OnPointerExit(PointerEventData eventData)
     {
         _mouseOverUI = false;
-        print("unhovered");
+        Debug.Log("Unhovered");
     }
 }
