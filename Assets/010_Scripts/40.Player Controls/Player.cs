@@ -27,7 +27,7 @@ public class Player : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.L))
             ItemInventory.Load();
-
+        #region UI controllers
         if (Input.GetKeyDown(KeyCode.M) && !MemoryUI.activeInHierarchy)
         {
             InputManager.GetInstance().SwitchToUI();
@@ -38,6 +38,20 @@ public class Player : MonoBehaviour
             InputManager.GetInstance().SwitchToGameplay();
             MemoryUI.SetActive(false);
         }
+
+        if (Input.GetKeyDown(KeyCode.N) && !WorldItemsUI.activeInHierarchy)
+        {
+            InputManager.GetInstance().SwitchToUI();
+            WorldItemsUI.SetActive(true);
+            print("opening Panel");
+        }
+        else if (Input.GetKeyDown(KeyCode.N) && WorldItemsUI.activeInHierarchy)
+        {
+            InputManager.GetInstance().SwitchToGameplay();
+            WorldItemsUI.SetActive(false);
+            print("closing dat shit");
+        }
+        #endregion
         print(InputManager.GetInstance());
         /*
                 if(MouseHover.HoveredObj.GetComponent<IUIInterface>() )
