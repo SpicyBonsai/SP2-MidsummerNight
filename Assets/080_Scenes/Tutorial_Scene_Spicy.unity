@@ -27252,12 +27252,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_BindingMode: 1
   m_FollowOffset: {x: 0, y: 7, z: -7}
-  m_XDamping: 1.419859
-  m_YDamping: 1.419859
+  m_XDamping: 1.4135
+  m_YDamping: 1.4135
   m_ZDamping: 5
   m_AngularDampingMode: 0
   m_PitchDamping: 0
-  m_YawDamping: 4.969506
+  m_YawDamping: 4.947248
   m_RollDamping: 0
   m_AngularDamping: 0
 --- !u!114 &1739712121
@@ -27276,8 +27276,8 @@ MonoBehaviour:
   m_LookaheadTime: 0.05
   m_LookaheadSmoothing: 4.4
   m_LookaheadIgnoreY: 0
-  m_HorizontalDamping: 1.419859
-  m_VerticalDamping: 1.419859
+  m_HorizontalDamping: 1.4135
+  m_VerticalDamping: 1.4135
   m_ScreenX: 0.5
   m_ScreenY: 0.5
   m_DeadZoneWidth: 0
