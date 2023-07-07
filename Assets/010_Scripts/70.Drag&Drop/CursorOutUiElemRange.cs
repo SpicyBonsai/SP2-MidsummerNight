@@ -11,8 +11,11 @@ public class CursorOutUiElemRange : MonoBehaviour, IPointerEnterHandler, IPointe
 
     private void Update()
     {
-        MouseOverUI = _mouseOverUI;
-        MouseOverUIChanged?.Invoke(MouseOverUI);
+        if(!MouseOverUI == _mouseOverUI)
+        {
+            MouseOverUI = _mouseOverUI;
+            MouseOverUIChanged?.Invoke(MouseOverUI);
+        }
     }
 
     public void OnPointerEnter(PointerEventData eventData)

@@ -17,7 +17,8 @@ public class CameraSpeed : MonoBehaviour
     [SerializeField] float yawDampingWhenHold = 0.3f;
     [SerializeField] float horizontalDampingWhenHold;
     [SerializeField] float verticalDampingWhenHold;
-    
+
+
     void Start()
     {
         cam1 = gameObject.GetComponent<CinemachineVirtualCamera>();
@@ -27,11 +28,11 @@ public class CameraSpeed : MonoBehaviour
         camComposer = cam1.GetCinemachineComponent<CinemachineComposer>();
     }
 
-    
     void Update()
     {
         //cameraPos.position = new Vector3(cameraPos.position.x, playerPos.position.y, cameraPos.position.z);
         //Debug.Log("Dot product of camera and player forwards:" + Vector3.Dot(cameraPos.forward.normalized, playerPos.forward));
+
         dotCameraPlayer = Vector3.Dot(cameraPos.forward.normalized, playerPos.forward);
 
         camTransposer.m_XDamping = Mathf.Clamp(2 * dotCameraPlayer, 0, 2);

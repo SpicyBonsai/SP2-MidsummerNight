@@ -12,12 +12,35 @@ public class CameraRotate_Tudor : MonoBehaviour
     float lerpDuration;
     Coroutine returnToFacing = null;
     float elapsedTime = 0;
+    private bool _mouseOverUI;
+
+    #region MouseOverUI
+    //Subscribe to Event from Cursor over UI detection Script
+    private void OnEnable()
+    {
+        CursorOutUiElemRange.MouseOverUIChanged += OnMouseOverUIChanged;
+    }
+
+    //Unsubscribe to Event from Cursor over UI detection Script
+    private void OnDisable()
+    {
+        CursorOutUiElemRange.MouseOverUIChanged -= OnMouseOverUIChanged;
+    }
+
+    private void OnMouseOverUIChanged(bool mouseOverUI)
+    {
+        _mouseOverUI = mouseOverUI;
+    }
+    #endregion
 
     private void Start() {
         playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
     }
+
     void Update()
     {
+        if(_mouseOverUI) { return; }
+
         if (InputManager.GetInstance().RightClick)
         {
             //_targetRotation = transform.forward.y;
