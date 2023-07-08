@@ -22,6 +22,7 @@ public class InputManager : MonoBehaviour
     public bool OpenConsole { get; private set; }
     public bool SkipCutscene { get; private set; }
     public bool CancelSkipCutscene { get; private set; }
+    public bool InventoryButton { get; private set; }
 
 
     //Object instance of the PlayerInput component attached to this GameObject (this is a singleton)
@@ -39,6 +40,7 @@ public class InputManager : MonoBehaviour
     private InputAction _mouseMovement;
     private InputAction _openConsole;
     private InputAction _skipCutscene;
+    private InputAction _inventoryButton;
 
 
 
@@ -81,6 +83,7 @@ public class InputManager : MonoBehaviour
         _submit = PlayerInput.actions["Submit"];
         _resetDialogue = PlayerInput.actions["ResetDialogue"];
         _UIMenuCloseAction = PlayerInput.actions["MenuCLOSE"];
+        _inventoryButton = PlayerInput.actions["InventoryButton"];
 
 
     }
@@ -109,6 +112,7 @@ public class InputManager : MonoBehaviour
 
         SkipCutscene = _skipCutscene.IsPressed();
         CancelSkipCutscene = _skipCutscene.WasReleasedThisFrame();
+        InventoryButton = _inventoryButton.WasPerformedThisFrame();
 
 
     }
@@ -133,6 +137,7 @@ public class InputManager : MonoBehaviour
         _saveButtonPressed = PlayerInput.actions["SaveBTN"];
         _rightClick = PlayerInput.actions["RightClick"];
         _skipCutscene = PlayerInput.actions["SkipCutscene"];
+        _inventoryButton = PlayerInput.actions["InventoryButton"];
     }
 
 

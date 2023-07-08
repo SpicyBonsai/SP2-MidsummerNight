@@ -40,9 +40,7 @@ public class CameraSpeed : MonoBehaviour
 
         camComposer.m_HorizontalDamping = Mathf.Clamp(2 * dotCameraPlayer, 0, 2);
         camComposer.m_VerticalDamping = Mathf.Clamp(2 * dotCameraPlayer, 0, 2);
-
-
-        //TODO replace the input
+        
         if(InputManager.GetInstance().RightClick)
         {
             camTransposer.m_XDamping = xDampingWhenHold;
