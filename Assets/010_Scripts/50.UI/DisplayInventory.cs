@@ -169,7 +169,7 @@ public class DisplayInventory : MonoBehaviour
     {
         //creating img holder
         var _mouseObj = new GameObject();
-        _mouseObj.name = "ItemSpiteHolder";
+        _mouseObj.name = "ItemSpriteHolder";
         var _rt = _mouseObj.AddComponent<RectTransform>();
         _rt.sizeDelta = _placeholderSpriteSize; //the same as img
 
@@ -212,7 +212,7 @@ public class DisplayInventory : MonoBehaviour
         else if (!MouseItemInstance._hoverObj)
         {
             var hoveredObj = MouseHover.HoveredObj;
-            if (hoveredObj.name == _itemName && !hoveredObj.GetComponent<MeshRenderer>().enabled) // && hoveredObj.transform.parent.GetComponent<BrokenObject>()._brokenParts[hoveredObj])
+            if (hoveredObj?.name == _itemName && !hoveredObj.GetComponent<MeshRenderer>().enabled) // && hoveredObj.transform.parent.GetComponent<BrokenObject>()._brokenParts[hoveredObj])
             {
 
                 //MouseItemInstance._gameObj.GetComponent<MeshCollider>().isTrigger = false; // the object won't be interactable anymore
@@ -242,9 +242,9 @@ public class DisplayInventory : MonoBehaviour
     public void OnDrag(GameObject _obj)
     {
         if (MouseItemInstance._obj != null)
-            MouseItemInstance._obj.GetComponent<RectTransform>().position = Input.mousePosition;
+            MouseItemInstance._obj.GetComponent<RectTransform>().position = InputManager.GetInstance().MousePosition;
 
-        Vector3 _screenPoint = Input.mousePosition;
+        Vector3 _screenPoint = InputManager.GetInstance().MousePosition;
         _screenPoint.z = 5.84f;
         Vector3 _instantiatePos = Camera.main.ScreenToWorldPoint(_screenPoint);
         if (MouseItemInstance._gameObj != null)

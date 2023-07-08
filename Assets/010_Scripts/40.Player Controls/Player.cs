@@ -12,23 +12,23 @@ public class Player : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.P))
-        {
-            _guiText = "File saved";
-            ItemInventory.Save();
-        }
+        // if (Input.GetKeyDown(KeyCode.P))
+        // {
+        //     _guiText = "File saved";
+        //     ItemInventory.Save();
+        // }
 
-        if (Input.GetKeyDown(KeyCode.L))
-            ItemInventory.Load();
+        // if (Input.GetKeyDown(KeyCode.L))
+        //     ItemInventory.Load();
 
-        if (Input.GetKeyDown(KeyCode.M) && !MemoryUI.activeInHierarchy)
-        {
-            MemoryUI.SetActive(true);
-        }
-        else if (Input.GetKeyDown(KeyCode.M) && MemoryUI.activeInHierarchy)
-        {
-            MemoryUI.SetActive(false);
-        }
+        // if (Input.GetKeyDown(KeyCode.M) && !MemoryUI.activeInHierarchy)
+        // {
+        //     MemoryUI.SetActive(true);
+        // }
+        // else if (Input.GetKeyDown(KeyCode.M) && MemoryUI.activeInHierarchy)
+        // {
+        //     MemoryUI.SetActive(false);
+        // }
 
     }
 
@@ -39,13 +39,14 @@ public class Player : MonoBehaviour
 
         if (_item)
         {
+            print(other);
             ItemInventory.AddItem(new Item(_item.ItemObj), 1);
             Destroy(other.gameObject);
         }
         else if (_memoryFragment)
         {
             MemoryInventory.AddItem(new Item(_memoryFragment.ItemObj), 1);
-            Destroy(other.gameObject.transform.parent.gameObject);
+            //Destroy(other.gameObject.transform.parent.gameObject);
             Destroy(other.gameObject);
         }
     }

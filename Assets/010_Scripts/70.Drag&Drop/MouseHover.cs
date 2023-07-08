@@ -23,7 +23,7 @@ public class MouseHover : MonoBehaviour
 
     void Update()
     {
-        _ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        _ray = Camera.main.ScreenPointToRay(InputManager.GetInstance().MousePosition);
         if (Physics.Raycast(_ray, out _hit))
         {
             _hoveredObj = _hit.collider.transform.gameObject;
@@ -34,10 +34,10 @@ public class MouseHover : MonoBehaviour
     public static bool IsPointerOverUIObject()
     {
         PointerEventData eventDataCurrentPosition = new PointerEventData(EventSystem.current);
-        eventDataCurrentPosition.position = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
+        eventDataCurrentPosition.position = new Vector2(InputManager.GetInstance().MousePosition.x, InputManager.GetInstance().MousePosition.y);
         List<RaycastResult> results = new List<RaycastResult>();
         foreach (RaycastResult result in results)
-            print(result);
+            Debug.Log(result);
         EventSystem.current.RaycastAll(eventDataCurrentPosition, results);
         return results.Count > 0;
     }
