@@ -50,13 +50,13 @@ Material:
     m_Ints: []
     m_Floats:
     - _AlphaCutoff: 0.5
-    - _FoamDistance: 0.03
-    - _FoamHardness: 0.123
+    - _FoamDistance: 0.166
+    - _FoamHardness: 0.54
     - _FoamOpacity: 0.6
     - _FoamScale: 0.38
     - _FoamSpeed: 0.125
     - _FresnelIntensity: 0.6
-    - _Opacity: 0.55
+    - _Opacity: 0.633
     - _OpacityDepth: 17
     - _QueueControl: 0
     - _QueueOffset: 0
@@ -66,16 +66,16 @@ Material:
     - _ReflectionsOpacity: 0.85
     - _ReflectionsScale: 22
     - _ReflectionsScrollSpeed: 0.045
-    - _ShallowColorDepth: 4
+    - _ShallowColorDepth: 2.26
     - _WaveAmplitude: 0.5
     - _WaveIntensity: 0.15
     - _WaveSpeed: 1
     - _Waves: 0
     - __dirty: 0
     m_Colors:
-    - _DeepColor: {r: 0.13585797, g: 0.34535164, b: 0.4056604, a: 1}
+    - _DeepColor: {r: 0.21181916, g: 0.2862856, b: 0.5283019, a: 1}
     - _EmissionColor: {r: 1, g: 1, b: 1, a: 1}
-    - _FoamColor: {r: 0.8962264, g: 0.7051899, b: 0.49461553, a: 1}
+    - _FoamColor: {r: 0.990566, g: 0.7571688, b: 0.4999555, a: 1}
     - _FresnelColor: {r: 0.40792987, g: 0.6336544, b: 0.9716981, a: 1}
-    - _ShallowColor: {r: 0.20558919, g: 0.65796304, b: 0.7924528, a: 1}
+    - _ShallowColor: {r: 0.40334642, g: 0.5913138, b: 0.8301887, a: 1}
   m_BuildTextureStacks: []

@@ -29,15 +29,27 @@ public class MenuManager : MonoBehaviour
                 Unpause();
             }
         }
+
+        if(InputManager.GetInstance().InventoryButton)
+        {
+            if (!PauseManager.instance.InventoryOpen && InputManager.GetInstance().GetCurrentActionMap() == "Gameplay")
+            {
+                PauseManager.instance.OpenInventory();
+            }
+            else
+            {
+                PauseManager.instance.CloseInventory();
+            }
+        }
     }
 
-    private void Pause()
+    public void Pause()
     {
         PauseManager.instance.PauseGame();
         _pauseScreen.SetActive(true);
     }
 
-    private void Unpause()
+    public void Unpause()
     {
         PauseManager.instance.UnpauseGame();
         _pauseScreen.SetActive(false);

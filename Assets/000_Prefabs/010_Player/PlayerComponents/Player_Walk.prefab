@@ -47,6 +47,7 @@ GameObject:
   - component: {fileID: 19645284803343817}
   - component: {fileID: 19645284803343814}
   - component: {fileID: 1802193380068265283}
+  - component: {fileID: 1890029949252554406}
   - component: {fileID: 19645284803343809}
   m_Layer: 0
   m_Name: Player_Walk
@@ -213,6 +214,18 @@ MonoBehaviour:
   ItemInventory: {fileID: 11400000, guid: 307129c510aa63940a8c5f13530d068c, type: 2}
   MemoryInventory: {fileID: 11400000, guid: a9aab0b36953ec747a45ac9b5f8e891b, type: 2}
   MemoryUI: {fileID: 0}
+--- !u!114 &1890029949252554406
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 19645284803343823}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e4ad26b83db3c2448862dc567a18d31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &19645284803343809
 MonoBehaviour:
   m_ObjectHideFlags: 0
