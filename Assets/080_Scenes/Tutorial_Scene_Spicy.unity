@@ -10891,7 +10891,7 @@ Transform:
   m_Children:
   - {fileID: 330547123}
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &527426953
 PrefabInstance:
@@ -11964,6 +11964,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2901367346337593280, guid: 11b8c95a10ccb564ebd3a9e3ced82c86, type: 3}
   m_PrefabInstance: {fileID: 565434476}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &565837658 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 46159680ea1119544916c7070d6e5e3a, type: 3}
+  m_PrefabInstance: {fileID: 597266491}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &569306715
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -12620,11 +12625,11 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 1733019063}
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 46159680ea1119544916c7070d6e5e3a, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 114
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 46159680ea1119544916c7070d6e5e3a, type: 3}
       propertyPath: m_LocalScale.x
@@ -15106,7 +15111,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 1733019063}
-  m_RootOrder: 80
+  m_RootOrder: 78
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!136 &717662831
 CapsuleCollider:
@@ -18501,7 +18506,7 @@ Transform:
   - {fileID: 1094956858}
   - {fileID: 1334042453}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &846782611
 GameObject:
@@ -32605,7 +32610,7 @@ MonoBehaviour:
   m_Priority: 10
   m_StandbyUpdate: 2
   m_LookAt: {fileID: 155469458}
-  m_Follow: {fileID: 1960091630}
+  m_Follow: {fileID: 155469458}
   m_Lens:
     FieldOfView: 60
     OrthographicSize: 5
@@ -35097,6 +35102,10 @@ PrefabInstance:
     - target: {fileID: 19645284803343812, guid: 5d5af2327eb6d274f94e5474f05e3327, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 19645284803343816, guid: 5d5af2327eb6d274f94e5474f05e3327, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 19645284803343817, guid: 5d5af2327eb6d274f94e5474f05e3327, type: 3}
       propertyPath: Pointer
@@ -39597,9 +39606,9 @@ Transform:
   - {fileID: 765062485}
   - {fileID: 1045277636}
   - {fileID: 64680184}
+  - {fileID: 717662830}
   - {fileID: 1087022867}
   - {fileID: 477230799}
-  - {fileID: 717662830}
   - {fileID: 555974977}
   - {fileID: 1194368099}
   - {fileID: 470294010}
@@ -39633,8 +39642,9 @@ Transform:
   - {fileID: 1923623139}
   - {fileID: 436105611}
   - {fileID: 724454059}
+  - {fileID: 565837658}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1733213650
 GameObject:
@@ -39933,12 +39943,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_BindingMode: 1
   m_FollowOffset: {x: 0, y: 7, z: -7}
-  m_XDamping: 1.464941
-  m_YDamping: 1.464941
+  m_XDamping: 0.8907087
+  m_YDamping: 0.8907087
   m_ZDamping: 5
   m_AngularDampingMode: 0
   m_PitchDamping: 0
-  m_YawDamping: 5.127295
+  m_YawDamping: 3.11748
   m_RollDamping: 0
   m_AngularDamping: 0
 --- !u!114 &1739712121
@@ -39957,8 +39967,8 @@ MonoBehaviour:
   m_LookaheadTime: 0.05
   m_LookaheadSmoothing: 4.4
   m_LookaheadIgnoreY: 0
-  m_HorizontalDamping: 1.464941
-  m_VerticalDamping: 1.464941
+  m_HorizontalDamping: 0.8907087
+  m_VerticalDamping: 0.8907087
   m_ScreenX: 0.5
   m_ScreenY: 0.5
   m_DeadZoneWidth: 0
