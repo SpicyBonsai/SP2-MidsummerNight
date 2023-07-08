@@ -23,6 +23,7 @@ public class InputManager : MonoBehaviour
     public bool SkipCutscene { get; private set; }
     public bool CancelSkipCutscene { get; private set; }
     public bool InventoryButton { get; private set; }
+    public float MouseScroll { get; private set; }
 
 
     //Object instance of the PlayerInput component attached to this GameObject (this is a singleton)
@@ -31,7 +32,7 @@ public class InputManager : MonoBehaviour
     private InputAction _interactPressed;
     private InputAction _mousePosition;
     private InputAction _menuOpenAction;
-    private InputAction _UIMenuCloseAction;
+    private InputAction _uiMenuCloseAction;
     private InputAction _submit;
     private InputAction _leftClick;
     private InputAction _resetDialogue;
@@ -41,6 +42,7 @@ public class InputManager : MonoBehaviour
     private InputAction _openConsole;
     private InputAction _skipCutscene;
     private InputAction _inventoryButton;
+    private InputAction _mouseScroll;
 
 
 
@@ -78,11 +80,12 @@ public class InputManager : MonoBehaviour
         _menuOpenAction = PlayerInput.actions["MenuOPEN"];
         _mouseMovement = PlayerInput.actions["MouseMovement"];
         _interactPressed = PlayerInput.actions["Click"];
+        _mouseScroll = PlayerInput.actions["MouseScroll"];
 
         //Assign the InputAction objects to the corresponding InputActionAssets in the UI action map
         _submit = PlayerInput.actions["Submit"];
         _resetDialogue = PlayerInput.actions["ResetDialogue"];
-        _UIMenuCloseAction = PlayerInput.actions["MenuCLOSE"];
+        _uiMenuCloseAction = PlayerInput.actions["MenuCLOSE"];
         _inventoryButton = PlayerInput.actions["InventoryButton"];
 
 
@@ -102,13 +105,14 @@ public class InputManager : MonoBehaviour
         MenuOpenInput = _menuOpenAction.WasPerformedThisFrame();
         MouseMovement = _mouseMovement.ReadValue<Vector2>();
         InteractButtonPressed = _interactPressed.IsPressed();
-        UIMenuCloseInput = _UIMenuCloseAction.WasPerformedThisFrame();
+        UIMenuCloseInput = _uiMenuCloseAction.WasPerformedThisFrame();
         Submit = _submit.WasPerformedThisFrame();
         ResetDialogue = _resetDialogue.WasPerformedThisFrame();
         LeftClick = _leftClick.WasPerformedThisFrame();
         SaveButtonPressed = _saveButtonPressed.WasPerformedThisFrame();
         RightClick = _rightClick.IsPressed();
         OpenConsole = _openConsole.WasPerformedThisFrame();
+        MouseScroll = _mouseScroll.ReadValue<Vector2>().y / 120f;
 
         SkipCutscene = _skipCutscene.IsPressed();
         CancelSkipCutscene = _skipCutscene.WasReleasedThisFrame();

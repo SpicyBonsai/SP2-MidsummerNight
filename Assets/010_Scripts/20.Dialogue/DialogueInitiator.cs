@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class DialogueInitiator : MonoBehaviour, IInteractable
 {
@@ -12,8 +13,8 @@ public class DialogueInitiator : MonoBehaviour, IInteractable
     [SerializeField] private string characterName;
     [SerializeField] private Color characterColor;
     [SerializeField] private bool shouldCharacterStop;
-    private Color infoColor;
-    bool inDialogue = false;
+    private Color _infoColor;
+    private bool _inDialogue;
     public bool InRange { get; private set; }
     private PlayerController _playerController;
     private Transform _playerPos;
@@ -21,16 +22,15 @@ public class DialogueInitiator : MonoBehaviour, IInteractable
     private DialogueManager _dialogueManager;
     
 
-
+    
     [Header("Interactable Dialogue Parameters:")]
-
     [Tooltip("This changes the distance from which the dialogue can start")]
-    [SerializeField] private float _distanceToInteract = 2f;
+    [SerializeField] private float distanceToInteract = 2f;
     
 
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         _playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
         _playerPos = GameObject.FindGameObjectWithTag("Player").transform;
@@ -40,10 +40,10 @@ public class DialogueInitiator : MonoBehaviour, IInteractable
 
     private void OnEnable() 
     {
-        infoColor = new Color(characterColor.r, characterColor.g, characterColor.b, 0.8f);    
+        _infoColor = new Color(characterColor.r, characterColor.g, characterColor.b, 0.8f);    
     }
 
-    private bool PlayerInRange() => (_playerPos.position - gameObject.transform.position).magnitude <= _distanceToInteract;
+    private bool PlayerInRange() => (_playerPos.position - gameObject.transform.position).magnitude <= distanceToInteract;
 
     // Update is called once per frame
     void Update()
@@ -51,10 +51,10 @@ public class DialogueInitiator : MonoBehaviour, IInteractable
 
         if (!_dialogueManager.GetDialogueUI().activeSelf || !PlayerInRange())
         {
-            inDialogue = false;
+            _inDialogue = false;
         }
 
-        if(inDialogue) return;
+        if(_inDialogue) return;
 
         InRange = PlayerInRange();
         
@@ -79,7 +79,7 @@ public class DialogueInitiator : MonoBehaviour, IInteractable
         _dialogueManager.ScaleImage(imageScaleAmount);
         _dialogueManager.SetName(characterName);
         _dialogueManager.SetNameColor(characterColor);
-        _dialogueManager.SetButtonsColor(infoColor);
+        _dialogueManager.SetButtonsColor(_infoColor);
         _dialogueManager.SetCurrentColor(characterColor);
         if(shouldCharacterStop)
         {
@@ -90,7 +90,7 @@ public class DialogueInitiator : MonoBehaviour, IInteractable
 
 
         _dialogueManager.SetInteractableOverlay(false);
-        inDialogue = true;
+        _inDialogue = true;
     }
 
     private void OnDrawGizmos() 
@@ -103,7 +103,7 @@ public class DialogueInitiator : MonoBehaviour, IInteractable
         }
         else if (gameObject.tag == "Interactable")
         {
-            Gizmos.DrawWireSphere(gameObject.transform.position, _distanceToInteract);
+            Gizmos.DrawWireSphere(gameObject.transform.position, distanceToInteract);
         }
     }
 

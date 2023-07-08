@@ -6,7 +6,7 @@ public class CameraRotate_Tudor : MonoBehaviour
     [SerializeField] private float desiredTime;
     [SerializeField] private float returnToFacingDelay;
     public float sensitivity;
-    public Transform playerTransform;
+    private Transform _playerTransform;
     private float _targetRotation;
     private float _lerpDuration;
     private Coroutine _returnToFacing;
@@ -14,7 +14,7 @@ public class CameraRotate_Tudor : MonoBehaviour
 
     private void Start() 
     {
-        playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
+        _playerTransform = GameObject.FindGameObjectWithTag("Player").transform;
     }
     
     private void Update()
@@ -32,7 +32,7 @@ public class CameraRotate_Tudor : MonoBehaviour
         }
         else if(InputManager.GetInstance().LeftClick)
         {
-            if(Vector3.Dot(transform.forward, playerTransform.forward) < 0.99f && _returnToFacing == null)
+            if(Vector3.Dot(transform.forward, _playerTransform.forward) < 0.99f && _returnToFacing == null)
             {
                 _returnToFacing = StartCoroutine(ReturnToFacing());
             }
@@ -55,7 +55,7 @@ public class CameraRotate_Tudor : MonoBehaviour
         {
             _elapsedTime += Time.deltaTime;
             _lerpDuration = _elapsedTime/desiredTime;
-            transform.forward = Vector3.Lerp(initialDirection, playerTransform.forward, _lerpDuration);
+            transform.forward = Vector3.Lerp(initialDirection, _playerTransform.forward, _lerpDuration);
             
             yield return new WaitForEndOfFrame();
         }

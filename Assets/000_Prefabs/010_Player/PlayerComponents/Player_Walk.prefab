@@ -343,6 +343,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 19645284803343812}
     m_Modifications:
+    - target: {fileID: 7857111979656212516, guid: 03dbd9f5a1fd1574a954648bdcd70f6d, type: 3}
+      propertyPath: sensitivity
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 7857111979656212522, guid: 03dbd9f5a1fd1574a954648bdcd70f6d, type: 3}
       propertyPath: m_Name
       value: PlayerRotation
