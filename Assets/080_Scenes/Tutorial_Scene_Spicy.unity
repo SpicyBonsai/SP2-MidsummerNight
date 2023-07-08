@@ -10891,7 +10891,7 @@ Transform:
   m_Children:
   - {fileID: 330547123}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &527426953
 PrefabInstance:
@@ -18506,7 +18506,7 @@ Transform:
   - {fileID: 1094956858}
   - {fileID: 1334042453}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &846782611
 GameObject:
@@ -20929,8 +20929,8 @@ Transform:
   m_Children:
   - {fileID: 1960091630}
   - {fileID: 1286967123}
-  m_Father: {fileID: 1733019063}
-  m_RootOrder: 105
+  m_Father: {fileID: 0}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 237.713, z: 0}
 --- !u!1 &949188040
 GameObject:
@@ -35059,6 +35059,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 946948286}
     m_Modifications:
+    - target: {fileID: 19645284584279557, guid: 5d5af2327eb6d274f94e5474f05e3327, type: 3}
+      propertyPath: sensitivity
+      value: 0.2
+      objectReference: {fileID: 0}
     - target: {fileID: 19645284803343812, guid: 5d5af2327eb6d274f94e5474f05e3327, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -39633,7 +39637,6 @@ Transform:
   - {fileID: 1075291049}
   - {fileID: 791270782}
   - {fileID: 992215853}
-  - {fileID: 946948286}
   - {fileID: 770111649}
   - {fileID: 859728662}
   - {fileID: 22938947}
@@ -39943,12 +39946,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_BindingMode: 1
   m_FollowOffset: {x: 0, y: 7, z: -7}
-  m_XDamping: 0.8907087
-  m_YDamping: 0.8907087
+  m_XDamping: 0.2918922
+  m_YDamping: 0.2918922
   m_ZDamping: 5
   m_AngularDampingMode: 0
   m_PitchDamping: 0
-  m_YawDamping: 3.11748
+  m_YawDamping: 1.021623
   m_RollDamping: 0
   m_AngularDamping: 0
 --- !u!114 &1739712121
@@ -39967,8 +39970,8 @@ MonoBehaviour:
   m_LookaheadTime: 0.05
   m_LookaheadSmoothing: 4.4
   m_LookaheadIgnoreY: 0
-  m_HorizontalDamping: 0.8907087
-  m_VerticalDamping: 0.8907087
+  m_HorizontalDamping: 0.2918922
+  m_VerticalDamping: 0.2918922
   m_ScreenX: 0.5
   m_ScreenY: 0.5
   m_DeadZoneWidth: 0
