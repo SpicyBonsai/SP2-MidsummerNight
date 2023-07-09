@@ -74,9 +74,9 @@ public class InputManager : MonoBehaviour
         _saveButtonPressed = PlayerInput.actions["SaveBTN"];
         _rightClick = PlayerInput.actions["RightClick"];
         _skipCutscene = PlayerInput.actions["SkipCutscene"];
+        _mousePosition = PlayerInput.actions["MousePosition"];
 
         //Assign the InputAction objects to the corresponding InputActionAssets in the Gameplay action map
-        _mousePosition = PlayerInput.actions["MousePosition"];
         _menuOpenAction = PlayerInput.actions["MenuOPEN"];
         _mouseMovement = PlayerInput.actions["MouseMovement"];
         _interactPressed = PlayerInput.actions["Click"];
@@ -142,6 +142,7 @@ public class InputManager : MonoBehaviour
         _rightClick = PlayerInput.actions["RightClick"];
         _skipCutscene = PlayerInput.actions["SkipCutscene"];
         _inventoryButton = PlayerInput.actions["InventoryButton"];
+        _mousePosition = PlayerInput.actions["MousePosition"];
     }
 
 

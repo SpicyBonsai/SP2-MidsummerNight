@@ -243,6 +243,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "MousePosition",
+                    "type": "PassThrough",
+                    "id": "91d5eb15-83b1-4306-ba80-552de27f51b7",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
                     "name": "InventoryButton",
                     "type": "Button",
                     "id": "d0cd5433-aa79-4b81-b653-ccf2e5891252",
@@ -880,6 +889,17 @@
                     "processors": "",
                     "groups": "",
                     "action": "InventoryButton",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "df52afa3-6e19-45df-9b50-05e0461664ee",
+                    "path": "<Mouse>/position",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "MousePosition",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

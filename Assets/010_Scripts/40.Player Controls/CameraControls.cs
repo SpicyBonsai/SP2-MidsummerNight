@@ -13,6 +13,7 @@ public class CameraControls : MonoBehaviour
     private Transform _cameraPos;
     private float _dotCameraPlayer;
     private InputManager _inputManager;
+    
 
     [Header("Camera settings during manual rotation:")]
     [SerializeField] private float xDampingWhenHold;

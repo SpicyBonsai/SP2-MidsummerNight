@@ -245,6 +245,7 @@ public class DisplayInventory : MonoBehaviour
             MouseItemInstance._obj.GetComponent<RectTransform>().position = InputManager.GetInstance().MousePosition;
 
         Vector3 _screenPoint = InputManager.GetInstance().MousePosition;
+        //_screenPoint.z = 5.84f;
         _screenPoint.z = 5.84f;
         Vector3 _instantiatePos = Camera.main.ScreenToWorldPoint(_screenPoint);
         if (MouseItemInstance._gameObj != null)
