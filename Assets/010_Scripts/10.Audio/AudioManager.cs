@@ -1,62 +1,60 @@
 ﻿using UnityEngine.Audio;
-using System;
+using UnityEngine.UI;
 using UnityEngine;
 
 public class AudioManager : MonoBehaviour
 {
-    [Header("To use: ")]
-    [Header("FindObjectOfType<AudioManager>().Play(track name);")]
-    public Sound[] SoundsList;
     public static AudioManager Instance;
 
-    // Start is called before the first frame update
+    [SerializeField] private GameOptions _gameOptions;
+    [SerializeField] public AudioMixer master;
+
+    #region Singleton Mumbo Jumbo
     void Awake()
     {
         if (Instance == null)
+        {
             Instance = this;
+        }
         else
         {
             Destroy(gameObject);
             return;
         }
-
         DontDestroyOnLoad(gameObject);
 
-        foreach (Sound _s in SoundsList)
-        {
-            _s.Source = gameObject.AddComponent<AudioSource>();
-            _s.Source.clip = _s.Clip;
+        SetMasterVolume(_gameOptions.OverallSound);
+        SetSFXVolume(_gameOptions.SfxVolume);
+        SetMusicVolume(_gameOptions.MusicVolume);
+        SetAmbientVolume(_gameOptions.AmbientSound);
+    }
+    #endregion
 
-            _s.Source.volume = _s.Volume;
-            _s.Source.pitch = _s.Pitch;
-            _s.Source.loop = _s.Loop;
-        }
+    public void ValuesChanged()
+    {
+        SetMasterVolume(_gameOptions.OverallSound);
+        SetSFXVolume(_gameOptions.SfxVolume);
+        SetMusicVolume(_gameOptions.MusicVolume);
+        SetAmbientVolume(_gameOptions.AmbientSound);
     }
 
-    public void Play (string _name)
+    public void SetMasterVolume(float volume)
     {
-         Sound _s = Array.Find(SoundsList, Sound => Sound.Name == _name);
-        if (_s == null)
-            return;
-
-        _s.Source.Play();
+        master.SetFloat("Master", Mathf.Log10 (volume) * 20);
     }
 
-    public void Pause (string _name)
+    public void SetSFXVolume(float volume)
     {
-        Sound _s = Array.Find(SoundsList, Sound => Sound.Name == _name);
-        if (_s == null)
-            return;
-
-        _s.Source.Pause();
+        master.SetFloat("SFX", Mathf.Log10(volume) * 20);
     }
 
-    public void Stop(string _name)
+    public void SetMusicVolume(float volume)
     {
-        Sound _s = Array.Find(SoundsList, Sound => Sound.Name == _name);
-        if (_s == null)
-            return;
+        master.SetFloat("Music", Mathf.Log10(volume) * 20);
+    }
 
-        _s.Source.Stop();
+    public void SetAmbientVolume(float volume)
+    {
+        master.SetFloat("Ambient", Mathf.Log10(volume) * 20);
     }
 }
