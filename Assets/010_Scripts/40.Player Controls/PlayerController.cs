@@ -7,7 +7,6 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     //public Variables
-    public float Speed;
     public float GroundDistance = 0.4f;
     public bool PointAndClick = false; //we will put input type into settings later, now it's a variable in inspector
     public LayerMask GroundMask;
