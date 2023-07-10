@@ -176,7 +176,7 @@ public class DisplayMemories : MonoBehaviour
             hoveredObj.GetComponent<MeshRenderer>().material = MouseItemInstance._gameObj.GetComponent<MeshRenderer>().material;
             //hoveredObj.transform.parent.GetComponent<BrokenObject>()._brokenParts[hoveredObj] = false;
             //hoveredObj.GetComponent<BrokenPart>().isFixed = true;
-            print("we're here");
+            //print("we're here");
             //hoveredObj.GetComponent<MeshRenderer>().enabled = true;
 
           }
@@ -189,7 +189,7 @@ public class DisplayMemories : MonoBehaviour
             _obj.transform.GetChild(0).GetComponent<Image>().color = new Color(255, 255, 255, 255);
             _obj.transform.GetChild(0).GetComponent<Image>().raycastTarget = true;
 */
-            print("we're here");
+            //print("we're here");
             memoryActivated = false;
         }
         print("we're here");
@@ -199,8 +199,8 @@ public class DisplayMemories : MonoBehaviour
         Destroy(MouseItemInstance._obj);
         Destroy(MouseItemInstance._gameObj);
         MouseItemInstance._item = null;
-        if(memoryActivated)
-            gameObject.SetActive(false);
+        /*if(memoryActivated)
+            gameObject.SetActive(false);*/
     }
     public void OnDrag(GameObject _obj)
     {

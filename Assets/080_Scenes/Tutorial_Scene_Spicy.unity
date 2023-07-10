@@ -22077,6 +22077,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: UI HUD
       objectReference: {fileID: 0}
+    - target: {fileID: 4827669221776283371, guid: e93f3ec09e49a4b498b2ae8c0894298e, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4956616276293338111, guid: e93f3ec09e49a4b498b2ae8c0894298e, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -28737,7 +28741,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5316545816186874320, guid: ccaecf18a480d744d97098356fd16744, type: 3}
   m_PrefabInstance: {fileID: 709908623}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1837247373}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9c44aa34f048042429840c0840508dee, type: 3}
@@ -43325,6 +43329,26 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 360
   m_ShadowAngle: 0
+--- !u!1 &1837247373 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7213995553568180563, guid: ccaecf18a480d744d97098356fd16744, type: 3}
+  m_PrefabInstance: {fileID: 709908623}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &1837247375
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1837247373}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ade21f885af84a8023f6781edf94d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  savePath: 
+  ItemInventory: {fileID: 0}
+  MemoryInventory: {fileID: 0}
 --- !u!1001 &1837736954
 PrefabInstance:
   m_ObjectHideFlags: 0
