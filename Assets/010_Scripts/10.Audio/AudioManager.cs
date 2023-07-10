@@ -15,7 +15,6 @@ public class Audio
 public class AudioManager : MonoBehaviour
 {
     //Handles Volume Management of all Audio Sources
-    public static AudioManager Instance;
 
     [Header("Volume Management")]
     [SerializeField] private GameOptions _gameOptions;
@@ -35,6 +34,7 @@ public class AudioManager : MonoBehaviour
     private int _currentIndex;
 
     #region Singleton Setup
+    public static AudioManager Instance;
     void Awake()
     {
         if (Instance == null)
