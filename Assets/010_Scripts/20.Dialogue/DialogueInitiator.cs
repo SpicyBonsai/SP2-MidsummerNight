@@ -44,8 +44,7 @@ public class DialogueInitiator : MonoBehaviour, IInteractable
     }
 
     private bool PlayerInRange() => (_playerPos.position - gameObject.transform.position).magnitude <= distanceToInteract;
-
-    // Update is called once per frame
+    
     void Update()
     {
 
