@@ -118,7 +118,7 @@ MonoBehaviour:
   characterName: Lyr
   characterColor: {r: 0, g: 0.5471698, b: 0.35241443, a: 1}
   shouldCharacterStop: 1
-  _distanceToInteract: 2
+  distanceToInteract: 2
 --- !u!114 &5826382879312148405
 MonoBehaviour:
   m_ObjectHideFlags: 0

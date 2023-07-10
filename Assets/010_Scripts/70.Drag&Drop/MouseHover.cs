@@ -12,6 +12,7 @@ public class MouseHover : MonoBehaviour
     static bool cursorIsOverUI;
     private Ray _ray;
     private RaycastHit _hit;
+    private RaycastHit[] _hits;
     private Camera _camera;
     private IHoverable _hoverableObject;
 
@@ -27,17 +28,33 @@ public class MouseHover : MonoBehaviour
         _ray = Camera.main.ScreenPointToRay(InputManager.GetInstance().MousePosition);
 
         //if the raycast hit something, assign the object that it hit to a variable
-        if (Physics.Raycast(_ray, out _hit))
+        // if (Physics.Raycast(_ray, out _hit))
+        // {
+        //     //_hoveredObj = _hit.collider.transform.gameObject;
+        //     HoveredObj = _hit.collider.transform.gameObject;
+        //     _hoverableObject = HoveredObj.GetComponent<IHoverable>();
+        //     if (_hoverableObject != null)
+        //     {
+        //         _hoverableObject.Interact();
+        //     }
+        //     
+        // }
+        //
+        _hits = Physics.RaycastAll(_ray);
+
+        HoveredObj = _hits[0].collider.transform.gameObject;
+        //Debug.Log(HoveredObj);
+        foreach (RaycastHit _hit in _hits)
         {
-            _hoveredObj = _hit.collider.transform.gameObject;
-            HoveredObj = _hit.collider.transform.gameObject;
-            // _hoverableObject = _hoveredObj.GetComponent<IHoverable>();
-            // if (_hoverableObject != null)
-            // {
-            //     _hoverableObject?.Interact();
-            // }
-            
+            var _hoverableObj = _hit.collider.transform.gameObject.GetComponent<IHoverable>();
+            if (_hoverableObj != null)
+            {
+                _hoverableObj.Interact();
+            }
         }
+
+            
+        
         
         
         cursorIsOverUI = IsPointerOverUIObject();

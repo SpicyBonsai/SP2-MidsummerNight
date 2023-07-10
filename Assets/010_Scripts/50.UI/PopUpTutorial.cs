@@ -3,41 +3,32 @@ using Unity.VisualScripting;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using UnityEngine;
+using UnityEngine.Serialization;
 
-public class PopUpTutorial : MonoBehaviour, IPointerEnterHandler
+public class PopUpTutorial : MonoBehaviour, IHoverable
 {
     private bool _isInteracting;
-    private Animator _animator;
+    [SerializeField] private Animator animator;
     private bool _menuOpen;
     private bool _interactValue;
     void Start()
     {
-        _animator = gameObject.GetComponent<Animator>();
         _menuOpen = false;
-    }
-
-    public void OnPointerEnter(PointerEventData eventData)
-    {
-        Debug.Log("Open the fucking menu");
-        OpenMenu();
-    }
-
-    public void OnPointerExit(PointerEventData eventData)
-    {
-        Debug.Log("Close the fucking menu");
-        CloseMenu();
     }
 
     void Update()
     {
+        //Debug.Log("Interact value: " + _interactValue);
         _interactValue = IsHovering();
 
         if (_menuOpen && !_interactValue)
         {
+            //Debug.Log("closing menu...");
             CloseMenu();
         } 
-        else if (_menuOpen && _interactValue)
+        else if (!_menuOpen && _interactValue)
         {
+            //Debug.Log("opening menu...");
             OpenMenu();    
         }
         
@@ -45,13 +36,13 @@ public class PopUpTutorial : MonoBehaviour, IPointerEnterHandler
 
     public void OpenMenu()
     {
-        _animator.SetBool("Open", true);
+        animator.SetBool("Open", true);
         _menuOpen = true;
     }
 
     public void CloseMenu()
     {
-        _animator.SetBool("Open", false);
+        animator.SetBool("Open", false);
         _menuOpen = false;
     }
 
