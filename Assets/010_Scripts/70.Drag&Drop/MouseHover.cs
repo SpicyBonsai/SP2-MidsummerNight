@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 
 public class MouseHover : MonoBehaviour
 {
-    public static GameObject HoveredObj { get; }
+    public static GameObject HoveredObj { get; private set; }
     static GameObject _hoveredObj;
     public static bool CursorIsOverUI { get; }
     static bool cursorIsOverUI;
@@ -30,11 +30,12 @@ public class MouseHover : MonoBehaviour
         if (Physics.Raycast(_ray, out _hit))
         {
             _hoveredObj = _hit.collider.transform.gameObject;
-            _hoverableObject = _hoveredObj.GetComponent<IHoverable>();
-            if (_hoverableObject != null)
-            {
-                _hoverableObject?.Interact();
-            }
+            HoveredObj = _hit.collider.transform.gameObject;
+            // _hoverableObject = _hoveredObj.GetComponent<IHoverable>();
+            // if (_hoverableObject != null)
+            // {
+            //     _hoverableObject?.Interact();
+            // }
             
         }
         
