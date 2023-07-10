@@ -32,6 +32,11 @@ public class CameraRotate_Tudor : MonoBehaviour
         }
         else if(InputManager.GetInstance().LeftClick)
         {
+            if (InputManager.GetInstance().GetCurrentActionMap() == "UI")
+            {
+                return;
+            }
+            
             if(Vector3.Dot(transform.forward, _playerTransform.forward) < 0.99f && _returnToFacing == null)
             {
                 _returnToFacing = StartCoroutine(ReturnToFacing());
