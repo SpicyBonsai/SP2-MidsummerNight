@@ -33,7 +33,6 @@ public class AudioManager : MonoBehaviour
     //Shuffle Variables
     private List<Audio> _shuffledList;
     private int _currentIndex;
-    private float timer;
 
     #region Singleton Setup
     void Awake()
