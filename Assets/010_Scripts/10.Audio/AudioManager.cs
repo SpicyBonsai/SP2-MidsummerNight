@@ -1,15 +1,41 @@
-﻿using UnityEngine.Audio;
-using UnityEngine.UI;
+﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using UnityEngine.Audio;
+using UnityEngine.InputSystem;
+using Random = UnityEngine.Random;
+
+[System.Serializable]
+public class Audio
+{
+    [Range(0f, 1f)] public float volume = 1f;
+    public AudioClip audioClip;
+}
 
 public class AudioManager : MonoBehaviour
 {
+    //Handles Volume Management of all Audio Sources
     public static AudioManager Instance;
 
+    [Header("Volume Management")]
     [SerializeField] private GameOptions _gameOptions;
-    [SerializeField] public AudioMixer master;
+    [SerializeField] private AudioMixer _master;
 
-    #region Singleton Mumbo Jumbo
+    //Audio Sources
+    [Header("Audio Sources")]
+    [SerializeField] private AudioSource _sfx;
+
+    //Audio Clips
+    [Header("Audio Clips")]
+    public Audio[] test;
+    public Audio[] footsteps;
+
+    //Shuffle Variables
+    private List<Audio> _shuffledList;
+    private int _currentIndex;
+    private float timer;
+
+    #region Singleton Setup
     void Awake()
     {
         if (Instance == null)
@@ -21,15 +47,15 @@ public class AudioManager : MonoBehaviour
             Destroy(gameObject);
             return;
         }
-        DontDestroyOnLoad(gameObject);
-
-        SetMasterVolume(_gameOptions.OverallSound);
-        SetSFXVolume(_gameOptions.SfxVolume);
-        SetMusicVolume(_gameOptions.MusicVolume);
-        SetAmbientVolume(_gameOptions.AmbientSound);
     }
-    #endregion
 
+    #endregion
+    private void Start()
+    {
+        ValuesChanged();
+    }
+
+    #region Volume Control
     public void ValuesChanged()
     {
         SetMasterVolume(_gameOptions.OverallSound);
@@ -40,21 +66,79 @@ public class AudioManager : MonoBehaviour
 
     public void SetMasterVolume(float volume)
     {
-        master.SetFloat("Master", Mathf.Log10 (volume) * 20);
+        _master.SetFloat("Master", Mathf.Log10(volume) * 20);
     }
 
     public void SetSFXVolume(float volume)
     {
-        master.SetFloat("SFX", Mathf.Log10(volume) * 20);
+        _master.SetFloat("SFX", Mathf.Log10(volume) * 20);
     }
 
     public void SetMusicVolume(float volume)
     {
-        master.SetFloat("Music", Mathf.Log10(volume) * 20);
+        _master.SetFloat("Music", Mathf.Log10(volume) * 20);
     }
 
     public void SetAmbientVolume(float volume)
     {
-        master.SetFloat("Ambient", Mathf.Log10(volume) * 20);
+        _master.SetFloat("Ambient", Mathf.Log10(volume) * 20);
     }
+    #endregion
+
+    #region Shuffle Audio Clips
+    private void ShuffleList()
+    {
+        int n = _shuffledList.Count;
+
+        Audio lastClip = _shuffledList[n - 1];
+        int randomIndex = Random.Range(0, n - 2);
+        _shuffledList[n - 1] = _shuffledList[randomIndex];
+        _shuffledList[randomIndex] = lastClip;
+
+        while (n > 1)
+        {
+            n--;
+            int k = Random.Range(0, n + 1);
+            Audio value = _shuffledList[k];
+            _shuffledList[k] = _shuffledList[n];
+            _shuffledList[n] = value;
+        }
+
+        Debug.Log("Shuffled List:");
+        foreach (Audio clip in _shuffledList)
+        {
+            Debug.Log(clip.audioClip.name);
+        }
+    }
+    #endregion
+
+    #region Audio Clip Playback
+    public void RandomSoundEffect(params Audio[] clips)
+    {
+        if (clips.Length > 0)
+        {
+            if (_shuffledList == null || _shuffledList.Count == 0)
+            {
+                _shuffledList = new List<Audio>(clips);
+                ShuffleList();
+            }
+
+            _sfx.volume = _shuffledList[_currentIndex].volume;
+            _sfx.clip = _shuffledList[_currentIndex].audioClip;
+            _sfx.PlayOneShot(_sfx.clip);
+
+            _currentIndex++;
+
+            if (_currentIndex == _shuffledList.Count)
+            {
+                ShuffleList();
+                _currentIndex = 0;
+            }
+        }
+        else
+        {
+            Debug.Log("Missing Sound");
+        }
+    }
+    #endregion
 }
