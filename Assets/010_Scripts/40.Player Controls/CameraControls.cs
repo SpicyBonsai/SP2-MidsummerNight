@@ -1,6 +1,3 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
 
@@ -13,7 +10,8 @@ public class CameraControls : MonoBehaviour
     private Transform _cameraPos;
     private float _dotCameraPlayer;
     private InputManager _inputManager;
-    
+
+    public bool isteleporting;
 
     [Header("Camera settings during manual rotation:")]
     [SerializeField] private float xDampingWhenHold;
@@ -44,11 +42,14 @@ public class CameraControls : MonoBehaviour
     {
         //cameraPos.position = new Vector3(cameraPos.position.x, playerPos.position.y, cameraPos.position.z);
         //Debug.Log("Dot product of camera and player forwards:" + Vector3.Dot(cameraPos.forward.normalized, playerPos.forward));
-        _dotCameraPlayer = Vector3.Dot(_cameraPos.forward.normalized, _playerPos.forward);
 
-        _camTranspose.m_XDamping = Mathf.Clamp(2 * _dotCameraPlayer, 0, 2);
-        _camTranspose.m_YDamping = Mathf.Clamp(2 * _dotCameraPlayer, 0, 2);
-        _camTranspose.m_YawDamping = Mathf.Clamp(7 * _dotCameraPlayer, 0, 7);
+        if(!isteleporting)
+        {
+            _dotCameraPlayer = Vector3.Dot(_cameraPos.forward.normalized, _playerPos.forward);
+            _camTranspose.m_XDamping = Mathf.Clamp(2 * _dotCameraPlayer, 0, 2);
+            _camTranspose.m_YDamping = Mathf.Clamp(2 * _dotCameraPlayer, 0, 2);
+            _camTranspose.m_YawDamping = Mathf.Clamp(7 * _dotCameraPlayer, 0, 7);
+        }
 
         _camComposer.m_HorizontalDamping = Mathf.Clamp(2 * _dotCameraPlayer, 0, 2);
         _camComposer.m_VerticalDamping = Mathf.Clamp(2 * _dotCameraPlayer, 0, 2);
@@ -73,5 +74,7 @@ public class CameraControls : MonoBehaviour
             _camComposer.m_HorizontalDamping = horizontalDampingWhenHold;
             _camComposer.m_VerticalDamping = verticalDampingWhenHold;
         }
+
+        isteleporting = false;
     }
 }

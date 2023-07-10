@@ -1,13 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
+using Cinemachine;
 using UnityEngine;
 using UnityEngine.AI;
-using Cinemachine;
 
 public class Teleporter : MonoBehaviour
 {
     [SerializeField] private Transform destination;
     [SerializeField] private CinemachineVirtualCamera cam1;
+    [SerializeField] private CameraControls controls;
+
     private CinemachineTransposer camTransposer;
     private CinemachineComposer camComposer;
 
@@ -17,8 +17,11 @@ public class Teleporter : MonoBehaviour
     private float horizontalDampingWhenHold;
     private float verticalDampingWhenHold;
 
+    private float lookAheadWhenHold;
+    private float lookAheadSmoothingWhenHold;
 
-    private void Start() {
+    private void Start()
+    {
         // cam1 = Camera.main.GetComponent<CinemachineVirtualCamera>();
         camTransposer = cam1.GetCinemachineComponent<CinemachineTransposer>();
         camComposer = cam1.GetCinemachineComponent<CinemachineComposer>();
@@ -28,6 +31,9 @@ public class Teleporter : MonoBehaviour
         yawDampingWhenHold = camTransposer.m_YawDamping;
         horizontalDampingWhenHold = camComposer.m_HorizontalDamping;
         verticalDampingWhenHold = camComposer.m_VerticalDamping;
+
+        lookAheadWhenHold = camComposer.m_LookaheadTime;
+        lookAheadSmoothingWhenHold = camComposer.m_LookaheadSmoothing;
 
     }
 
@@ -41,7 +47,10 @@ public class Teleporter : MonoBehaviour
             camComposer.m_HorizontalDamping = 0;
             camComposer.m_VerticalDamping = 0;
 
+            camComposer.m_LookaheadTime = 0;
+            camComposer.m_LookaheadSmoothing = 0;
 
+            controls.isteleporting = true;
 
             other.GetComponent<CharacterController>().enabled = false;
             other.GetComponent<NavMeshAgent>().enabled = false;
@@ -49,14 +58,14 @@ public class Teleporter : MonoBehaviour
             other.GetComponent<NavMeshAgent>().enabled = true;
             other.GetComponent<CharacterController>().enabled = true;
 
-
             camTransposer.m_XDamping = xDampingWhenHold;
             camTransposer.m_YDamping = yDampingWhenHold;
             camTransposer.m_YawDamping = yawDampingWhenHold;
             camComposer.m_HorizontalDamping = horizontalDampingWhenHold;
             camComposer.m_VerticalDamping = verticalDampingWhenHold;
+
+            camComposer.m_LookaheadTime = lookAheadWhenHold;
+            camComposer.m_LookaheadSmoothing = lookAheadSmoothingWhenHold;
         }
     }
-
-
 }
