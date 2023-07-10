@@ -1,62 +1,143 @@
-﻿using UnityEngine.Audio;
-using System;
+﻿using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
+using UnityEngine.Audio;
+using UnityEngine.InputSystem;
+using Random = UnityEngine.Random;
+
+[System.Serializable]
+public class Audio
+{
+    [Range(0f, 1f)] public float volume = 1f;
+    public AudioClip audioClip;
+}
 
 public class AudioManager : MonoBehaviour
 {
-    [Header("To use: ")]
-    [Header("FindObjectOfType<AudioManager>().Play(track name);")]
-    public Sound[] SoundsList;
-    public static AudioManager Instance;
+    //Handles Volume Management of all Audio Sources
 
-    // Start is called before the first frame update
+    [Header("Volume Management")]
+    [SerializeField] private GameOptions _gameOptions;
+    [SerializeField] private AudioMixer _master;
+
+    //Audio Sources
+    [Header("Audio Sources")]
+    [SerializeField] private AudioSource _sfx;
+
+    //Audio Clips
+    [Header("Audio Clips")]
+    public Audio[] test;
+    public Audio[] footsteps;
+
+    //Shuffle Variables
+    private List<Audio> _shuffledList;
+    private int _currentIndex;
+
+    #region Singleton Setup
+    public static AudioManager Instance;
     void Awake()
     {
         if (Instance == null)
+        {
             Instance = this;
+        }
         else
         {
             Destroy(gameObject);
             return;
         }
+    }
 
-        DontDestroyOnLoad(gameObject);
+    #endregion
+    private void Start()
+    {
+        ValuesChanged();
+    }
 
-        foreach (Sound _s in SoundsList)
+    #region Volume Control
+    public void ValuesChanged()
+    {
+        SetMasterVolume(_gameOptions.OverallSound);
+        SetSFXVolume(_gameOptions.SfxVolume);
+        SetMusicVolume(_gameOptions.MusicVolume);
+        SetAmbientVolume(_gameOptions.AmbientSound);
+    }
+
+    public void SetMasterVolume(float volume)
+    {
+        _master.SetFloat("Master", Mathf.Log10(volume) * 20);
+    }
+
+    public void SetSFXVolume(float volume)
+    {
+        _master.SetFloat("SFX", Mathf.Log10(volume) * 20);
+    }
+
+    public void SetMusicVolume(float volume)
+    {
+        _master.SetFloat("Music", Mathf.Log10(volume) * 20);
+    }
+
+    public void SetAmbientVolume(float volume)
+    {
+        _master.SetFloat("Ambient", Mathf.Log10(volume) * 20);
+    }
+    #endregion
+
+    #region Shuffle Audio Clips
+    private void ShuffleList()
+    {
+        int n = _shuffledList.Count;
+
+        Audio lastClip = _shuffledList[n - 1];
+        int randomIndex = Random.Range(0, n - 2);
+        _shuffledList[n - 1] = _shuffledList[randomIndex];
+        _shuffledList[randomIndex] = lastClip;
+
+        while (n > 1)
         {
-            _s.Source = gameObject.AddComponent<AudioSource>();
-            _s.Source.clip = _s.Clip;
+            n--;
+            int k = Random.Range(0, n + 1);
+            Audio value = _shuffledList[k];
+            _shuffledList[k] = _shuffledList[n];
+            _shuffledList[n] = value;
+        }
 
-            _s.Source.volume = _s.Volume;
-            _s.Source.pitch = _s.Pitch;
-            _s.Source.loop = _s.Loop;
+        Debug.Log("Shuffled List:");
+        foreach (Audio clip in _shuffledList)
+        {
+            Debug.Log(clip.audioClip.name);
         }
     }
+    #endregion
 
-    public void Play (string _name)
+    #region Audio Clip Playback
+    public void RandomSoundEffect(params Audio[] clips)
     {
-         Sound _s = Array.Find(SoundsList, Sound => Sound.Name == _name);
-        if (_s == null)
-            return;
+        if (clips.Length > 0)
+        {
+            if (_shuffledList == null || _shuffledList.Count == 0)
+            {
+                _shuffledList = new List<Audio>(clips);
+                ShuffleList();
+            }
 
-        _s.Source.Play();
+            _sfx.volume = _shuffledList[_currentIndex].volume;
+            _sfx.clip = _shuffledList[_currentIndex].audioClip;
+            _sfx.PlayOneShot(_sfx.clip);
+
+            _currentIndex++;
+
+            if (_currentIndex == _shuffledList.Count)
+            {
+                ShuffleList();
+                _currentIndex = 0;
+            }
+        }
+        else
+        {
+            Debug.Log("Missing Sound");
+        }
     }
-
-    public void Pause (string _name)
-    {
-        Sound _s = Array.Find(SoundsList, Sound => Sound.Name == _name);
-        if (_s == null)
-            return;
-
-        _s.Source.Pause();
-    }
-
-    public void Stop(string _name)
-    {
-        Sound _s = Array.Find(SoundsList, Sound => Sound.Name == _name);
-        if (_s == null)
-            return;
-
-        _s.Source.Stop();
-    }
+    #endregion
 }

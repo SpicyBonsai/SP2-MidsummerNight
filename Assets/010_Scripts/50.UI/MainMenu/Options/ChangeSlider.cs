@@ -17,5 +17,9 @@ public class ChangeSlider : MonoBehaviour
     public void OnValueChanged()
     {
         LevelManager.instance.ChangeSliderValue(sliderName, slider.value);
+        if(AudioManager.Instance != null)
+        {
+            AudioManager.Instance.ValuesChanged();
+        }
     }
 }
