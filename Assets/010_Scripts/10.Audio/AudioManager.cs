@@ -2,6 +2,7 @@
 using System.Linq;
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.Events;
 using UnityEngine.InputSystem;
 using Random = UnityEngine.Random;
 
@@ -15,7 +16,6 @@ public class Audio
 public class AudioManager : MonoBehaviour
 {
     //Handles Volume Management of all Audio Sources
-
     [Header("Volume Management")]
     [SerializeField] private GameOptions _gameOptions;
     [SerializeField] private AudioMixer _master;
@@ -26,12 +26,15 @@ public class AudioManager : MonoBehaviour
 
     //Audio Clips
     [Header("Audio Clips")]
-    public Audio[] test;
     public Audio[] footsteps;
-
-    //Shuffle Variables
-    private List<Audio> _shuffledList;
-    private int _currentIndex;
+    public Audio[] uiError;
+    public Audio[] uiSuccess;
+    public Audio[] uiMainMenuConfirm;
+    public Audio[] uiMainMenuExit;
+    public Audio[] uiMainMenuHover;
+    public Audio[] uiSubMenuHover;
+    public Audio[] uiSubMenuConfirm;
+    private Dictionary<string, Audio[]> audioClipDict;
 
     #region Singleton Setup
     public static AudioManager Instance;
@@ -46,6 +49,17 @@ public class AudioManager : MonoBehaviour
             Destroy(gameObject);
             return;
         }
+
+        audioClipDict = new Dictionary<string, Audio[]>
+        {
+            { "uiError", uiError },
+            { "uiSuccess", uiSuccess },
+            { "uiMainMenuConfirm", uiMainMenuConfirm },
+            { "uiMainMenuExit", uiMainMenuExit },
+            { "uiMainMenuHover", uiMainMenuHover },
+            { "uiSubMenuHover", uiSubMenuHover },
+            { "uiSubMenuConfirm", uiSubMenuConfirm }
+        };
     }
 
     #endregion
@@ -85,29 +99,18 @@ public class AudioManager : MonoBehaviour
     #endregion
 
     #region Shuffle Audio Clips
-    private void ShuffleList()
+    private void ShuffleList(List<Audio> list)
     {
-        int n = _shuffledList.Count;
-
-        Audio lastClip = _shuffledList[n - 1];
-        int randomIndex = Random.Range(0, n - 2);
-        _shuffledList[n - 1] = _shuffledList[randomIndex];
-        _shuffledList[randomIndex] = lastClip;
+        int n = list.Count;
 
         while (n > 1)
         {
             n--;
             int k = Random.Range(0, n + 1);
-            Audio value = _shuffledList[k];
-            _shuffledList[k] = _shuffledList[n];
-            _shuffledList[n] = value;
+            Audio value = list[k];
+            list[k] = list[n];
+            list[n] = value;
         }
-
-        // Debug.Log("Shuffled List:");
-        // foreach (Audio clip in _shuffledList)
-        // {
-        //     Debug.Log(clip.audioClip.name);
-        // }
     }
     #endregion
 
@@ -116,23 +119,15 @@ public class AudioManager : MonoBehaviour
     {
         if (clips.Length > 0)
         {
-            if (_shuffledList == null || _shuffledList.Count == 0)
-            {
-                _shuffledList = new List<Audio>(clips);
-                ShuffleList();
-            }
+            List<Audio> shuffledList = new List<Audio>(clips);
+            ShuffleList(shuffledList);
 
-            _sfx.volume = _shuffledList[_currentIndex].volume;
-            _sfx.clip = _shuffledList[_currentIndex].audioClip;
+            _sfx.volume = shuffledList[0].volume;
+            _sfx.clip = shuffledList[0].audioClip;
             _sfx.PlayOneShot(_sfx.clip);
 
-            _currentIndex++;
+            shuffledList.RemoveAt(0);
 
-            if (_currentIndex == _shuffledList.Count)
-            {
-                ShuffleList();
-                _currentIndex = 0;
-            }
         }
         else
         {
@@ -140,4 +135,16 @@ public class AudioManager : MonoBehaviour
         }
     }
     #endregion
+
+    public void CallAudio(string audioName)
+    {
+        if (audioClipDict.ContainsKey(audioName))
+        {
+            RandomSoundEffect(audioClipDict[audioName]);
+        }
+        else
+        {
+            Debug.LogError("Invalid audio name: " + audioName);
+        }
+    }
 }
