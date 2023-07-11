@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -32,6 +33,14 @@ public class PauseManager : MonoBehaviour
     {
         _animatorInventory = _inventoryMenu.GetComponent<Animator>();
         _animatorMemory = _memoryMenu.GetComponent<Animator>();    
+    }
+
+    private void Update()
+    {
+        if (_inventoryMenu == null)
+        {
+            _inventoryMenu = GameObject.FindGameObjectWithTag("GameManager");
+        }
     }
 
     public void PauseGame()

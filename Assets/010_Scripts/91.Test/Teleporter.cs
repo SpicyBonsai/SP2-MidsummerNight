@@ -24,8 +24,8 @@ public class Teleporter : MonoBehaviour
         if (other.tag == "Player")
         {
             controls.isteleporting = true;
-            AudioManager.Instance.StopMusic();
-            AudioManager.Instance.StopAmbient();
+            // AudioManager.Instance.StopMusic();
+            // AudioManager.Instance.StopAmbient();
 
             other.GetComponent<CharacterController>().enabled = false;
             other.GetComponent<NavMeshAgent>().enabled = false;

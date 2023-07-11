@@ -10,6 +10,7 @@ TagManager:
   - Terrain
   - DialogueTrigger
   - Interactable
+  - GameManager
   layers:
   - Default
   - TransparentFX
