@@ -233,6 +233,7 @@ public class DisplayInventory : MonoBehaviour
                     InventoryObj.RemoveItem(itemsInSlotsDisplayed[_obj].Item);
 
                 hoveredObj.GetComponent<MeshRenderer>().enabled = true;
+                hoveredObj.GetComponent<PassageFix>()?.Animate();
                 
             }
         }
