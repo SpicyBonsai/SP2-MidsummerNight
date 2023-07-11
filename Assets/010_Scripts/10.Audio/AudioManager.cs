@@ -84,6 +84,7 @@ public class AudioManager : MonoBehaviour
     private void Start()
     {
         ValuesChanged();
+        //Janky Temp Implementation
         PlayAmbient(ambientWind);
         PlaySong(gameSongs);
     }
