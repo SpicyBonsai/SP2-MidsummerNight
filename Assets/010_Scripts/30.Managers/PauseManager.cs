@@ -39,6 +39,8 @@ public class PauseManager : MonoBehaviour
         IsPaused = true;
         Time.timeScale = 0f;
 
+        AudioManager.Instance.RandomSoundEffect(AudioManager.Instance.uiPause);
+
         InputManager.PlayerInput.SwitchCurrentActionMap("UI");
         Debug.Log(InputManager.PlayerInput.currentActionMap);
         //PlayerInput.instance.SwitchCurrentActionMap("Dialogue");
@@ -49,7 +51,9 @@ public class PauseManager : MonoBehaviour
     {
         IsPaused = false;
         Time.timeScale = 1f;
-        
+
+        AudioManager.Instance.RandomSoundEffect(AudioManager.Instance.uiMainMenuExit);
+
         InputManager.PlayerInput.SwitchCurrentActionMap("Gameplay");
         Debug.Log(InputManager.PlayerInput.currentActionMap);
         // InputManager.GetInstance().PlayerInput.SwitchCurrentActionMap("Gameplay");
