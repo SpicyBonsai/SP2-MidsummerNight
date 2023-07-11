@@ -40,6 +40,7 @@ public class AudioManager : MonoBehaviour
     public Audio[] uiPause;
     public Audio[] collectItem;
     public Audio[] collectMemory;
+    public Audio[] restoreGate;
     private Dictionary<string, Audio[]> audioClipDict;
 
     [Header("Songs")]

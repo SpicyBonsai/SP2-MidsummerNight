@@ -25,13 +25,20 @@ public class PassageFix : MonoBehaviour
     public void RevealItems()
     {
         Debug.Log("Hello");
-        teleporter.SetActive(true);
+        AudioManager.Instance.RandomSoundEffect(AudioManager.Instance.restoreGate);
+        StartCoroutine(StartReveal());
+    }
+
+    private IEnumerator StartReveal()
+    {
+        yield return new WaitForSeconds(1.05f);
         StartCoroutine(Reveal(floor));
         StartCoroutine(Reveal(teleporter.GetComponent<MeshRenderer>()));
     }
 
     private IEnumerator Reveal(MeshRenderer meshRenderer)
     {
+        teleporter.SetActive(true);
         float elapsedTime = 0f,
             lerpProcess = 0f;
 

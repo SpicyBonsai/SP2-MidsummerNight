@@ -3525,11 +3525,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2399593231419482810, guid: 73c4579520f5d4643838448189f986b6, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.08832464
+      value: 0.0883247
       objectReference: {fileID: 0}
     - target: {fileID: 2399593231419482810, guid: 73c4579520f5d4643838448189f986b6, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.03096873
+      value: 0.030968748
       objectReference: {fileID: 0}
     - target: {fileID: 2399593231419482810, guid: 73c4579520f5d4643838448189f986b6, type: 3}
       propertyPath: m_LocalRotation.y
@@ -3573,11 +3573,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2399593232117606452, guid: 73c4579520f5d4643838448189f986b6, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.08832464
+      value: 0.0883247
       objectReference: {fileID: 0}
     - target: {fileID: 2399593232117606452, guid: 73c4579520f5d4643838448189f986b6, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.03096873
+      value: 0.030968748
       objectReference: {fileID: 0}
     - target: {fileID: 2399593232117606452, guid: 73c4579520f5d4643838448189f986b6, type: 3}
       propertyPath: m_LocalRotation.y
@@ -3805,6 +3805,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2991486297123360270, guid: 9ca6655c79f87e34884736f199a6f7bf, type: 3}
+      propertyPath: restoreGate.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2991486297123360270, guid: 9ca6655c79f87e34884736f199a6f7bf, type: 3}
       propertyPath: ambientDrone.Array.size
       value: 1
       objectReference: {fileID: 0}
@@ -3949,6 +3953,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2991486297123360270, guid: 9ca6655c79f87e34884736f199a6f7bf, type: 3}
+      propertyPath: restoreGate.Array.data[0].volume
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2991486297123360270, guid: 9ca6655c79f87e34884736f199a6f7bf, type: 3}
       propertyPath: ambientDrone.Array.data[0].volume
       value: 1
       objectReference: {fileID: 0}
@@ -4024,6 +4032,10 @@ PrefabInstance:
       propertyPath: collectItem.Array.data[0].audioClip
       value: 
       objectReference: {fileID: 8300000, guid: 39a7ce5b3cfce1b44b223b61f572df7f, type: 3}
+    - target: {fileID: 2991486297123360270, guid: 9ca6655c79f87e34884736f199a6f7bf, type: 3}
+      propertyPath: restoreGate.Array.data[0].audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: e39750a2c4fab4b469bdef243392a4fd, type: 3}
     - target: {fileID: 2991486297123360270, guid: 9ca6655c79f87e34884736f199a6f7bf, type: 3}
       propertyPath: uiMainMenuExit.Array.data[0].volume
       value: 1
@@ -4648,6 +4660,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 209658646204991579, guid: bbb6effa716c53a41badc764adcb9f6b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 209658646350860698, guid: bbb6effa716c53a41badc764adcb9f6b, type: 3}
       propertyPath: m_Layer
       value: 6
@@ -4739,6 +4755,10 @@ PrefabInstance:
     - target: {fileID: 209658647219856861, guid: bbb6effa716c53a41badc764adcb9f6b, type: 3}
       propertyPath: m_Layer
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 209658647220675944, guid: bbb6effa716c53a41badc764adcb9f6b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 209658647273233446, guid: bbb6effa716c53a41badc764adcb9f6b, type: 3}
       propertyPath: m_Layer
