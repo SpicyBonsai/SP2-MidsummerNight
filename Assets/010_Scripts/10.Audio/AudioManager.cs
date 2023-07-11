@@ -11,6 +11,8 @@ public class Audio
 {
     [Range(0f, 1f)] public float volume = 1f;
     public AudioClip audioClip;
+
+    public bool islooping = false;
 }
 
 public class AudioManager : MonoBehaviour
@@ -34,9 +36,11 @@ public class AudioManager : MonoBehaviour
     public Audio[] uiMainMenuHover;
     public Audio[] uiSubMenuHover;
     public Audio[] uiSubMenuConfirm;
-    public Audio[] songs;
     public Audio[] uiPause;
     private Dictionary<string, Audio[]> audioClipDict;
+
+    [Header("Songs")]
+    public Audio[] songs;
 
     #region Singleton Setup
     public static AudioManager Instance;
