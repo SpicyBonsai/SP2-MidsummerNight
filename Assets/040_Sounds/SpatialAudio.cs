@@ -7,7 +7,9 @@ public class SpatialAudio : MonoBehaviour
     [Header("Audio Setup")]
     [SerializeField] private AudioSource audioSource;
     [SerializeField, Range (0f, 1f)] private float maxPan = 1f;
+    [SerializeField, Range (0f, 1f)] private float volumeBehindWall = 0.5f;
     private float stereoPan;
+    private float baseVolume;
 
     [Header("Spatial Audio Values")]
     [SerializeField] private float minimumDistance = 5f;
@@ -24,6 +26,7 @@ public class SpatialAudio : MonoBehaviour
     private void Start()
     {
         audioSource = GetComponent<AudioSource>();
+        baseVolume = audioSource.volume;
     }
 
     private void Update()
@@ -43,7 +46,7 @@ public class SpatialAudio : MonoBehaviour
         #region Volume
         float normalizedDistance = Mathf.Clamp01((distanceToPlayer - minimumDistance) / (maximumDistance - minimumDistance));
         float volumeMultiplier = volumeDropoff.Evaluate(normalizedDistance);
-        audioSource.volume = playerInSightVolumeMultiplier * volumeMultiplier;
+        audioSource.volume = baseVolume * playerInSightVolumeMultiplier * volumeMultiplier;
         #endregion
     }
 
@@ -62,6 +65,6 @@ public class SpatialAudio : MonoBehaviour
             }
         }
         Debug.DrawRay(transform.position, direction, Color.red);
-        return 0.5f;
+        return volumeBehindWall;
     }
 }
