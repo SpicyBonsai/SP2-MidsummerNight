@@ -3525,11 +3525,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2399593231419482810, guid: 73c4579520f5d4643838448189f986b6, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.088324696
+      value: 0.0883247
       objectReference: {fileID: 0}
     - target: {fileID: 2399593231419482810, guid: 73c4579520f5d4643838448189f986b6, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.03096875
+      value: 0.030968748
       objectReference: {fileID: 0}
     - target: {fileID: 2399593231419482810, guid: 73c4579520f5d4643838448189f986b6, type: 3}
       propertyPath: m_LocalRotation.y
@@ -3537,7 +3537,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2399593231419482810, guid: 73c4579520f5d4643838448189f986b6, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.32942244
+      value: -0.3294224
       objectReference: {fileID: 0}
     - target: {fileID: 2399593232117606442, guid: 73c4579520f5d4643838448189f986b6, type: 3}
       propertyPath: lerpSpeed
@@ -3573,11 +3573,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2399593232117606452, guid: 73c4579520f5d4643838448189f986b6, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.088324696
+      value: 0.0883247
       objectReference: {fileID: 0}
     - target: {fileID: 2399593232117606452, guid: 73c4579520f5d4643838448189f986b6, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0.03096875
+      value: 0.030968748
       objectReference: {fileID: 0}
     - target: {fileID: 2399593232117606452, guid: 73c4579520f5d4643838448189f986b6, type: 3}
       propertyPath: m_LocalRotation.y
@@ -3585,7 +3585,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2399593232117606452, guid: 73c4579520f5d4643838448189f986b6, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0.32942244
+      value: -0.3294224
       objectReference: {fileID: 0}
     - target: {fileID: 2399593232354128577, guid: 73c4579520f5d4643838448189f986b6, type: 3}
       propertyPath: m_Name
@@ -3786,11 +3786,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2991486297123360270, guid: 9ca6655c79f87e34884736f199a6f7bf, type: 3}
       propertyPath: gameSongs.Array.size
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 2991486297123360270, guid: 9ca6655c79f87e34884736f199a6f7bf, type: 3}
       propertyPath: menuSongs.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2991486297123360270, guid: 9ca6655c79f87e34884736f199a6f7bf, type: 3}
       propertyPath: uiSuccess.Array.size
@@ -3801,7 +3801,15 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2991486297123360270, guid: 9ca6655c79f87e34884736f199a6f7bf, type: 3}
+      propertyPath: collectItem.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2991486297123360270, guid: 9ca6655c79f87e34884736f199a6f7bf, type: 3}
       propertyPath: ambientDrone.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2991486297123360270, guid: 9ca6655c79f87e34884736f199a6f7bf, type: 3}
+      propertyPath: collectMemory.Array.size
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2991486297123360270, guid: 9ca6655c79f87e34884736f199a6f7bf, type: 3}
@@ -3906,23 +3914,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2991486297123360270, guid: 9ca6655c79f87e34884736f199a6f7bf, type: 3}
       propertyPath: gameSongs.Array.data[0].volume
-      value: 1
+      value: 0.6
       objectReference: {fileID: 0}
     - target: {fileID: 2991486297123360270, guid: 9ca6655c79f87e34884736f199a6f7bf, type: 3}
       propertyPath: gameSongs.Array.data[1].volume
-      value: 1
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 2991486297123360270, guid: 9ca6655c79f87e34884736f199a6f7bf, type: 3}
       propertyPath: gameSongs.Array.data[2].volume
-      value: 1
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 2991486297123360270, guid: 9ca6655c79f87e34884736f199a6f7bf, type: 3}
       propertyPath: gameSongs.Array.data[3].volume
-      value: 1
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 2991486297123360270, guid: 9ca6655c79f87e34884736f199a6f7bf, type: 3}
       propertyPath: gameSongs.Array.data[4].volume
-      value: 1
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 2991486297123360270, guid: 9ca6655c79f87e34884736f199a6f7bf, type: 3}
       propertyPath: uiSuccess.Array.data[0].volume
@@ -3987,7 +3995,7 @@ PrefabInstance:
     - target: {fileID: 2991486297123360270, guid: 9ca6655c79f87e34884736f199a6f7bf, type: 3}
       propertyPath: gameSongs.Array.data[2].audioClip
       value: 
-      objectReference: {fileID: 8300000, guid: daf781b0d69e1354cbe4319d0f4e5b8f, type: 3}
+      objectReference: {fileID: 8300000, guid: e5570148282a4f54a8a8f4a6ead13690, type: 3}
     - target: {fileID: 2991486297123360270, guid: 9ca6655c79f87e34884736f199a6f7bf, type: 3}
       propertyPath: gameSongs.Array.data[3].audioClip
       value: 
@@ -4013,6 +4021,10 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2991486297123360270, guid: 9ca6655c79f87e34884736f199a6f7bf, type: 3}
+      propertyPath: collectItem.Array.data[0].audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 39a7ce5b3cfce1b44b223b61f572df7f, type: 3}
+    - target: {fileID: 2991486297123360270, guid: 9ca6655c79f87e34884736f199a6f7bf, type: 3}
       propertyPath: uiMainMenuExit.Array.data[0].volume
       value: 1
       objectReference: {fileID: 0}
@@ -4036,6 +4048,10 @@ PrefabInstance:
       propertyPath: uiMainMenuHover.Array.data[0].volume
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2991486297123360270, guid: 9ca6655c79f87e34884736f199a6f7bf, type: 3}
+      propertyPath: collectMemory.Array.data[0].audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: e410eba66884fb04ba2f2e2cd738b314, type: 3}
     - target: {fileID: 2991486297123360270, guid: 9ca6655c79f87e34884736f199a6f7bf, type: 3}
       propertyPath: uiSubMenuConfirm.Array.data[0].volume
       value: 1
@@ -4349,7 +4365,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6174746069077758621, guid: 2cd26c82c8bdf6648816adc58babdb87, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6187772209785487809, guid: 2cd26c82c8bdf6648816adc58babdb87, type: 3}
       propertyPath: popUpColor.a

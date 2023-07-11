@@ -11,6 +11,7 @@ public class Audio
 {
     [Range(0f, 1f)] public float volume = 1f;
     public AudioClip audioClip;
+    public bool isLooping = false;
 }
 
 public class AudioManager : MonoBehaviour
@@ -37,6 +38,8 @@ public class AudioManager : MonoBehaviour
     public Audio[] uiSubMenuHover;
     public Audio[] uiSubMenuConfirm;
     public Audio[] uiPause;
+    public Audio[] collectItem;
+    public Audio[] collectMemory;
     private Dictionary<string, Audio[]> audioClipDict;
 
     [Header("Songs")]
@@ -72,14 +75,17 @@ public class AudioManager : MonoBehaviour
             { "uiSubMenuConfirm", uiSubMenuConfirm },
             { "uiPause", uiPause }
         };
+
+        //_music = gameObject.GetComponent<AudioSource>();
+        //_ambient = gameObject.GetComponent<AudioSource>();
     }
 
     #endregion
     private void Start()
     {
-        _music = gameObject.GetComponent<AudioSource>();
-        _ambient = gameObject.GetComponent<AudioSource>();
         ValuesChanged();
+        PlayAmbient(ambientWind);
+        PlaySong(gameSongs);
     }
 
     #region Volume Control
@@ -184,6 +190,7 @@ public class AudioManager : MonoBehaviour
 
             _ambient.volume = shuffledList[0].volume;
             _ambient.clip = shuffledList[0].audioClip;
+            _ambient.loop = ambientSounds[0].isLooping;
             _ambient.Play();
         }
         else
