@@ -34,6 +34,7 @@ public class AudioManager : MonoBehaviour
     public Audio[] uiMainMenuHover;
     public Audio[] uiSubMenuHover;
     public Audio[] uiSubMenuConfirm;
+    public Audio[] uiPause;
     private Dictionary<string, Audio[]> audioClipDict;
 
     #region Singleton Setup
@@ -58,7 +59,8 @@ public class AudioManager : MonoBehaviour
             { "uiMainMenuExit", uiMainMenuExit },
             { "uiMainMenuHover", uiMainMenuHover },
             { "uiSubMenuHover", uiSubMenuHover },
-            { "uiSubMenuConfirm", uiSubMenuConfirm }
+            { "uiSubMenuConfirm", uiSubMenuConfirm },
+            { "uiPause", uiPause }
         };
     }
 
