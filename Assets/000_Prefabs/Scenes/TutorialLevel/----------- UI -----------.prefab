@@ -176,6 +176,14 @@ PrefabInstance:
       propertyPath: m_RaycastTarget
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6672078308979428251, guid: 8b09d0b31e425e7419278318f28fba27, type: 3}
+      propertyPath: _placeholderSpriteSize.x
+      value: 170
+      objectReference: {fileID: 0}
+    - target: {fileID: 6672078308979428251, guid: 8b09d0b31e425e7419278318f28fba27, type: 3}
+      propertyPath: _placeholderSpriteSize.y
+      value: 80
+      objectReference: {fileID: 0}
     - target: {fileID: 6672078309957905170, guid: 8b09d0b31e425e7419278318f28fba27, type: 3}
       propertyPath: m_Name
       value: CanvasOverlay
