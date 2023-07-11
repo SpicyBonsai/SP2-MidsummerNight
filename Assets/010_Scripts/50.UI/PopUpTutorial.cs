@@ -1,5 +1,6 @@
 using System;
 using Unity.VisualScripting;
+using UnityEditor.Rendering;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using UnityEngine;
@@ -11,16 +12,22 @@ public class PopUpTutorial : MonoBehaviour, IHoverable
     [SerializeField] private Animator animator;
     private bool _menuOpen;
     private bool _interactValue;
+    [SerializeField] private Color popUpColor;
+    private MeshRenderer _meshRenderer;
     void Start()
     {
+        _meshRenderer = GetComponent<MeshRenderer>();
         _menuOpen = false;
     }
 
     void Update()
     {
+        _meshRenderer.material.SetColor("_EmissionColor", popUpColor * (Mathf.Abs(Mathf.Sin(Time.time)) + 0.5f)); 
+        
         //Debug.Log("Interact value: " + _interactValue);
         _interactValue = IsHovering();
-
+        
+        
         if (_menuOpen && !_interactValue)
         {
             //Debug.Log("closing menu...");
