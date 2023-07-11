@@ -11,8 +11,6 @@ public class Audio
 {
     [Range(0f, 1f)] public float volume = 1f;
     public AudioClip audioClip;
-
-    public bool islooping = false;
 }
 
 public class AudioManager : MonoBehaviour
@@ -25,6 +23,8 @@ public class AudioManager : MonoBehaviour
     //Audio Sources
     [Header("Audio Sources")]
     [SerializeField] private AudioSource _sfx;
+    [SerializeField] private AudioSource _music;
+    [SerializeField] private AudioSource _ambient;
 
     //Audio Clips
     [Header("Audio Clips")]
@@ -40,7 +40,12 @@ public class AudioManager : MonoBehaviour
     private Dictionary<string, Audio[]> audioClipDict;
 
     [Header("Songs")]
-    public Audio[] songs;
+    public Audio[] gameSongs;
+    public Audio[] menuSongs;
+
+    [Header("Ambient")]
+    public Audio[] ambientWind;
+    public Audio[] ambientDrone;
 
     #region Singleton Setup
     public static AudioManager Instance;
@@ -72,6 +77,8 @@ public class AudioManager : MonoBehaviour
     #endregion
     private void Start()
     {
+        _music = gameObject.GetComponent<AudioSource>();
+        _ambient = gameObject.GetComponent<AudioSource>();
         ValuesChanged();
     }
 
@@ -105,7 +112,7 @@ public class AudioManager : MonoBehaviour
     }
     #endregion
 
-    #region Shuffle Audio Clips
+    #region Shuffle Audio Clips List
     private void ShuffleList(List<Audio> list)
     {
         int n = list.Count;
@@ -143,6 +150,55 @@ public class AudioManager : MonoBehaviour
     }
     #endregion
 
+    #region Play and Stop Music
+    public void PlaySong(Audio[] songs)
+    {
+        if (songs.Length > 0)
+        {
+            List<Audio> shuffledList = new List<Audio>(songs);
+            ShuffleList(shuffledList);
+
+            _music.volume = shuffledList[0].volume;
+            _music.clip = shuffledList[0].audioClip;
+            _music.Play();
+        }
+        else
+        {
+            Debug.Log("No songs available.");
+        }
+    }
+
+    public void StopMusic()
+    {
+        _music.Stop();
+    }
+    #endregion
+
+    #region Play and Stop Ambient Sound
+    public void PlayAmbient(Audio[] ambientSounds)
+    {
+        if (ambientSounds.Length > 0)
+        {
+            List<Audio> shuffledList = new List<Audio>(ambientSounds);
+            ShuffleList(shuffledList);
+
+            _ambient.volume = shuffledList[0].volume;
+            _ambient.clip = shuffledList[0].audioClip;
+            _ambient.Play();
+        }
+        else
+        {
+            Debug.Log("No ambient sounds available.");
+        }
+    }
+
+    public void StopAmbient()
+    {
+        _ambient.Stop();
+    }
+    #endregion
+
+    #region Call Audio From Events
     public void CallAudio(string audioName)
     {
         if (audioClipDict.ContainsKey(audioName))
@@ -154,4 +210,5 @@ public class AudioManager : MonoBehaviour
             Debug.LogError("Invalid audio name: " + audioName);
         }
     }
+    #endregion
 }

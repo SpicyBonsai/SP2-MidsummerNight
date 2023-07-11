@@ -24,12 +24,16 @@ public class Teleporter : MonoBehaviour
         if (other.tag == "Player")
         {
             controls.isteleporting = true;
+            AudioManager.Instance.StopMusic();
+            AudioManager.Instance.StopAmbient();
 
             other.GetComponent<CharacterController>().enabled = false;
             other.GetComponent<NavMeshAgent>().enabled = false;
             other.transform.position = destination.position;
             other.GetComponent<NavMeshAgent>().enabled = true;
             other.GetComponent<CharacterController>().enabled = true;
+
+            AudioManager.Instance.PlayAmbient(AudioManager.Instance.ambientDrone);
         }
     }
 }

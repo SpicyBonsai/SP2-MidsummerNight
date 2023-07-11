@@ -10,7 +10,7 @@ public class GameMusic : MonoBehaviour
     private void Start()
     {
         _musicBox = gameObject.GetComponent<AudioSource>();
-        _songListSize = Random.Range(0, AudioManager.Instance.songs.Length);
+        _songListSize = Random.Range(0, AudioManager.Instance.gameSongs.Length);
         _lastSongIndex = _songListSize + 1;
     }
     
@@ -31,7 +31,7 @@ public class GameMusic : MonoBehaviour
             } while (randomIndex == _lastSongIndex);
             _lastSongIndex = randomIndex;
             
-            _musicBox.PlayOneShot(AudioManager.Instance.songs[randomIndex].audioClip);
+            _musicBox.PlayOneShot(AudioManager.Instance.gameSongs[randomIndex].audioClip);
         }
     }
 }
