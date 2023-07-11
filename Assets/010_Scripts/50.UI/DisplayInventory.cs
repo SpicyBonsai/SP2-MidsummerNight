@@ -212,9 +212,11 @@ public class DisplayInventory : MonoBehaviour
         else if (!MouseItemInstance._hoverObj)
         {
             var hoveredObj = MouseHover.HoveredObj;
+            print("hovering " + hoveredObj);
+            print("name of item " + _itemName);
             if (hoveredObj?.name == _itemName && !hoveredObj.GetComponent<MeshRenderer>().enabled) // && hoveredObj.transform.parent.GetComponent<BrokenObject>()._brokenParts[hoveredObj])
             {
-
+                
                 //MouseItemInstance._gameObj.GetComponent<MeshCollider>().isTrigger = false; // the object won't be interactable anymore
                 //MouseItemInstance._gameObj.AddComponent<NavMeshObstacle>();
 

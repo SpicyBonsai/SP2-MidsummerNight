@@ -28,21 +28,24 @@ public class MouseHover : MonoBehaviour
         _ray = Camera.main.ScreenPointToRay(InputManager.GetInstance().MousePosition);
 
         //if the raycast hit something, assign the object that it hit to a variable
-        // if (Physics.Raycast(_ray, out _hit))
-        // {
-        //     //_hoveredObj = _hit.collider.transform.gameObject;
-        //     HoveredObj = _hit.collider.transform.gameObject;
-        //     _hoverableObject = HoveredObj.GetComponent<IHoverable>();
-        //     if (_hoverableObject != null)
-        //     {
-        //         _hoverableObject.Interact();
-        //     }
-        //     
-        // }
-        //
+         if (Physics.Raycast(_ray, out _hit))
+         {
+             //_hoveredObj = _hit.collider.transform.gameObject;
+             HoveredObj = _hit.collider.transform.gameObject;
+             //_hoverableObject = HoveredObj.GetComponent<IHoverable>();
+             //if (_hoverableObject != null)
+             //{
+             //    _hoverableObject.Interact();
+             //}
+             
+         }
+        
+
+
+
         _hits = Physics.RaycastAll(_ray);
 
-        HoveredObj = _hits[0].collider.transform.gameObject;
+        //HoveredObj = _hits[0].collider.transform.gameObject;
         //Debug.Log(HoveredObj);
         foreach (RaycastHit _hit in _hits)
         {
