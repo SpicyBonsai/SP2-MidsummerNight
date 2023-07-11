@@ -103,11 +103,11 @@ public class AudioManager : MonoBehaviour
             _shuffledList[n] = value;
         }
 
-        Debug.Log("Shuffled List:");
-        foreach (Audio clip in _shuffledList)
-        {
-            Debug.Log(clip.audioClip.name);
-        }
+        // Debug.Log("Shuffled List:");
+        // foreach (Audio clip in _shuffledList)
+        // {
+        //     Debug.Log(clip.audioClip.name);
+        // }
     }
     #endregion
 
