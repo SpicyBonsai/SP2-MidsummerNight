@@ -41,6 +41,11 @@ public class MenuManager : MonoBehaviour
                 PauseManager.instance.CloseInventory();
             }
         }
+
+        if (InputManager.GetInstance().UIMenuCloseInput && PauseManager.instance.InventoryOpen)
+        {
+            PauseManager.instance.CloseInventory();
+        }
     }
 
     public void Pause()

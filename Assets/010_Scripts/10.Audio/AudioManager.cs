@@ -34,6 +34,7 @@ public class AudioManager : MonoBehaviour
     public Audio[] uiMainMenuHover;
     public Audio[] uiSubMenuHover;
     public Audio[] uiSubMenuConfirm;
+    public Audio[] songs;
     private Dictionary<string, Audio[]> audioClipDict;
 
     #region Singleton Setup
