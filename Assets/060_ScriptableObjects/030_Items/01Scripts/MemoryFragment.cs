@@ -11,7 +11,7 @@ public class MemoryFragment : MonoBehaviour
 
     private void Update()
     {
-        if (EnterSoundCollider.PlayerEnteredObject && !_soundON)
+/*        if (EnterSoundCollider.PlayerEnteredObject && !_soundON)
         {
             GetComponent<AudioSource>().Play();
             _soundON = true;
@@ -20,7 +20,7 @@ public class MemoryFragment : MonoBehaviour
         {
             _soundON = false;
             GetComponent<AudioSource>().Stop();
-        }    
+        }   */ 
     }
 
 }

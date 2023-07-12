@@ -6,6 +6,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using UnityEngine.Events;
 using UnityEngine.AI;
+using UnityEngine.Rendering.Universal;
 
 public class DisplayMemories : MonoBehaviour
 {
@@ -168,18 +169,28 @@ public class DisplayMemories : MonoBehaviour
         bool memoryActivated = false; //is true when player puts the memory into proper place
         var hoveredObj = MouseHover.HoveredObj;
         print(_itemName);
+        print(hoveredObj?.name);
         if (hoveredObj?.name == _itemName) //&& !hoveredObj.GetComponent<MeshRenderer>().enabled) // && hoveredObj.transform.parent.GetComponent<BrokenObject>()._brokenParts[hoveredObj])
           {
             memoryActivated = true;
             //MouseItemInstance._gameObj.GetComponent<MeshCollider>().isTrigger = false; // the object won't be interactable anymore
             //MouseItemInstance._gameObj.AddComponent<NavMeshObstacle>();
-            hoveredObj.GetComponent<MeshRenderer>().material = MouseItemInstance._gameObj.GetComponent<MeshRenderer>().material;
+            //hoveredObj.GetComponent<MeshRenderer>().material = MouseItemInstance._gameObj.GetComponent<MeshRenderer>().material;
+            //Color _color = new Color(hoveredObj.GetComponent<DecalProjector>().material.GetColor());
+            //var _lerpedColor = Color
+            var color = new Color(1, 1, 1, 1);
+            //hoveredObj.GetComponent<DecalProjector>().material.SetColor("_BaseColor", color);
+            //var initColor = hoveredObj.GetComponent<MeshRenderer>().material.color;
+            foreach(Material _mat in hoveredObj.GetComponent<MeshRenderer>().materials)
+            {
+                _mat.color = color;
+            }
             //hoveredObj.transform.parent.GetComponent<BrokenObject>()._brokenParts[hoveredObj] = false;
             //hoveredObj.GetComponent<BrokenPart>().isFixed = true;
-            print("we're here");
+            //print("we're here");
             //hoveredObj.GetComponent<MeshRenderer>().enabled = true;
 
-          }
+        }
         else if (hoveredObj?.name != _itemName) // || hoveredObj.GetComponent<MeshRenderer>().enabled)
         {
            // _panelUI.GetComponent<Image>().color = _panelUIcolor;
