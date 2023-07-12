@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &8802280506968245694
+--- !u!1 &3769149557553809684
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,48 +8,47 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 8902509041869557735}
-  - component: {fileID: 2301167656268302460}
-  - component: {fileID: 823297665586135008}
-  - component: {fileID: 89704396991817631}
-  - component: {fileID: 1259348688309855045}
-  m_Layer: 0
-  m_Name: MemoryFragment
+  - component: {fileID: 4541146992115487662}
+  - component: {fileID: 624521180257164299}
+  - component: {fileID: 3408743321995012289}
+  - component: {fileID: 4469308512083734667}
+  m_Layer: 6
+  m_Name: MemoryLibrary
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
---- !u!4 &8902509041869557735
+--- !u!4 &4541146992115487662
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8802280506968245694}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 14.01001, y: 4.1061993, z: -65.179985}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_GameObject: {fileID: 3769149557553809684}
+  m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071067}
+  m_LocalPosition: {x: 0.03617216, y: 12.595157, z: -235.29411}
+  m_LocalScale: {x: 1560.533, y: 1560.533, z: 477.07434}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &2301167656268302460
+--- !u!33 &624521180257164299
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8802280506968245694}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!23 &823297665586135008
+  m_GameObject: {fileID: 3769149557553809684}
+  m_Mesh: {fileID: -7387706064836869012, guid: 53fcce77d13d1d444a622d0a9b090925, type: 3}
+--- !u!23 &3408743321995012289
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8802280506968245694}
+  m_GameObject: {fileID: 3769149557553809684}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -63,7 +62,8 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 48b6a5fcb30a9054895d21c9f8bdbe13, type: 2}
+  - {fileID: 2100000, guid: effee18820d10d24db902f595e92412a, type: 2}
+  - {fileID: 2100000, guid: effee18820d10d24db902f595e92412a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -85,30 +85,17 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!135 &89704396991817631
-SphereCollider:
+--- !u!64 &4469308512083734667
+MeshCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8802280506968245694}
+  m_GameObject: {fileID: 3769149557553809684}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &1259348688309855045
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8802280506968245694}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 21e3a17ff8e111b49840fafd0d393b50, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ItemObj: {fileID: 11400000, guid: 442cb43a6f9394c4abd479c3a25a12a7, type: 2}
-  EnterSoundCollider: {fileID: 0}
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -7387706064836869012, guid: 53fcce77d13d1d444a622d0a9b090925, type: 3}

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Arc
   m_EditorClassIdentifier: 
   ID: 0
-  ItemSprite: {fileID: 21300000, guid: 4c7c720558f096640a5dfa0307c84a2a, type: 3}
+  ItemSprite: {fileID: 21300000, guid: 60eacd9cf9d31f04ab254caf62692cbd, type: 3}
   ItemPrefab: {fileID: 1175447756180291574, guid: 2a8d98b2027308e4885c0d51ceb4e2fc, type: 3}
   ItemObjType: 0
   ItemDescription: 
