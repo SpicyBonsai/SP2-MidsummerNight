@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
-using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using UnityEngine.Events;
 using UnityEngine.AI;
 using UnityEngine.Rendering.Universal;
+using UnityEngine.UIElements;
+using Image = UnityEngine.UI.Image;
 
 public class DisplayMemories : MonoBehaviour
 {
@@ -178,13 +179,17 @@ public class DisplayMemories : MonoBehaviour
             //hoveredObj.GetComponent<MeshRenderer>().material = MouseItemInstance._gameObj.GetComponent<MeshRenderer>().material;
             //Color _color = new Color(hoveredObj.GetComponent<DecalProjector>().material.GetColor());
             //var _lerpedColor = Color
-            var color = new Color(1, 1, 1, 1);
+            // var color = new Color(1, 1, 1, 1);
             //hoveredObj.GetComponent<DecalProjector>().material.SetColor("_BaseColor", color);
             //var initColor = hoveredObj.GetComponent<MeshRenderer>().material.color;
-            foreach(Material _mat in hoveredObj.GetComponent<MeshRenderer>().materials)
-            {
-                _mat.color = color;
-            }
+
+            IColorChanger colorChanger = hoveredObj.GetComponent<IColorChanger>();
+            colorChanger?.ChangeColor();
+            
+            // foreach(Material _mat in hoveredObj.GetComponent<MeshRenderer>().materials)
+            // {
+            //     _mat.color = color;
+            // }
             //hoveredObj.transform.parent.GetComponent<BrokenObject>()._brokenParts[hoveredObj] = false;
             //hoveredObj.GetComponent<BrokenPart>().isFixed = true;
             //print("we're here");
@@ -200,10 +205,10 @@ public class DisplayMemories : MonoBehaviour
             _obj.transform.GetChild(0).GetComponent<Image>().color = new Color(255, 255, 255, 255);
             _obj.transform.GetChild(0).GetComponent<Image>().raycastTarget = true;
 */
-            print("we're here");
+            //print("we're here");
             memoryActivated = false;
         }
-        print("we're here");
+        //print("we're here");
         _panelUI.GetComponent<Image>().enabled = true;
         _obj.GetComponent<Image>().enabled = true;
         _obj.transform.GetChild(0).GetComponent<Image>().enabled = true;

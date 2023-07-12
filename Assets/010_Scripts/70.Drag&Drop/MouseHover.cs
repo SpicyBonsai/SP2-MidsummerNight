@@ -54,6 +54,11 @@ public class MouseHover : MonoBehaviour
             {
                 _hoverableObj.Interact();
             }
+
+            if (_hit.collider.transform.gameObject.name == "MemoryFragment")
+            {
+                HoveredObj = _hit.collider.transform.gameObject;
+            }
         }
 
             
