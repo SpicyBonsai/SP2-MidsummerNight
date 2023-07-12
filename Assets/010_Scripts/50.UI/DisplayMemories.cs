@@ -181,8 +181,10 @@ public class DisplayMemories : MonoBehaviour
             var color = new Color(1, 1, 1, 1);
             //hoveredObj.GetComponent<DecalProjector>().material.SetColor("_BaseColor", color);
             //var initColor = hoveredObj.GetComponent<MeshRenderer>().material.color;
-            hoveredObj.GetComponent<MeshRenderer>().materials[0].color = color;
-            hoveredObj.GetComponent<MeshRenderer>().materials[1].color = color;
+            foreach(Material _mat in hoveredObj.GetComponent<MeshRenderer>().materials)
+            {
+                _mat.color = color;
+            }
             //hoveredObj.transform.parent.GetComponent<BrokenObject>()._brokenParts[hoveredObj] = false;
             //hoveredObj.GetComponent<BrokenPart>().isFixed = true;
             //print("we're here");
