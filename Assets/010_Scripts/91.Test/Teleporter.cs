@@ -9,14 +9,14 @@ public class Teleporter : MonoBehaviour
     [SerializeField] private CinemachineVirtualCamera cam1;
     [SerializeField] private CameraControls controls;
 
-    private CinemachineTransposer camTransposer;
-    private CinemachineComposer camComposer;
+    // private CinemachineTransposer camTransposer;
+    // private CinemachineComposer camComposer;
 
     private void Start()
     {
         // cam1 = Camera.main.GetComponent<CinemachineVirtualCamera>();
-        camTransposer = cam1.GetCinemachineComponent<CinemachineTransposer>();
-        camComposer = cam1.GetCinemachineComponent<CinemachineComposer>();
+        // camTransposer = cam1.GetCinemachineComponent<CinemachineTransposer>();
+        // camComposer = cam1.GetCinemachineComponent<CinemachineComposer>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -26,6 +26,8 @@ public class Teleporter : MonoBehaviour
             controls.isteleporting = true;
             AudioManager.Instance.StopMusic();
             AudioManager.Instance.StopAmbient();
+            AudioManager.Instance.RandomSoundEffect(AudioManager.Instance.teleporterEnter);
+            
 
             other.GetComponent<CharacterController>().enabled = false;
             other.GetComponent<NavMeshAgent>().enabled = false;

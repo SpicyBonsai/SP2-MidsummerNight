@@ -41,6 +41,7 @@ public class AudioManager : MonoBehaviour
     public Audio[] collectItem;
     public Audio[] collectMemory;
     public Audio[] restoreGate;
+    public Audio[] teleporterEnter;
     private Dictionary<string, Audio[]> audioClipDict;
 
     [Header("Songs")]
