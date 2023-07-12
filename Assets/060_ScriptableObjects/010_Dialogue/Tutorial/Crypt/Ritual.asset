@@ -1,0 +1,200 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-8659407451239606999
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3aefdf2842a95a946a43b387888c70b3, type: 3}
+  m_Name: dfa30cdf-dabd-466e-ae5d-f9cc16d4f17f
+  m_EditorClassIdentifier: 
+  isPlayerSpeaking: 0
+  text: 
+  children: []
+  rect:
+    serializedVersion: 2
+    x: 660
+    y: 0
+    width: 300
+    height: 100
+  textAreaHeightOffset: 0
+  OnEnterAction: 
+  OnExitAction: 
+  OnTimeAction: 
+--- !u!114 &-8533139446303920589
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3aefdf2842a95a946a43b387888c70b3, type: 3}
+  m_Name: ded5b1d6-4972-4288-8925-4de19b109546
+  m_EditorClassIdentifier: 
+  isPlayerSpeaking: 0
+  text: 
+  children: []
+  rect:
+    serializedVersion: 2
+    x: 1006
+    y: 42.000008
+    width: 300
+    height: 100
+  textAreaHeightOffset: 0
+  OnEnterAction: HelistraTalking
+  OnExitAction: 
+  OnTimeAction: 
+--- !u!114 &-7564945000813458643
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3aefdf2842a95a946a43b387888c70b3, type: 3}
+  m_Name: df9067db-b525-4097-b873-ba452db29603
+  m_EditorClassIdentifier: 
+  isPlayerSpeaking: 0
+  text: Ritual ! Yes! Today was the day of the ritual!
+  children:
+  - f1a49dd2-3e55-4071-9352-dda7981651d1
+  - 91410872-80b8-4b77-a17d-5b49f12ca8cf
+  rect:
+    serializedVersion: 2
+    x: 330
+    y: 0
+    width: 300
+    height: 100
+  textAreaHeightOffset: 0
+  OnEnterAction: 
+  OnExitAction: 
+  OnTimeAction: 
+--- !u!114 &-6564172499656329326
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3aefdf2842a95a946a43b387888c70b3, type: 3}
+  m_Name: 01269cc0-8d29-46c7-9673-a481bae135de
+  m_EditorClassIdentifier: 
+  isPlayerSpeaking: 0
+  text: 
+  children: []
+  rect:
+    serializedVersion: 2
+    x: 1021
+    y: 90.00001
+    width: 300
+    height: 100
+  textAreaHeightOffset: 0
+  OnEnterAction: 
+  OnExitAction: 
+  OnTimeAction: 
+--- !u!114 &-1514917367493061566
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3aefdf2842a95a946a43b387888c70b3, type: 3}
+  m_Name: 91410872-80b8-4b77-a17d-5b49f12ca8cf
+  m_EditorClassIdentifier: 
+  isPlayerSpeaking: 1
+  text: Where is my beloved?
+  children:
+  - ded5b1d6-4972-4288-8925-4de19b109546
+  rect:
+    serializedVersion: 2
+    x: 660
+    y: 0
+    width: 300
+    height: 100
+  textAreaHeightOffset: 0
+  OnEnterAction: 
+  OnExitAction: 
+  OnTimeAction: 
+--- !u!114 &-1063326371565963741
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3aefdf2842a95a946a43b387888c70b3, type: 3}
+  m_Name: f1a49dd2-3e55-4071-9352-dda7981651d1
+  m_EditorClassIdentifier: 
+  isPlayerSpeaking: 1
+  text: Fae... they must be inside the center of the forest! I must find them!
+  children:
+  - ded5b1d6-4972-4288-8925-4de19b109546
+  rect:
+    serializedVersion: 2
+    x: 662
+    y: 91.00001
+    width: 300
+    height: 100
+  textAreaHeightOffset: 0
+  OnEnterAction: 
+  OnExitAction: 
+  OnTimeAction: 
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dec24605fc459414ab9f7935fbd96c9f, type: 3}
+  m_Name: Ritual
+  m_EditorClassIdentifier: 
+  nodes:
+  - {fileID: 5209600259431454246}
+  - {fileID: -7564945000813458643}
+  - {fileID: -1063326371565963741}
+  - {fileID: -1514917367493061566}
+  - {fileID: -8533139446303920589}
+--- !u!114 &5209600259431454246
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3aefdf2842a95a946a43b387888c70b3, type: 3}
+  m_Name: 536b9a0b-794a-4ff9-84af-51aa95335fde
+  m_EditorClassIdentifier: 
+  isPlayerSpeaking: 0
+  text: It looks like another ritual...
+  children:
+  - df9067db-b525-4097-b873-ba452db29603
+  rect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 300
+    height: 100
+  textAreaHeightOffset: 0
+  OnEnterAction: 
+  OnExitAction: 
+  OnTimeAction: 

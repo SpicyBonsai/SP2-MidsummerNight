@@ -48,7 +48,7 @@ public class ButtonAnimation : MonoBehaviour
         float lerpProgress = 0;
         Color newColor = new Color();
 
-        while(lerpProgress < 1 && !Input.GetKey(KeyCode.Q))
+        while(lerpProgress < 1)
         {
             elapsedTime += Time.deltaTime;
             lerpProgress = elapsedTime/transitionDuration;

@@ -48,6 +48,8 @@ public class Player : MonoBehaviour
         {
             MemoryInventory.AddItem(new Item(_memoryFragment.ItemObj), 1);
             AudioManager.Instance.RandomSoundEffect(AudioManager.Instance.collectMemory);
+            DialogueInitiator dialogueInitiator = other.GetComponent<DialogueInitiator>();
+            dialogueInitiator?.Interact();
             //Destroy(other.gameObject.transform.parent.gameObject);
             Destroy(other.gameObject);
         }

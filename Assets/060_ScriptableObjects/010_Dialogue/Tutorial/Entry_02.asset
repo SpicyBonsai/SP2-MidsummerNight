@@ -55,13 +55,13 @@ MonoBehaviour:
   m_Name: dde75cfa-a9b9-485f-8845-19098507f61b
   m_EditorClassIdentifier: 
   isPlayerSpeaking: 0
-  text: It smells... burnt ?
+  text: Burnt ?
   children:
   - 3d31704e-ec14-4ec9-affb-e2ba0fa47bd5
   rect:
     serializedVersion: 2
-    x: 434
-    y: 129
+    x: 417.99997
+    y: 130
     width: 300
     height: 100
   textAreaHeightOffset: 0
@@ -81,7 +81,7 @@ MonoBehaviour:
   m_Name: 32fa2eb5-db5c-4aa5-aaf4-2fb60f8b1c26
   m_EditorClassIdentifier: 
   isPlayerSpeaking: 0
-  text: The forest ?
+  text: 'The forest ? It smells... '
   children:
   - dde75cfa-a9b9-485f-8845-19098507f61b
   rect:

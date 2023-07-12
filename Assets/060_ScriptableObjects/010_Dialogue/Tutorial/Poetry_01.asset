@@ -1,5 +1,31 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-4496259610644149258
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3aefdf2842a95a946a43b387888c70b3, type: 3}
+  m_Name: a4b50f2c-8578-4059-bf72-0b0d6f50dec0
+  m_EditorClassIdentifier: 
+  isPlayerSpeaking: 0
+  text: "Spring's hope recedes, its light withdrawn, \nAs winter's touch leaves hearts
+    forlorn. \nA creeping frost invades each vein, \nA chilling darkness, unrestrained."
+  children: []
+  rect:
+    serializedVersion: 2
+    x: 696
+    y: 106
+    width: 300
+    height: 100
+  textAreaHeightOffset: 0
+  OnEnterAction: 
+  OnExitAction: 
+  OnTimeAction: 
 --- !u!114 &-1513931301882268126
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -22,11 +48,12 @@ MonoBehaviour:
 
     To drive away the cold,
     so deep.'
-  children: []
+  children:
+  - 490fd7da-8b73-42e4-8013-6bf57b1899bf
   rect:
     serializedVersion: 2
-    x: 22
-    y: 18
+    x: 36
+    y: 106
     width: 300
     height: 100
   textAreaHeightOffset: 0
@@ -47,3 +74,38 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   nodes:
   - {fileID: -1513931301882268126}
+  - {fileID: 2574637337386459127}
+  - {fileID: -4496259610644149258}
+--- !u!114 &2574637337386459127
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3aefdf2842a95a946a43b387888c70b3, type: 3}
+  m_Name: 490fd7da-8b73-42e4-8013-6bf57b1899bf
+  m_EditorClassIdentifier: 
+  isPlayerSpeaking: 0
+  text: 'Let winter''s grip be cast away,
+
+    As spring''s embrace begins to sway.
+
+    The
+    ritual''s vessel bust apart,
+
+    As winter''s cold taints the fae''s heart.'
+  children:
+  - a4b50f2c-8578-4059-bf72-0b0d6f50dec0
+  rect:
+    serializedVersion: 2
+    x: 366
+    y: 105
+    width: 300
+    height: 100
+  textAreaHeightOffset: 0
+  OnEnterAction: 
+  OnExitAction: 
+  OnTimeAction: 

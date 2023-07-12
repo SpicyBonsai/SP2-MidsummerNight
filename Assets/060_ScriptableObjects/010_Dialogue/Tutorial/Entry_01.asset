@@ -39,11 +39,11 @@ MonoBehaviour:
   m_Name: 368b2acf-e770-455c-81aa-e3c96b1a3053
   m_EditorClassIdentifier: 
   isPlayerSpeaking: 0
-  text: Where in the world am I?
+  text: 
   children: []
   rect:
     serializedVersion: 2
-    x: 661
+    x: 660
     y: 2
     width: 300
     height: 100
@@ -64,9 +64,11 @@ MonoBehaviour:
   m_Name: cdfa2f3e-6956-4c7f-a4b9-77f804188db1
   m_EditorClassIdentifier: 
   isPlayerSpeaking: 0
-  text: My head feels like I drank from a Nightrose...
-  children:
-  - 368b2acf-e770-455c-81aa-e3c96b1a3053
+  text: 'My head feels like I drank from a Nightrose...
+
+    Where in the world am
+    I?'
+  children: []
   rect:
     serializedVersion: 2
     x: 331
@@ -92,4 +94,3 @@ MonoBehaviour:
   nodes:
   - {fileID: -8893391081168835615}
   - {fileID: -3900332651737184627}
-  - {fileID: -8035579960589603570}

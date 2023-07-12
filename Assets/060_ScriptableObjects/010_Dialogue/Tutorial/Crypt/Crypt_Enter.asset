@@ -1,0 +1,68 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-2839305728095186647
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3aefdf2842a95a946a43b387888c70b3, type: 3}
+  m_Name: 06027d46-81cc-42db-ba35-232b3c4bb633
+  m_EditorClassIdentifier: 
+  isPlayerSpeaking: 0
+  text: What is this place ?
+  children:
+  - 6c1c64c5-f802-4747-a961-e944027d7e4a
+  rect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 300
+    height: 100
+  textAreaHeightOffset: 0
+  OnEnterAction: 
+  OnExitAction: 
+  OnTimeAction: 
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dec24605fc459414ab9f7935fbd96c9f, type: 3}
+  m_Name: Crypt_Enter
+  m_EditorClassIdentifier: 
+  nodes:
+  - {fileID: -2839305728095186647}
+  - {fileID: 888088370417402897}
+--- !u!114 &888088370417402897
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3aefdf2842a95a946a43b387888c70b3, type: 3}
+  m_Name: 6c1c64c5-f802-4747-a961-e944027d7e4a
+  m_EditorClassIdentifier: 
+  isPlayerSpeaking: 0
+  text: The air in here is so stale. This must have been sealed for centuries...
+  children: []
+  rect:
+    serializedVersion: 2
+    x: 330
+    y: 0
+    width: 300
+    height: 100
+  textAreaHeightOffset: 0
+  OnEnterAction: 
+  OnExitAction: 
+  OnTimeAction: 

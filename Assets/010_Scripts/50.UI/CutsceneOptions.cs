@@ -102,5 +102,6 @@ public class CutsceneOptions : MonoBehaviour
         _cutscenePlayer.SetActive(false);
         _player.SetActive(true);
         _scriptedObjects.SetActive(true);
+        Destroy(gameObject);
     }
 }

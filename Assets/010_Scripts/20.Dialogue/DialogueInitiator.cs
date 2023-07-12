@@ -71,6 +71,11 @@ public class DialogueInitiator : MonoBehaviour, IInteractable
 
     public void Interact()
     {
+        if (PauseManager.instance.InventoryOpen)
+        {
+            PauseManager.instance.CloseInventory(); 
+        }
+        
         _playerConversant.StartDialogue(currentDialogue, this);
         _dialogueManager.OpenDialogue();
         _dialogueManager.SetImage(characterImage);

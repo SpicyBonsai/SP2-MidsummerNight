@@ -185,7 +185,10 @@ public class DisplayMemories : MonoBehaviour
 
             IColorChanger colorChanger = hoveredObj.GetComponent<IColorChanger>();
             colorChanger?.ChangeColor();
-            
+
+            DialogueInitiator dialogueInitiator = hoveredObj.GetComponent<DialogueInitiator>();
+            dialogueInitiator?.Interact();
+
             // foreach(Material _mat in hoveredObj.GetComponent<MeshRenderer>().materials)
             // {
             //     _mat.color = color;
@@ -195,7 +198,7 @@ public class DisplayMemories : MonoBehaviour
             //print("we're here");
             //hoveredObj.GetComponent<MeshRenderer>().enabled = true;
 
-        }
+          }
         else if (hoveredObj?.name != _itemName) // || hoveredObj.GetComponent<MeshRenderer>().enabled)
         {
            // _panelUI.GetComponent<Image>().color = _panelUIcolor;
